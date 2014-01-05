@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Internal notification to lead owner when lead is parked.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Lead Parked notification</name>
+    <style>none</style>
+    <subject>Lead parked:  {!Lead.Name} from {!Lead.Company}</subject>
+    <type>text</type>
+</EmailTemplate>

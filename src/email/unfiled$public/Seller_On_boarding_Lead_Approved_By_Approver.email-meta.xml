@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Send notification email to designated BD AM when new lead record approved.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Seller On-boarding: Lead Approved By Approver</name>
+    <style>none</style>
+    <subject>New Lead Requires Approval</subject>
+    <type>text</type>
+</EmailTemplate>

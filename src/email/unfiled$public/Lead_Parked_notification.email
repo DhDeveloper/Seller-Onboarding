@@ -1,0 +1,9 @@
+*** LEAD PARKED: NOTIFICATION ***  
+
+The following lead has been paked.  
+Company:  {!Lead.Company} 
+Lead Name:  {!Lead.Name}  
+
+By tomorrow get back on this
+
+Click on the link to access the lead directly:  {!Lead.Link}

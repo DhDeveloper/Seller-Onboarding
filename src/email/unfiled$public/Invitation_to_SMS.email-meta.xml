@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Invitation to SMS external email</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Invitation to SMS</name>
+    <style>none</style>
+    <subject>Seller Invitation:  {!Opportunity.Name} from {!Opportunity.Seller_Registration_Email__c}</subject>
+    <type>text</type>
+</EmailTemplate>

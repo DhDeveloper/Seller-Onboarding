@@ -1,0 +1,5 @@
+*** Seller Invitation: NOTIFICATION ***  
+
+The following seller has been invited.  
+Seller Reg Email:  {!Opportunity.Seller_Registration_Email__c} 
+Seller Name:  {!Opportunity.Name}

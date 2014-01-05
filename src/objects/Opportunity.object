@@ -1,0 +1,3449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>AddInfluence</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <businessProcesses>
+        <fullName>Short</fullName>
+        <description>Sellers with short TAT profiles</description>
+        <isActive>true</isActive>
+        <values>
+            <fullName>Candidate For Onboarding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Go Live Checklist</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Live</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Enough SKUs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending Seller Approval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending Stock Update</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ready to Invite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Registered</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yet to Upload</fullName>
+            <default>false</default>
+        </values>
+    </businessProcesses>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <fieldSets>
+        <fullName>ListingStatus</fullName>
+        <description>To understand Listing Progress in Opportunities</description>
+        <displayedFields>
+            <field>Total_Listings_Uploaded__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Total_QC_Pass__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Total_QC_Failures__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Total_Pending_Approval__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Total_Pending_Stock_Price__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>ListingStatus</label>
+    </fieldSets>
+    <fields>
+        <fullName>AccountId</fullName>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Also_Sells__c</fullName>
+        <externalId>false</externalId>
+        <label>Also Sells</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Attempts_Or_Delay_Days__c</fullName>
+        <externalId>false</externalId>
+        <label>Attempts / Delay in Days</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>15</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>20</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>25</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>30</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>BD_Action__c</fullName>
+        <externalId>false</externalId>
+        <label>BD Action</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Drop</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Continue</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>BD_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>BD Comments</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Manpower shortage</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No response from seller</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Seller not interested</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Shipping cost high</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Enough SKUs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>BD advised to pause</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Brand_List__c</fullName>
+        <externalId>false</externalId>
+        <label>Brand List</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Brand_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Brand Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>PrivateLabel</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MultlBrand</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CampaignId</fullName>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Category__c</fullName>
+        <externalId>false</externalId>
+        <label>Category</label>
+        <picklist>
+            <picklistValues>
+                <fullName>ApplianceSmall</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Audio Accessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Audio MP3Player</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Babycare</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Books</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Camera</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CameraAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>cameras and consumer electronics</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Clothing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Computer Accessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Computer Component</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Computer Peripheral</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Computer Storage</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fashion Accessories</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fashion Jewellery</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Footwear</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Games</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Gaming Accessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Gaming Console</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Health &amp; Beauty</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Health &amp; Beauty - Non Perfumes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Health &amp; Beauty - Perfumes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>HealthCare</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Home Audio</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>HomeFurnishing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Kid&apos;s Clothing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Kid&apos;s Footwear</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Laptop</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Laptop Accessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lenses</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Media - (Movies, Music &amp; Games)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Medical - (Licensing Required)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Men&apos;s Clothing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Men&apos;s Footwear</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mobile</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mobile Accessories</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MobileAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MP3 Player</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MP3Player Ipod Accessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Networking And Cable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Office Supplies</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PersonalCare</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Softwares</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SolarLight</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sports &amp; Fitness</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sunglasses</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tablet</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tablets And TabletAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Toys</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TVVideo Small</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Watches</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Women&apos;s Clothing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Women&apos;s Footwear</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Communication_Language_for_Seller__c</fullName>
+        <externalId>false</externalId>
+        <label>Communication Language for Seller</label>
+        <picklist>
+            <picklistValues>
+                <fullName>English</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hindi</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tamil</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Kannada</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Delay_Description__c</fullName>
+        <description>Delay Description</description>
+        <externalId>false</externalId>
+        <label>Delay Description</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Delay_Reasons__c</fullName>
+        <externalId>false</externalId>
+        <label>Delay Reasons</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Seller Not Reachable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Seller Need More Time</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>DisplayName__c</fullName>
+        <externalId>false</externalId>
+        <label>DisplayName</label>
+        <length>40</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Distributor_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Distributor Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Regional Distributor</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>National Distributor</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Aggregator</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Retailer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Publisher</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Direct Brand</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Importer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Reseller</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Manufacturer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Expected_TAT__c</fullName>
+        <defaultValue>25</defaultValue>
+        <externalId>false</externalId>
+        <label>Expected TAT</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Fit_with_Flipkart_s_catalogue__c</fullName>
+        <externalId>false</externalId>
+        <label>Fit with Flipkart&apos;s catalogue</label>
+        <picklist>
+            <picklistValues>
+                <fullName>None of his Verticals are open in Flipkart</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Some of his Verticals are open in Flipkart</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>All of his Verticals are open in Flipkart</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Go_Live_Approval__c</fullName>
+        <externalId>false</externalId>
+        <label>Go Live Approval</label>
+        <picklist>
+            <picklistValues>
+                <fullName>NA</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Go_Live_SKUs__c</fullName>
+        <description>Expected SKUs this seller will have 1 month from go live</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Expected SKUs this seller will have 1 month from go live</inlineHelpText>
+        <label>Go Live SKUs</label>
+        <picklist>
+            <picklistValues>
+                <fullName>10</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>25</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>50</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>100</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>250</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>500</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1000</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5000</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>10000</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Has_Internet__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Has Internet</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Has_Printer__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Has Printer</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Has_VAT__c</fullName>
+        <externalId>false</externalId>
+        <label>Has VAT</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Not Available</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Available</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Applied For</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>HighestEscalationPhone__c</fullName>
+        <externalId>false</externalId>
+        <label>HighestEscalationPhone</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Hub_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Hub Name</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Imaging_Support__c</fullName>
+        <externalId>false</externalId>
+        <label>Imaging Support</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Has Online Catalogue</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Needs Imaging Support</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Available</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>IsCommissionsExplained__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Is he clear about his commissions for the categores he is selling</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Is he clear about his commissions for the categores he is selling</inlineHelpText>
+        <label>IsCommissionsExplained</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Available__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Is seller available and willing to dedicate time from now till date of go live?</description>
+        <externalId>false</externalId>
+        <label>Is Available</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Invited__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Represents Opportunity record sent for invitation or not</description>
+        <externalId>false</externalId>
+        <label>Is Invited</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Kyc_Document_Check__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Kyc Document Check</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LeadID__c</fullName>
+        <externalId>false</externalId>
+        <label>LeadID</label>
+        <length>30</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LeadSource</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Vendor@flipkart.com</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Employee Referral</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>External Referral</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Advertisement</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Partner</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Public Relations</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Seminar - Internal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Seminar - Partner</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Word of mouth</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Created By BD</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Min_Go_Live_SKUs__c</fullName>
+        <defaultValue>30</defaultValue>
+        <externalId>false</externalId>
+        <label>Min Go Live SKUs</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Old_Lead_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Old Lead Id</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Online_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>ISPICKVAL( Account.Online_Experience__c , &apos;Never Before&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Online</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Others__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Others</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Packaging_Capability__c</fullName>
+        <externalId>false</externalId>
+        <label>Packaging Capability</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Fully Capable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Needs Material</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Needs Packaging Training</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Pickup_Pincode__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Pickup Pincode</label>
+        <referenceTo>PincodeHubMapping__c</referenceTo>
+        <relationshipLabel>Opportunities</relationshipLabel>
+        <relationshipName>Opportunities</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Pickup_Pincode_del__c</fullName>
+        <externalId>false</externalId>
+        <label>Pickup Pincode</label>
+        <length>6</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Procurement_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Procurement Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>From Inventory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Just In Time</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Redirect_State__c</fullName>
+        <description>Redirect State will come from CSV upload</description>
+        <externalId>false</externalId>
+        <label>Redirect State</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Region</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Revisit_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Revisit Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SS_Drop_Reasons__c</fullName>
+        <externalId>false</externalId>
+        <label>SS Drop Reasons</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Seller Not Reachable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Training - Too many reschedules</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Catalogue - Template not ready</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No Intent Shown</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Seller Unavailable-Personal Reasons</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EKL - Hub Not Ready</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Enough SKUs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>SS_Drop__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>SS Drop</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SS_Notes__c</fullName>
+        <description>Notes to capture progress of seller etc.
+Recommended format
+&lt;date&gt;  &lt;note&gt;</description>
+        <externalId>false</externalId>
+        <label>SS Notes</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>SS_Owner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>SS Account Mgr</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Opportunities</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SS_Pause_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>SS-Pause Reason</label>
+        <picklist>
+            <picklistValues>
+                <fullName>EKL-Hub</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Seller needs time</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>SS_Pause_Seller__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>SS-Pause Seller</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SS_Screening__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>SS Screening Failed</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Screening_Failure_Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Screening Failure Notes</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Seller_Business_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Seller Business Name</label>
+        <length>200</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Seller_Id__c</fullName>
+        <externalId>true</externalId>
+        <label>Seller Id</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Seller_Need_More_Time__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Seller Need More Time</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Seller_Not_Reachable__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>Seller Not Reachable</description>
+        <externalId>false</externalId>
+        <label>Seller Not Reachable</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Seller_Primary_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Seller Primary Email</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Seller_Registration_Email__c</fullName>
+        <externalId>true</externalId>
+        <label>Seller Registration Email</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Size_of_Goods__c</fullName>
+        <externalId>false</externalId>
+        <label>Size of Goods</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Large</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Small</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>StageName</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Candidate For Onboarding</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>0</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ready to Invite</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>0</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Invited</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>0</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Registered</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>10</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yet to Upload</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <description>Seller has not uploaded any file so far.</description>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>20</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Enough SKUs</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <description>Sufficient number of Products are not QC Pass, or directly created yet.</description>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>30</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pending Seller Approval</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <description>Seller has to approve the QC pass items</description>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>70</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pending Stock Update</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <description>Seller has not updated Stock/Price yet.</description>
+                <forecastCategory>Forecast</forecastCategory>
+                <probability>80</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Go Live Checklist</fullName>
+                <closed>true</closed>
+                <default>false</default>
+                <forecastCategory>Closed</forecastCategory>
+                <probability>95</probability>
+                <won>true</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Live</fullName>
+                <closed>true</closed>
+                <default>false</default>
+                <forecastCategory>Closed</forecastCategory>
+                <probability>100</probability>
+                <won>true</won>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Stock_Availability__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Does the seller have enough stock to sell on date of go live?</description>
+        <externalId>false</externalId>
+        <label>Stock Availability</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SuperCategory__c</fullName>
+        <externalId>false</externalId>
+        <label>SuperCategory</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Softlines</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>BGM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CCC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>TAT_Profile__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>TAT Profile</label>
+        <referenceTo>TAT_Profile__c</referenceTo>
+        <relationshipLabel>Opportunities</relationshipLabel>
+        <relationshipName>Opportunities</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Total_Listings_Uploaded__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Listings Uploaded</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Pending_Approval__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Pending Approval</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Pending_Stock_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Pending Stock-Price</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_QC_Failures__c</fullName>
+        <externalId>false</externalId>
+        <label>Total QC Failures</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_QC_Pass__c</fullName>
+        <externalId>false</externalId>
+        <label>Total QC Pass</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TraineeForListing__c</fullName>
+        <description>Name, email, phone of trainee for listing/catalogue.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Name, email, phone of trainee for listing/catalogue.</inlineHelpText>
+        <label>TraineeForListing</label>
+        <length>60</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Trainee_for_Order_Mgmt__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Name, email, phone of person who should be trained for order mgmt.</inlineHelpText>
+        <label>Trainee for Order Mgmt</label>
+        <length>60</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Training1__c</fullName>
+        <externalId>false</externalId>
+        <label>Training1 (Listings)</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Not Done</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Training2_Policy_Payments__c</fullName>
+        <externalId>false</externalId>
+        <label>Training2 (Policy + Payments)</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Not Done</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Training3_OM_Returns_Disputes__c</fullName>
+        <externalId>false</externalId>
+        <label>Training3 (OM Returns Disputes)</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Not Done</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Training_End_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Training End Date/Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Training_Start_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Training Start Date/Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Type</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Existing Business</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>New Business</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <listViews>
+        <fullName>AllOpportunties</fullName>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>CORE.USERS.FIRST_NAME</columns>
+        <columns>Pickup_Pincode_del__c</columns>
+        <columns>Seller_Id__c</columns>
+        <columns>Seller_Business_Name__c</columns>
+        <columns>Seller_Registration_Email__c</columns>
+        <columns>Total_Listings_Uploaded__c</columns>
+        <columns>Total_QC_Pass__c</columns>
+        <columns>Total_QC_Failures__c</columns>
+        <columns>Total_Pending_Approval__c</columns>
+        <columns>Total_Pending_Stock_Price__c</columns>
+        <columns>BD_Action__c</columns>
+        <columns>SS_Pause_Seller__c</columns>
+        <columns>SS_Drop__c</columns>
+        <columns>OPPORTUNITY.STAGE_NAME</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Assign_To_SS_AM</fullName>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>SS_Owner__c</columns>
+        <columns>Seller_Business_Name__c</columns>
+        <columns>Seller_Registration_Email__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>OPPORTUNITY.STAGE_NAME</field>
+            <operation>equals</operation>
+            <value>Invited</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Opportunity.InOnboarding</value>
+        </filters>
+        <label>Assign To SS AM</label>
+        <sharedTo>
+            <group>SS_Agents</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>For_SS_Screening</fullName>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>Seller_Registration_Email__c</columns>
+        <columns>SuperCategory__c</columns>
+        <columns>OPPORTUNITY.LAST_UPDATE</columns>
+        <columns>SS_Owner__c</columns>
+        <columns>OPPORTUNITY.RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>OPPORTUNITY.STAGE_NAME</field>
+            <operation>equals</operation>
+            <value>Candidate For Onboarding</value>
+        </filters>
+        <filters>
+            <field>SS_Screening__c</field>
+            <operation>notEqual</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Opportunity.CandidateForOnboarding</value>
+        </filters>
+        <label>For SS Screening - Queue</label>
+        <sharedTo>
+            <group>SS_Agents</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Opportunities_BD</fullName>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>OPPORTUNITY.AMOUNT</columns>
+        <columns>OPPORTUNITY.CLOSE_DATE</columns>
+        <columns>OPPORTUNITY.STAGE_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Mine</filterScope>
+        <label>My Opportunities (BD)</label>
+        <sharedTo>
+            <group>BGM_Users</group>
+            <group>CCC_Users</group>
+            <group>Softlines_Users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_SS_Screening_List</fullName>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>Seller_Registration_Email__c</columns>
+        <columns>CORE.USERS.FULL_NAME</columns>
+        <columns>OPPORTUNITY.RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>SS_Owner__c</field>
+            <operation>equals</operation>
+            <value>surya kc</value>
+        </filters>
+        <filters>
+            <field>SS_Owner__c</field>
+            <operation>equals</operation>
+            <value>balaji rao</value>
+        </filters>
+        <label>My SS Screening List</label>
+        <sharedTo>
+            <role>SS_Agent</role>
+            <role>SS_Manager</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>NewThisWeek</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>OPPORTUNITY.CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>THIS_WEEK</value>
+        </filters>
+        <label>New This Week</label>
+    </listViews>
+    <listViews>
+        <fullName>Ready_For_Inviting</fullName>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>OPPORTUNITY.CLOSE_DATE</columns>
+        <columns>OPPORTUNITY.STAGE_NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <columns>Seller_Business_Name__c</columns>
+        <columns>Seller_Registration_Email__c</columns>
+        <columns>SuperCategory__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>OPPORTUNITY.STAGE_NAME</field>
+            <operation>equals</operation>
+            <value>Ready to Invite</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Opportunity.InOnboarding</value>
+        </filters>
+        <label>Ready For Inviting</label>
+    </listViews>
+    <listViews>
+        <fullName>Won</fullName>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>OPPORTUNITY.WON</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.CLOSED</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.CLOSE_DATE</field>
+            <operation>equals</operation>
+            <value>THIS_MONTH</value>
+        </filters>
+        <label>Live This Month</label>
+    </listViews>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>CandidateForOnboarding</fullName>
+        <active>true</active>
+        <businessProcess>Short</businessProcess>
+        <label>CandidateForOnboarding</label>
+        <picklistValues>
+            <picklist>Attempts_Or_Delay_Days__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>BD_Action__c</picklist>
+            <values>
+                <fullName>Continue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Drop</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>BD_Comments__c</picklist>
+            <values>
+                <fullName>Manpower shortage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No response from seller</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Enough SKUs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller not interested</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shipping cost high</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Brand_Type__c</picklist>
+            <values>
+                <fullName>MultlBrand</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PrivateLabel</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Category__c</picklist>
+            <values>
+                <fullName>ApplianceSmall</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audio Accessory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audio MP3Player</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Babycare</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Books</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Camera</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CameraAccessory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clothing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Computer Accessory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Computer Component</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Computer Peripheral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Computer Storage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fashion Accessories</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fashion Jewellery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Footwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Games</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gaming Accessory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gaming Console</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Health %26 Beauty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Health %26 Beauty - Non Perfumes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Health %26 Beauty - Perfumes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HealthCare</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Home Audio</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HomeFurnishing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Kid%27s Clothing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Kid%27s Footwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Laptop</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Laptop Accessory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lenses</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MP3 Player</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MP3Player Ipod Accessory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Media - %28Movies%2C Music %26 Games%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medical - %28Licensing Required%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Men%27s Clothing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Men%27s Footwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mobile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mobile Accessories</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MobileAccessory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Networking And Cable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Office Supplies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PersonalCare</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Softwares</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SolarLight</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sports %26 Fitness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sunglasses</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TVVideo Small</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tablet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tablets And TabletAccessory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Toys</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Watches</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Women%27s Clothing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Women%27s Footwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>cameras and consumer electronics</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Communication_Language_for_Seller__c</picklist>
+            <values>
+                <fullName>English</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hindi</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Kannada</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tamil</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Delay_Reasons__c</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller Need More Time</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller Not Reachable</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Distributor_Type__c</picklist>
+            <values>
+                <fullName>Aggregator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Direct Brand</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Importer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>National Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Publisher</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Regional Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reseller</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retailer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Fit_with_Flipkart_s_catalogue__c</picklist>
+            <values>
+                <fullName>All of his Verticals are open in Flipkart</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None of his Verticals are open in Flipkart</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Some of his Verticals are open in Flipkart</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ForecastCategoryName</picklist>
+            <values>
+                <fullName>Best Case</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Omitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pipeline</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Go_Live_Approval__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NA</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Go_Live_SKUs__c</picklist>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1000</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10000</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>250</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>500</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5000</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Has_VAT__c</picklist>
+            <values>
+                <fullName>Applied For</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Available</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Available</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Imaging_Support__c</picklist>
+            <values>
+                <fullName>Available</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Has Online Catalogue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Needs Imaging Support</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LeadSource</picklist>
+            <values>
+                <fullName>Advertisement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Created By BD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Employee Referral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>External Referral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Public Relations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seminar - Internal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seminar - Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vendor%40flipkart%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Word of mouth</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Packaging_Capability__c</picklist>
+            <values>
+                <fullName>Fully Capable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Needs Material</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Needs Packaging Training</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Procurement_Type__c</picklist>
+            <values>
+                <fullName>From Inventory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Just In Time</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SS_Drop_Reasons__c</picklist>
+            <values>
+                <fullName>Catalogue - Template not ready</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EKL - Hub Not Ready</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Intent Shown</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Enough SKUs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller Not Reachable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training - Too many reschedules</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SS_Pause_Reason__c</picklist>
+            <values>
+                <fullName>EKL-Hub</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller needs time</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Size_of_Goods__c</picklist>
+            <values>
+                <fullName>Large</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SuperCategory__c</picklist>
+            <values>
+                <fullName>BGM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Softlines</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Training1__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Done</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Training2_Policy_Payments__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Done</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Training3_OM_Returns_Disputes__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Done</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Existing Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Business</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>InOnboarding</fullName>
+        <active>true</active>
+        <businessProcess>Short</businessProcess>
+        <label>InOnboarding</label>
+        <picklistValues>
+            <picklist>Attempts_Or_Delay_Days__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>15</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>20</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>30</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>BD_Action__c</picklist>
+            <values>
+                <fullName>Continue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Drop</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>BD_Comments__c</picklist>
+            <values>
+                <fullName>BD advised to pause</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manpower shortage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No response from seller</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Enough SKUs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller not interested</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shipping cost high</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Brand_Type__c</picklist>
+            <values>
+                <fullName>MultlBrand</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PrivateLabel</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Category__c</picklist>
+            <values>
+                <fullName>ApplianceSmall</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audio Accessory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Audio MP3Player</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Babycare</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Books</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Camera</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CameraAccessory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clothing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Computer Accessory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Computer Component</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Computer Peripheral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Computer Storage</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fashion Accessories</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fashion Jewellery</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Footwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Games</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gaming Accessory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Gaming Console</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Health %26 Beauty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Health %26 Beauty - Non Perfumes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Health %26 Beauty - Perfumes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HealthCare</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Home Audio</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HomeFurnishing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Kid%27s Clothing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Kid%27s Footwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Laptop</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Laptop Accessory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Lenses</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MP3 Player</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MP3Player Ipod Accessory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Media - %28Movies%2C Music %26 Games%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medical - %28Licensing Required%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Men%27s Clothing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Men%27s Footwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mobile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mobile Accessories</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MobileAccessory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Networking And Cable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Office Supplies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PersonalCare</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Softwares</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SolarLight</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sports %26 Fitness</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sunglasses</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TVVideo Small</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tablet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tablets And TabletAccessory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Toys</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Watches</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Women%27s Clothing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Women%27s Footwear</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>cameras and consumer electronics</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Communication_Language_for_Seller__c</picklist>
+            <values>
+                <fullName>English</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hindi</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Kannada</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tamil</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Delay_Reasons__c</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller Need More Time</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller Not Reachable</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Distributor_Type__c</picklist>
+            <values>
+                <fullName>Aggregator</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Direct Brand</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Importer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Manufacturer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>National Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Publisher</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Regional Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reseller</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retailer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Fit_with_Flipkart_s_catalogue__c</picklist>
+            <values>
+                <fullName>All of his Verticals are open in Flipkart</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None of his Verticals are open in Flipkart</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Some of his Verticals are open in Flipkart</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ForecastCategoryName</picklist>
+            <values>
+                <fullName>Best Case</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Omitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pipeline</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Go_Live_Approval__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NA</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Go_Live_SKUs__c</picklist>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>100</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1000</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10000</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>25</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>250</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>50</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>500</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5000</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Has_VAT__c</picklist>
+            <values>
+                <fullName>Applied For</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Available</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Available</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Imaging_Support__c</picklist>
+            <values>
+                <fullName>Available</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Has Online Catalogue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Needs Imaging Support</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LeadSource</picklist>
+            <values>
+                <fullName>Advertisement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Created By BD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Employee Referral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>External Referral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Public Relations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seminar - Internal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seminar - Partner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vendor%40flipkart%2Ecom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Word of mouth</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Packaging_Capability__c</picklist>
+            <values>
+                <fullName>Fully Capable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Needs Material</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Needs Packaging Training</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Procurement_Type__c</picklist>
+            <values>
+                <fullName>From Inventory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Just In Time</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SS_Drop_Reasons__c</picklist>
+            <values>
+                <fullName>Catalogue - Template not ready</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EKL - Hub Not Ready</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Intent Shown</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Enough SKUs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller Not Reachable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller Unavailable-Personal Reasons</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training - Too many reschedules</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SS_Pause_Reason__c</picklist>
+            <values>
+                <fullName>EKL-Hub</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller needs time</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Size_of_Goods__c</picklist>
+            <values>
+                <fullName>Large</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Small</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SuperCategory__c</picklist>
+            <values>
+                <fullName>BGM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Softlines</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Training1__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Done</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Training2_Policy_Payments__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Done</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Training3_OM_Returns_Disputes__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Done</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Existing Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Business</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>OPPORTUNITY.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>OPPORTUNITY.CLOSE_DATE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SuperCategory__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>OPPORTUNITY.STAGE_NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CORE.USERS.ALIAS</customTabListAdditionalFields>
+        <customTabListAdditionalFields>BD_Action__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Seller_Business_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SS_Owner__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SS_Drop__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SS_Pause_Seller__c</customTabListAdditionalFields>
+        <listViewButtons>Bulk_Invite</listViewButtons>
+        <lookupDialogsAdditionalFields>OPPORTUNITY.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ACCOUNT.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ACCOUNT.SITE</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>OPPORTUNITY.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ACCOUNT.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ACCOUNT.SITE</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>00N90000007at2T</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>OPPORTUNITY.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>OPPORTUNITY.CLOSE_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SuperCategory__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Seller_Id__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Seller_Registration_Email__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>OPPORTUNITY.STAGE_NAME</searchResultsAdditionalFields>
+    </searchLayouts>
+    <validationRules>
+        <fullName>DelayInDaysCannotBeNone</fullName>
+        <active>true</active>
+        <description>On Delay Reasons selection, Delay In Days field cannot be &apos;None&apos;</description>
+        <errorConditionFormula>AND(
+    NOT(ISPICKVAL(Delay_Reasons__c, &quot;&quot;)),
+    ISPICKVAL(Attempts_Or_Delay_Days__c, &quot;&quot;)
+   )</errorConditionFormula>
+        <errorDisplayField>Attempts_Or_Delay_Days__c</errorDisplayField>
+        <errorMessage>On Delay Reasons selection, Delay in Days cannot be &apos;--None--&apos;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>DelayReasonsCannotBeNone</fullName>
+        <active>true</active>
+        <description>On Delay In Days selection, Delay Reasons field cannot be &apos;None&apos;</description>
+        <errorConditionFormula>AND(
+    ISPICKVAL(Delay_Reasons__c, &quot;&quot;),
+    NOT(ISPICKVAL(Attempts_Or_Delay_Days__c, &quot;&quot;))
+   )</errorConditionFormula>
+        <errorDisplayField>Delay_Reasons__c</errorDisplayField>
+        <errorMessage>On Delay in Days selection, Delay Reasons cannot be &apos;--None--&apos;</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>ShouldNotConvertToLiveWithoutTrainings</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ISCHANGED(StageName ),
+ISPICKVAL(StageName , &quot;Live&quot;),
+
+OR (
+ NOT(ISPICKVAL(Training1__c, &quot;Completed&quot;)),
+ NOT(ISPICKVAL(Training2_Policy_Payments__c , &quot;Completed&quot;)),
+ NOT(ISPICKVAL(Training3_OM_Returns_Disputes__c , &quot;Completed&quot;))
+)
+)</errorConditionFormula>
+        <errorMessage>Can&apos;t turn seller live without trainings are not complete.</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Bulk_Invite</fullName>
+        <availability>online</availability>
+        <description>Bulk Invite button javascript</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Bulk Invite</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/29.0/connection.js&quot;)}
+try{
+  var oppRecords = {!GETRECORDIDS($ObjectType.Opportunity)};
+  var updateOppRecords = [];
+  var invalidRecordCount = 0;
+
+  if(oppRecords[0] == null) { 
+    alert(&quot;Please select at least one record to update&quot;); 
+  }else{ 
+     var sName = sforce.connection.retrieve(&quot;StageName&quot;, &quot;Opportunity&quot;, [oppRecords]);
+     for (var i=0; i&lt;oppRecords.length; i++) {
+       if(sName[i].StageName == &quot;Invited&quot;){
+         invalidRecordCount++;
+       }
+       var oppSObject = new sforce.SObject(&quot;Opportunity&quot;);
+       oppSObject.id = oppRecords[i];
+ 
+       // make the field change
+       oppSObject.StageName = &quot;Invited&quot;;
+       
+       updateOppRecords.push(oppSObject);
+     }
+     
+     if(invalidRecordCount == 0){
+       // save the change
+       var result = sforce.connection.update(updateOppRecords);
+       //alert(result[0].success);
+       alert(result.length+&quot; record(s) updated successfully&quot;);
+       //refresh the page
+       window.location.reload();
+     }else{
+        alert(&quot;Please select valid records to update&quot;);
+     }
+   }
+}catch(er){
+  alert(&quot;Error: &quot;+er);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Invite</fullName>
+        <availability>online</availability>
+        <description>Invite</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Invite</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/29.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/29.0/apex.js&quot;)} 
+try{
+    var updateOppRecords = [];
+    var oppSObject = new sforce.SObject(&quot;Opportunity&quot;); 
+    oppSObject.id = &apos;{!Opportunity.Id}&apos;; 
+    oppSObject.Is_Invited__c = &apos;{!Opportunity.Is_Invited__c}&apos;; 
+    oppSObject.StageName = &apos;{!Opportunity.StageName}&apos;; 
+
+    if( oppSObject.StageName == &apos;Ready to Invite&apos; ||
+        oppSObject.StageName == &apos;Invited&apos;){
+        if( oppSObject.Is_Invited__c == 2 ||
+            oppSObject.Is_Invited__c == 3){
+            alert(&apos;This opportunity record already sent to SMS system&apos;);
+        }else{
+            // make the field change to send email invite to SMS
+            oppSObject.StageName = &apos;Invited&apos;; 
+            oppSObject.Is_Invited__c = 3; 
+
+            updateOppRecords.push(oppSObject);
+            sforce.connection.update(updateOppRecords);
+            window.location.reload();
+        }
+    }else{
+         alert(&apos;Opportunity stage should be in \&apos;Ready to Invite\&apos; to Invite&apos;);
+    }
+}catch(e){
+    alert(&apos;Error: &apos;+e);
+}</url>
+    </webLinks>
+</CustomObject>

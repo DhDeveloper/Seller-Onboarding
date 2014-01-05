@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpportunitySharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <criteriaBasedRules>
+        <fullName>SS_can_access_all_Opportunity</fullName>
+        <sharedTo>
+            <roleAndSubordinates>SS_Manager</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>SuperCategory__c</field>
+            <operation>equals</operation>
+            <value>Softlines,CCC,BGM</value>
+        </criteriaItems>
+        <name>SS_can access all Opportunity</name>
+        <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    </criteriaBasedRules>
+</OpportunitySharingRules>
