@@ -32,9 +32,72 @@ trigger OpportunityBeforeTrigger on Opportunity (before insert, before update) {
        populated on Delay Summary Section of Opportunity
     */
     if(Trigger.isInsert || Trigger.isUpdate){
+    	
+    	if(Trigger.isUpdate){
+    		Map<Id, Opportunity> oldMap = Trigger.oldMap;
+    		for(Opportunity opp: Trigger.new){
+    			Opportunity oldOpp = oldMap.get(opp.Id);
+    			if(	opp.Training1__c == Constants.TRAINING_NOT_DONE ||
+    				opp.Training1__c == Constants.TRAINING_SCHEDULED ||
+    				opp.Training1__c == Constants.TRAINING_RESCHEDULE){
+    				if(opp.Training2_Policy_Payments__c != null || opp.Training3_OM_Returns_Disputes__c != null){
+    					opp.Training1__c.addError(' without completing Training1 (Listings) cannot start Training2 (Policy + Payments) and Training3 (OM Returns Disputes)');
+    				}
+    				
+    				if(opp.Training1__c == Constants.TRAINING_NOT_DONE){
+    					if(opp.Training_Start_Date_Time__c != null || opp.Training_End_Date_Time__c != null){
+		    				opp.Training1__c.addError('Without Scheduled/Reschedule, training timings should be empty');    					
+	    				}
+    				}
+    				
+    				if(	opp.Training1__c == Constants.TRAINING_SCHEDULED ||
+    					opp.Training1__c == Constants.TRAINING_RESCHEDULE){
+	    				if(opp.Training_Start_Date_Time__c == null || opp.Training_End_Date_Time__c == null){
+		    					opp.Training_Start_Date_Time__c.addError('On Scheduled/Reschedule, Training Start Date/Time and Training End Date/Time cannot be empty');    					
+	    				}
+	    				if(	(opp.Training1__c == Constants.TRAINING_SCHEDULED) && 
+	    					(	(oldOpp.Training_Start_Date_Time__c != null && oldOpp.Training_Start_Date_Time__c != opp.Training_Start_Date_Time__c) || 
+	    						(oldOpp.Training_End_Date_Time__c != null && oldOpp.Training_End_Date_Time__c != opp.Training_End_Date_Time__c)
+	    						)){
+	    					opp.Training_Start_Date_Time__c.addError('Training1 (Listings) should be in Reschedule to Change Training Start Date/Time or Training End Date/Time');
+	    				}
+    				}
+    			}// Training1 -- Not Done/Scheduled/Reschedule
+    			
+    			/*if(opp.Training1__c == Constants.TRAINING_COMPLETED){
+    				if(	opp.Training2_Policy_Payments__c == Constants.TRAINING_NOT_DONE ||
+	    				opp.Training2_Policy_Payments__c == Constants.TRAINING_SCHEDULED ||
+	    				opp.Training2_Policy_Payments__c == Constants.TRAINING_RESCHEDULE){
+	    				if(opp.Training3_OM_Returns_Disputes__c != null){
+	    					opp.Training1__c.addError(' without completing Training2 (Policy + Payments) cannot start Training3 (OM Returns Disputes)');
+	    				}
+	    				
+	    				if(opp.Training2_Policy_Payments__c == Constants.TRAINING_NOT_DONE){
+	    					if(opp.Training_Start_Date_Time__c != null || opp.Training_End_Date_Time__c != null){
+			    				opp.Training1__c.addError('Without Scheduled/Reschedule, training timings should be empty');    					
+		    				}
+	    				}
+	    				
+	    				if(	opp.Training1__c == Constants.TRAINING_SCHEDULED ||
+	    					opp.Training1__c == Constants.TRAINING_RESCHEDULE){
+		    				if(opp.Training_Start_Date_Time__c == null || opp.Training_End_Date_Time__c == null){
+			    					opp.Training_Start_Date_Time__c.addError('On Scheduled/Reschedule, Training Start Date/Time and Training End Date/Time cannot be empty');    					
+		    				}
+		    				if(	(opp.Training1__c == Constants.TRAINING_SCHEDULED) && 
+		    					(	(oldOpp.Training_Start_Date_Time__c != null && oldOpp.Training_Start_Date_Time__c != opp.Training_Start_Date_Time__c) || 
+		    						(oldOpp.Training_End_Date_Time__c != null && oldOpp.Training_End_Date_Time__c != opp.Training_End_Date_Time__c)
+		    						)){
+		    					opp.Training_Start_Date_Time__c.addError('Training1 (Listings) should be in Reschedule to Change Training Start Date/Time or Training End Date/Time');
+		    				}
+	    				}
+	    			}// Training2 -- Not Done/Scheduled/Reschedule
+    			}*/
+    			
+    		}
+    	}
 
         for(Opportunity opp: Trigger.new){
-            if(opp.Delay_Reasons__c != '' && opp.Attempts_Or_Delay_Days__c != ''){
+            if(opp.Delay_Reasons__c != null && opp.Attempts_Or_Delay_Days__c != null){
                 oppDelayDays = opp.Attempts_Or_Delay_Days__c;
 
                 if(opp.Delay_Reasons__c == Constants.DELAY_REASON_SELLER_NOT_REACHABLE){
@@ -64,6 +127,7 @@ trigger OpportunityBeforeTrigger on Opportunity (before insert, before update) {
             }
             finalData+='\n';
         }
+        
         if(count > 0){
             //Commit current transaction, reserver email capacity
             Messaging.reserveSingleEmailCapacity(1);
