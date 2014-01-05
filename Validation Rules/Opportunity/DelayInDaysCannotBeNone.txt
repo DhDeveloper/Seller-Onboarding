@@ -1,0 +1,4 @@
+AND( 
+NOT(ISPICKVAL(Delay_Reasons__c, "")), 
+ISPICKVAL(Attempts_Or_Delay_Days__c, "") 
+)

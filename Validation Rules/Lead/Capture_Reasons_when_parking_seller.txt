@@ -1,0 +1,4 @@
+AND( ISPICKVAL(Status, 'Parked'), 
+ISNULL(Reason_For_Parking__c), 
+ISBLANK( RevisitAfterDate__c ) 
+)

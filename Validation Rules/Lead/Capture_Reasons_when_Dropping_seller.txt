@@ -1,0 +1,5 @@
+AND( OR( ISPICKVAL(Status, 'Dropped'), 
+ISPICKVAL( Approver_Action__c , 'Dropped') 
+), 
+ISBLANK(TEXT( Reason_for_Dropping__c)) 
+)

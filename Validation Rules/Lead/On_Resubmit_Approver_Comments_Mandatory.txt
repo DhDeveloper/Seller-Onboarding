@@ -1,0 +1,2 @@
+AND( ISPICKVAL( Approver_Action__c , 'Resubmit'), 
+LEN(Approver_Comments__c) = 0)
