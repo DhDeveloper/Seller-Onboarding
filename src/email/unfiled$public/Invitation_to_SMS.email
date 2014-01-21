@@ -1,5 +1,6 @@
-*** Seller Invitation: NOTIFICATION ***  
+*** Seller Invitation***  
 
 The following seller has been invited.  
 Seller Reg Email:  {!Opportunity.Seller_Registration_Email__c} 
 Seller Name:  {!Opportunity.Name}
+Pickup PinCode: {!Opportunity.Pickup_Area_Pincode__c}

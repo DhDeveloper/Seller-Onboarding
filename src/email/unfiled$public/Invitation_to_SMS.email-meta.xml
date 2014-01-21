@@ -5,6 +5,6 @@
     <encodingKey>ISO-8859-1</encodingKey>
     <name>Invitation to SMS</name>
     <style>none</style>
-    <subject>Seller Invitation:  {!Opportunity.Name} from {!Opportunity.Seller_Registration_Email__c}</subject>
+    <subject>Seller On-boarding: Seller invitation  {!Opportunity.Name} from {!Opportunity.Seller_Registration_Email__c}</subject>
     <type>text</type>
 </EmailTemplate>

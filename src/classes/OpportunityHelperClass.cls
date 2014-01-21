@@ -77,9 +77,9 @@ public class OpportunityHelperClass {
                                                                                                                Integer.valueOf(updateSellerList.get(i).TAT_Stage_Profile_ID__r.TAT_Profile_Spec__c),
                                                                                                                holidaysList);
                 }else{
-                    updateSellerList.get(i).Next_Breach_Date__c = UtilityClass.addDaysExcludingSundaysHolidays(nextBreachDateTemp,
+                    updateSellerList.get(i).Next_Breach_Date__c = nextBreachDateTemp;/*UtilityClass.addDaysExcludingSundaysHolidays(nextBreachDateTemp,
                                                                                                                Integer.valueOf(updateSellerList.get(i).TAT_Stage_Profile_ID__r.TAT_Profile_Spec__c),
-                                                                                                               holidaysList);
+                                                                                                               holidaysList);*/
                 }
                 updateSellerList.get(i).Estimated_Closure_Date__c = UtilityClass.addDaysExcludingSundaysHolidays(updateSellerList.get(i-1).Estimated_Closure_Date__c,
                                                                                                                  Integer.valueOf(updateSellerList.get(i).TAT_Stage_Profile_ID__r.TAT_Profile_Spec__c),

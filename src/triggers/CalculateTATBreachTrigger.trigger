@@ -12,10 +12,10 @@ trigger CalculateTATBreachTrigger on Seller_TAT_Breach__c (before update) {
             Seller_TAT_Breach__c oldSTB = oldMap.get(stb.Id);
             if(oldSTB.Actual_Closure_Date__c == null && stb.Actual_Closure_Date__c != null){
                 if(stb.Actual_Closure_Date__c >= oldSTB.Next_Breach_Date__c ){
-                    stb.TAT_Breach_in_Days__c = UtilityClass.daysBetweenExcludingSundaysHolidays(	oldSTB.Next_Breach_Date__c,
-                    																				stb.Actual_Closure_Date__c,
-                    																				holidaysList
-                    																			) + 1;
+                    stb.TAT_Breach_in_Days__c = UtilityClass.daysBetweenExcludingSundaysHolidays(   oldSTB.Next_Breach_Date__c,
+                                                                                                    stb.Actual_Closure_Date__c,
+                                                                                                    holidaysList
+                                                                                                ) + 1;
                 }else{
                     stb.TAT_Breach_in_Days__c = 0;
                 }

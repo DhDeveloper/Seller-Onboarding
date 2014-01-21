@@ -13,7 +13,7 @@
         <field>CON.PHONE</field>
     </columns>
     <columns>
-        <field>Opportunity.Pickup_Pincode_del__c</field>
+        <field>Opportunity.Pickup_Pincode__c</field>
     </columns>
     <columns>
         <field>CREATED_DATE</field>

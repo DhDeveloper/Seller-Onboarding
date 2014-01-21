@@ -5,6 +5,6 @@
     <encodingKey>ISO-8859-1</encodingKey>
     <name>Seller On-boarding: Lead Approved By Approver</name>
     <style>none</style>
-    <subject>New Lead Requires Approval</subject>
+    <subject>Lead Approved</subject>
     <type>text</type>
 </EmailTemplate>

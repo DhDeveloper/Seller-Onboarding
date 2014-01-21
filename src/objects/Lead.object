@@ -1089,6 +1089,34 @@ If not, do not select.</description>
                 <fullName>Amazon</fullName>
                 <default>false</default>
             </picklistValues>
+            <picklistValues>
+                <fullName>Shopclues</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yebhi</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Myntra</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Jabong</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Others</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Snapdeal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Homeshop18</fullName>
+                <default>false</default>
+            </picklistValues>
             <sorted>false</sorted>
         </picklist>
         <trackFeedHistory>false</trackFeedHistory>
@@ -1260,9 +1288,10 @@ If not, do not select.</description>
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
-        <fullName>PickupPincode_del__c</fullName>
+        <fullName>PickupPincode__c</fullName>
         <externalId>false</externalId>
-        <label>PickupPincode</label>
+        <inlineHelpText>The pincode of the hub for pickup</inlineHelpText>
+        <label>PickupPincode_old</label>
         <length>6</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -1633,6 +1662,10 @@ If not, do not select.</description>
                 <fullName>Softlines</fullName>
                 <default>false</default>
             </picklistValues>
+            <picklistValues>
+                <fullName>-Test</fullName>
+                <default>false</default>
+            </picklistValues>
             <sorted>false</sorted>
         </picklist>
         <trackFeedHistory>false</trackFeedHistory>
@@ -1643,25 +1676,23 @@ If not, do not select.</description>
         <fullName>TAT_Profile__c</fullName>
         <externalId>false</externalId>
         <formula>IF( ISPICKVAL( SuperCategory__c , &apos;CCC&apos;), 
- 	15, 
+ 	&apos;13&apos;, 
  	IF (ISPICKVAL( SuperCategory__c, &apos;Softlines&apos;)  &amp;&amp; (INCLUDES( Category__c , &apos;Clothing&apos;)  || INCLUDES( Category__c , &apos;Footwear&apos;)), 
- 		25, 
+ 		&apos;18&apos;, 
         IF (ISPICKVAL( SuperCategory__c, &apos;Softlines&apos;), 
-        	15, 
+        	&apos;13&apos;, 
         	IF (ISPICKVAL( SuperCategory__c, &apos;BGM&apos;) &amp;&amp; (INCLUDES( Category__c , &apos;BabyCare&apos;)  ||  INCLUDES( Category__c , &apos;Toy&apos;)),
-        		25,
-        		15
+        		&apos;18&apos;,
+        		&apos;13&apos;
         	)
         )
    )
 )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>TAT Profile</label>
-        <precision>18</precision>
         <required>false</required>
-        <scale>0</scale>
         <trackHistory>false</trackHistory>
-        <type>Number</type>
+        <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -2505,6 +2536,34 @@ If not, do not select.</description>
             </values>
             <values>
                 <fullName>Ebay</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Homeshop18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jabong</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Myntra</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Others</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shopclues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Snapdeal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yebhi</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -3452,6 +3511,14 @@ If not, do not select.</description>
                 <fullName>Ebay</fullName>
                 <default>false</default>
             </values>
+            <values>
+                <fullName>Homeshop18</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Snapdeal</fullName>
+                <default>false</default>
+            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Name</picklist>
@@ -3795,11 +3862,12 @@ If not, do not select.</description>
     ISPICKVAL( Status, &quot;Converted&quot;),
     NOT(Approval_State__c = 2)
 )</errorConditionFormula>
-        <errorMessage>This Lead not Approved to convert</errorMessage>
+        <errorDisplayField>Approver_Comments__c</errorDisplayField>
+        <errorMessage>This lead is not Approved by an Onboarding Manager yet. Pls submit for Approval if not already submitted, or request your OM to approve the same.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Basic_Data_Check_before_converting</fullName>
-        <active>true</active>
+        <active>false</active>
         <errorConditionFormula>AND(
  ISPICKVAL( Status, &quot;Converted&quot;),
 
@@ -3807,7 +3875,6 @@ If not, do not select.</description>
    Pickup_Pincode__c = &quot;&quot;,
    LastName = &quot;&quot;,
    Company = &quot;&quot;,
-   Seller_Display_Name__c = &quot;&quot;,
    Seller_Registration_Email__c = &quot;&quot;,
    NOT(OR(ISPICKVAL( VAT_Status__c , &quot;Not Needed&quot;), 
           ISPICKVAL( VAT_Status__c , &quot;Available&quot;))),
@@ -3815,31 +3882,62 @@ If not, do not select.</description>
    Are_Brands_Approved__c = FALSE,  
    Phone = &quot;&quot;)
 )</errorConditionFormula>
-        <errorMessage>Please specify  pickup pincode, super category, seller display name, registration email, phone, VAT Status (Not Needed or Available), Are template Open, Are Brands Approved</errorMessage>
+        <errorMessage>Please specify  pickup pincode, super category, registration email, phone, VAT Status (Not Needed or Available), Are template Open, Are Brands Approved</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Brand_Approval_before_converting</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ ISPICKVAL( Status, &quot;Converted&quot;),
+ Are_Brands_Approved__c = FALSE
+      
+)</errorConditionFormula>
+        <errorDisplayField>Are_Brands_Approved__c</errorDisplayField>
+        <errorMessage>Brands must be approved before converting</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Capture_Reasons_When_Parking_Seller</fullName>
         <active>true</active>
-        <errorConditionFormula>AND(  OR( ISPICKVAL(Status, &apos;Parked&apos;),
-          ISPICKVAL( Approver_Action__c , &apos;Parked&apos;) 
-         ),
-      OR( ISNULL(Reason_For_Parking__c),
-          ISBLANK( RevisitAfterDate__c )
-        )
-    )</errorConditionFormula>
-        <errorDisplayField>Reason_For_Parking__c</errorDisplayField>
-        <errorMessage>Please specify Reason(s) For Parking this seller and select a Revisit After Date</errorMessage>
+        <errorConditionFormula>AND( OR( ISPICKVAL(Status, &apos;Parked&apos;), 
+ISPICKVAL( Approver_Action__c , &apos;Parked&apos;) 
+), 
+OR( ISNULL(Reason_For_Parking__c), 
+ISBLANK( RevisitAfterDate__c ) 
+) 
+)</errorConditionFormula>
+        <errorDisplayField>Status</errorDisplayField>
+        <errorMessage>Specify Reason(s) For Parking this seller; Select a RevisitAfterDate</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Capture_Reasons_when_Dropping_seller</fullName>
         <active>true</active>
-        <errorConditionFormula>AND(  OR( ISPICKVAL(Status, &apos;Dropped&apos;),
-          ISPICKVAL( Approver_Action__c , &apos;Dropped&apos;)
-         ),
-      ISBLANK(TEXT( Reason_for_Dropping__c))
-    )</errorConditionFormula>
-        <errorDisplayField>Reason_for_Dropping__c</errorDisplayField>
-        <errorMessage>Please specify Reason For Dropping</errorMessage>
+        <errorConditionFormula>AND( OR( ISPICKVAL(Status, &apos;Dropped&apos;), 
+ISPICKVAL( Approver_Action__c , &apos;Dropped&apos;) 
+), 
+ISBLANK(TEXT( Reason_for_Dropping__c)) 
+)</errorConditionFormula>
+        <errorDisplayField>Status</errorDisplayField>
+        <errorMessage>Specify Reason For Dropping.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Company_before_converting</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ ISPICKVAL( Status, &quot;Converted&quot;),
+ Company = &quot;&quot;
+)</errorConditionFormula>
+        <errorDisplayField>Company</errorDisplayField>
+        <errorMessage>Company is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Last_name_before_converting</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ ISPICKVAL( Status, &quot;Converted&quot;),
+ LastName = &quot;&quot;
+)</errorConditionFormula>
+        <errorDisplayField>LastName</errorDisplayField>
+        <errorMessage>Last name is mandatory</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>On_Resubmit_Approver_Comments_Mandatory</fullName>
@@ -3849,6 +3947,140 @@ If not, do not select.</description>
 LEN(Approver_Comments__c) = 0)</errorConditionFormula>
         <errorDisplayField>Approver_Comments__c</errorDisplayField>
         <errorMessage>Please specify Approver Comments</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Online_exp_validation</fullName>
+        <active>true</active>
+        <description>Online Experience check</description>
+        <errorConditionFormula>AND(
+ ISPICKVAL( Status, &quot;Converted&quot;),
+ ISBLANK(TEXT(Online_Experience__c))
+ 
+)</errorConditionFormula>
+        <errorDisplayField>Online_Experience__c</errorDisplayField>
+        <errorMessage>Online exp is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Phone_before_converting</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ ISPICKVAL( Status, &quot;Converted&quot;),
+ Phone = &quot;&quot;
+      
+)</errorConditionFormula>
+        <errorDisplayField>Phone</errorDisplayField>
+        <errorMessage>Phone is mandatory before converting. Enter as a number without spaces</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PickupPincode_Check_before_converting</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ ISPICKVAL( Status, &quot;Converted&quot;),
+   Pickup_Pincode__c = &quot;&quot;
+)</errorConditionFormula>
+        <errorMessage>Pick up Pincode is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Seller_reg_email_before_converting</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ ISPICKVAL( Status, &quot;Converted&quot;),
+ Seller_Registration_Email__c = &quot;&quot;
+)</errorConditionFormula>
+        <errorDisplayField>Seller_Registration_Email__c</errorDisplayField>
+        <errorMessage>Registration Email is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Templates_before_converting</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ ISPICKVAL( Status, &quot;Converted&quot;),
+ Are_templates_open__c = FALSE
+      
+)</errorConditionFormula>
+        <errorDisplayField>Are_templates_open__c</errorDisplayField>
+        <errorMessage>Templates must be open to seller before converting.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>VAT_reg_email_before_converting</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ ISPICKVAL( Status, &quot;Converted&quot;),
+ NOT(OR(ISPICKVAL( VAT_Status__c , &quot;Not Needed&quot;), 
+        ISPICKVAL( VAT_Status__c , &quot;Available&quot;)))
+   
+)</errorConditionFormula>
+        <errorDisplayField>VAT_Status__c</errorDisplayField>
+        <errorMessage>Vat Status is mandatory. Should be either &apos;Not Needed&apos; or &apos;Available&apos;.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>go_live_sku_check</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ ISPICKVAL( Status, &quot;Converted&quot;),
+ OR(ISBLANK(TEXT( Go_Live_SKUs__c ))
+ )
+)</errorConditionFormula>
+        <errorDisplayField>Go_Live_SKUs__c</errorDisplayField>
+        <errorMessage>Go Live SKU count is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>listing_capability_checks</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ ISPICKVAL( Status, &quot;Converted&quot;),
+ OR(ISBLANK(Imaging_Support__c ),
+    ISBLANK(TEXT( Fit_with_Flipkart_s_catalogue__c )),
+    ISBLANK( Category__c   ),
+    ISBLANK( SellerBrandType__c)
+ )
+)</errorConditionFormula>
+        <errorDisplayField>Imaging_Support__c</errorDisplayField>
+        <errorMessage>Please fill in Listing Capability questions:
+ Imaging Support, Time to fulfill order, Category, Seller Brand Type</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>online_selling_checks</fullName>
+        <active>true</active>
+        <description>No of retail outlets,</description>
+        <errorConditionFormula>AND(
+ ISPICKVAL( Status, &quot;Converted&quot;),
+ OR(ISBLANK(TEXT(No_of_retail_outlets__c)),
+    ISBLANK(TEXT( Time_to_fulfill_order__c )),
+    ISBLANK(Packaging_Capacility__c  ),
+    ISBLANK(Distributor_Type__c   ),
+    ISBLANK(Procurement_Type__c    ),
+    ISBLANK(Current_Order_Fulfillment_Volumes__c)
+ )
+)</errorConditionFormula>
+        <errorDisplayField>No_of_retail_outlets__c</errorDisplayField>
+        <errorMessage>Please fill in Online Selling Capability questions:
+ No of retail outlets, Time to fulfil order, Packacing capability, Distributor Type, Procurement Type and Current Order Fulfillment Volumes</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>other_checks</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ ISPICKVAL( Status, &quot;Converted&quot;),
+ OR(ISBLANK( Size_of_Goods__c  ),
+ Has_Internet__c = FALSE,
+ Good_Quality_Printer__c  = FALSE
+ )
+)</errorConditionFormula>
+        <errorDisplayField>Has_Internet__c</errorDisplayField>
+        <errorMessage>Other checks - size of goods must be specified.
+ has internet, good quality printer etc must be TRUE</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>website_and_market_presence_check</fullName>
+        <active>true</active>
+        <description>Online Experience check</description>
+        <errorConditionFormula>AND(
+ ISPICKVAL( Status, &quot;Converted&quot;),
+ NOT(ISPICKVAL(Online_Experience__c, &quot;Never Before&quot;)),
+ OR(Website = &quot;&quot;, ISBLANK(Markets_where_you_sell__c))  
+)</errorConditionFormula>
+        <errorMessage>For firms with online presence, Website and Markets where he sells are mandatory</errorMessage>
     </validationRules>
     <webLinks>
         <fullName>AltavistaNews</fullName>
@@ -4044,14 +4276,15 @@ var owner = prompt(&quot;Assign To?&quot;);
 {!REQUIRESCRIPT(&quot;/soap/ajax/29.0/apex.js&quot;)} 
 try{
     var updateLeadRecords = []; 
+    var message = &apos;&apos;;
     var leadSObject = new sforce.SObject(&quot;Lead&quot;);
     leadSObject.id = &apos;{!Lead.Id}&apos;; 
     leadSObject.Approval_State__c = &apos;{!Lead.Approval_State__c}&apos;;
-    
-    var strQuery=&quot;SELECT Pickup_Pincode__c FROM Lead where Id=&apos;{!Lead.Id}&apos;&quot;;
+
+    /*var strQuery=&quot;SELECT Pickup_Pincode__c FROM Lead where Id=&apos;{!Lead.Id}&apos;&quot;;
     var result = sforce.connection.query(strQuery);
     var records = result.getArray(&quot;records&quot;);
-    leadSObject.Pickup_Pincode__c = records[0].Pickup_Pincode__c;
+    leadSObject.Pickup_Pincode__c = records[0].Pickup_Pincode__c;*/
     
     leadSObject.LastName =  &apos;{!Lead.LastName}&apos;;
     leadSObject.Company =  &apos;{!Lead.Company}&apos;;
@@ -4064,10 +4297,10 @@ try{
     leadSObject.Phone =  &apos;{!Lead.Phone}&apos;;
 
     if(leadSObject.Approval_State__c == 0){
-        if(leadSObject.Pickup_Pincode__c == &apos;&apos; ||
+        if(//leadSObject.Pickup_Pincode__c == &apos;&apos; ||
            leadSObject.LastName == &apos;&apos; ||
            leadSObject.Company == &apos;&apos; ||
-           leadSObject.Seller_Display_Name__c == &apos;&apos; ||
+           //leadSObject.Seller_Display_Name__c == &apos;&apos; ||
            leadSObject.Seller_Registration_Email__c == &apos;&apos; || 
            (leadSObject.VAT_Status__c != &apos;Not Needed&apos; &amp;&amp;
             leadSObject.VAT_Status__c != &apos;Available&apos;) || 
@@ -4075,18 +4308,27 @@ try{
            leadSObject.Are_Brands_Approved__c == 0 ||
            leadSObject.SuperCategory__c == &apos;&apos; ||
            leadSObject.Phone == &apos;&apos;)  {
-           var message = &apos;Please specify pickup pincode, super category, seller&apos;+ &apos;display name, registration email, phone, VAT Status (Not Needed or Available),&apos;+
+               message = &apos;Please specify pickup pincode, super category, &apos;+ &apos;registration email, phone, VAT Status (Not Needed or Available),&apos;+
 &apos; Are template Open, Are Brands Approved&apos;;
             alert(message);
          }
-    }
-    if(leadSObject.Approval_State__c == 1){
-        alert(&apos;This Lead record already submitted for approval&apos;);
+         if(message == &apos;&apos;){
+         if(&apos;{!Lead.OwnerId}&apos; != &apos;{!$User.Id}&apos;){
+           message = &apos;Please assign a Lead Owner before you submit for approval&apos;; 
+           alert(message);
+         }}
+    }else if(leadSObject.Approval_State__c == 1){
+        message = &apos;This Lead record already submitted for approval&apos;;
+        alert(message);
     }else if(leadSObject.Approval_State__c == 2){
-        alert(&apos;This Lead record already approved by approver&apos;);
+        message = &apos;This Lead record already approved by approver&apos;;
+        alert(message);
     }else if(leadSObject.Approval_State__c == 4){
-        alert(&apos;This Lead record is in Dropped state and cannot be submitted for approval&apos;);
-    }else{
+        message = &apos;This Lead record is in Dropped state and cannot be submitted for approval&apos;;
+        alert(message);
+    }
+
+    if(message == &apos;&apos;){
         // make the field change to approve 
         leadSObject.Approval_State__c = 1; 
         updateLeadRecords.push(leadSObject); 

@@ -78,21 +78,24 @@ public class UtilityClass{
       * @return integer
     **/
     public static Integer daysBetweenExcludingSundaysHolidays(Date startDate, Date endDate, List<Holiday> holidaysList){
-        Integer totalDays = startDate.daysBetween(endDate);
-        Integer holidays = 0;
         Integer daysBetween = 0;
-        Date tempDate = startDate;
-        for (Integer i=0; i<= totalDays;i++){
-            if(isSunday(tempDate)){
-                holidays++;
-            }else if(isHoliday(tempDate,holidaysList)){
-                holidays++;
-            }
-            tempDate = tempDate + 1;
-        }
-        if(totalDays >= holidays){
-	        daysBetween = totalDays - holidays;
-        }
+		
+		if(startDate != null && endDate != null){
+	        Integer totalDays = startDate.daysBetween(endDate);
+	        Integer holidays = 0;
+	        Date tempDate = startDate;
+	        for (Integer i=0; i<= totalDays;i++){
+	            if(isSunday(tempDate)){
+	                holidays++;
+	            }else if(isHoliday(tempDate,holidaysList)){
+	                holidays++;
+	            }
+	            tempDate = tempDate + 1;
+	        }
+	        if(totalDays >= holidays){
+		        daysBetween = totalDays - holidays;
+	        }
+		}
         return daysBetween;
     }
 }

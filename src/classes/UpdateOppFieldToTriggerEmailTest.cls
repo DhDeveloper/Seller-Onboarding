@@ -9,18 +9,21 @@ class UpdateOppFieldToTriggerEmailTest {
       * Test method to update Opportunity field and
       * schedule job at 6 PM
     **/
-    static testmethod void testOppFieldUpdate() {
+    @isTest(SeeAllData=true)
+    static void testOppFieldUpdate() {
         System.debug('In testOppFieldUpdate test method');
-        Opportunity oppTest = CreateObjectRecordsTest.createOpportunityTestRecord();
+        Opportunity oppTest = UtilityClassTest.createOpportunityTestRecord();
         oppTest.StageName = 'Invited';
         update oppTest;
         
+        Test.startTest();
         List<Opportunity> oppList = [SELECT Id FROM Opportunity WHERE StageName = 'Invited' AND Is_Invited__c = 0];
         for(Opportunity opp :oppList){
             opp.Is_Invited__c = 1;
             System.debug('Is Invited: '+opp.Is_Invited__c);
         }
         update oppList;
+        Test.stopTest(); 
     }
     
     /**
@@ -30,8 +33,11 @@ class UpdateOppFieldToTriggerEmailTest {
         // Schedule runs Monday through Friday at 10 AM        
         String sch = '0 0 10 ? * MON-FRI'; 
         Test.startTest();
-
-        UpdateOppFieldToTriggerEmail testSchedule = new UpdateOppFieldToTriggerEmail();
+		Opportunity oppTest = UtilityClassTest.createOpportunityTestRecord();
+        oppTest.StageName = 'Invited';
+        update oppTest;
+        
+        UpdateOppFieldToTriggerEmailClass testSchedule = new UpdateOppFieldToTriggerEmailClass();
         system.schedule('Test Schedule', sch, testSchedule);
       
         Test.stopTest(); 
@@ -44,8 +50,11 @@ class UpdateOppFieldToTriggerEmailTest {
         // Schedule runs Monday through Friday at 4 PM        
         String sch = '0 0 16 ? * MON-FRI'; 
         Test.startTest();
-
-        UpdateOppFieldToTriggerEmail testSchedule = new UpdateOppFieldToTriggerEmail();
+		Opportunity oppTest = UtilityClassTest.createOpportunityTestRecord();
+        oppTest.StageName = 'Invited';
+        update oppTest;
+        
+        UpdateOppFieldToTriggerEmailClass testSchedule = new UpdateOppFieldToTriggerEmailClass();
         system.schedule('Test Schedule', sch, testSchedule);
       
         Test.stopTest(); 

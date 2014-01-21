@@ -11,7 +11,7 @@ class LeadScenariosTest{
       * validation rule check and Workflow execution
     **/
     static testmethod void leadParkingScenarioTest(){
-        Lead leadTest = CreateObjectRecordsTest.createLeadTestRecord();
+        Lead leadTest = UtilityClassTest.createLeadTestRecord();
         leadTest.Status = 'In Evaluation';
         update leadTest;
         System.debug('RecordType: '+leadTest.RecordTypeId);
@@ -38,7 +38,7 @@ class LeadScenariosTest{
         insert userBDAM;
         
         //Test to Submit for Approval by BD AM
-        Lead leadTest = CreateObjectRecordsTest.createLeadTestRecord();     
+        Lead leadTest = UtilityClassTest.createLeadTestRecord();     
         leadTest.OwnerId = userBDAM.Id;
         System.runAs(userBDAM) {
             // The following code runs as user BD AM to Submit for approval lead record
@@ -59,7 +59,7 @@ class LeadScenariosTest{
         }
         
         //Test to Resubmit of Approval Process
-        Lead leadTest1 = CreateObjectRecordsTest.createLeadTestRecord();     
+        Lead leadTest1 = UtilityClassTest.createLeadTestRecord();     
         leadTest.OwnerId = userBDAM.Id;
         System.runAs(userBDAM) {
             // The following code runs as user BD AM to Submit for approval lead record
@@ -98,7 +98,7 @@ class LeadScenariosTest{
         }
         
         //Test to Submit for Approval by BD AM
-        Lead leadTest2 = CreateObjectRecordsTest.createLeadTestRecord();     
+        Lead leadTest2 = UtilityClassTest.createLeadTestRecord();     
         leadTest2.OwnerId = userBDAM.Id;
         System.runAs(userBDAM) {
             // The following code runs as user BD AM to Submit for approval lead record

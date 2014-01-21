@@ -79,7 +79,7 @@
     </fields>
     <fields>
         <fullName>is_Hub_Open__c</fullName>
-        <defaultValue>false</defaultValue>
+        <defaultValue>true</defaultValue>
         <externalId>false</externalId>
         <label>is Hub Open</label>
         <trackTrending>false</trackTrending>
@@ -88,6 +88,9 @@
     <label>Pincode Hub Mapping</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Hub_Name__c</columns>
+        <columns>is_Hub_Open__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

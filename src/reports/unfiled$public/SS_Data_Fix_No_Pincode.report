@@ -17,7 +17,7 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>Opportunity.Pickup_Pincode_del__c</column>
+            <column>Opportunity.Pickup_Pincode__c</column>
             <operator>equals</operator>
             <value></value>
         </criteriaItems>

@@ -11,12 +11,13 @@ public class OpportunityBeforeTriggerTest{
     /**
       *  Test Populating values of Delay Reasons wise delay days count in Delay Summary section  
     **/
-    static testmethod void testPopulateDelaySummaryValues() {
+    @isTest(SeeAllData=true)
+    static void testPopulateDelaySummaryValues() {
         System.debug('In test method testPopulateDelaySummaryValues');
-        Opportunity oppTest = CreateObjectTestRecord.createOpportunityTestRecord();
+        Opportunity oppTest = UtilityClassTest.createOpportunityTestRecord();
         
         System.debug('Record Type: '+oppTest.Name);
-        oppTest.StageName = 'Ready to Invite';
+        oppTest.StageName = Constants.OPP_STAGE_READY_TO_INVITE;
         
         update oppTest;
         
@@ -43,19 +44,22 @@ public class OpportunityBeforeTriggerTest{
       * Checks Opportunity records in 'Invited' stage and ready to send them   
       * to SMS system group mail [<email-address>]
     **/
-    static testmethod void testInviteMailToSMS() {
+    @isTest(SeeAllData=true)
+    static void testInviteMailToSMS() {	
         System.debug('In test method testInviteMailToSMS');
-        Opportunity oppTest = CreateObjectTestRecord.createOpportunityTestRecord();
+        Opportunity oppTest = UtilityClassTest.createOpportunityTestRecord();
         System.debug('Record Type: '+oppTest.Name);
-        oppTest.StageName = 'Ready to Invite';
+        oppTest.StageName = Constants.OPP_STAGE_READY_TO_INVITE;
         update oppTest;        
         
         System.debug('Is Invited value before update: '+oppTest.Is_Invited__c);
-        oppTest.StageName = 'Invited';
+        oppTest.StageName = Constants.OPP_STAGE_INVITED;
         
         update oppTest;
         System.debug('Is Invited value after update: '+oppTest.Is_Invited__c);
-        oppTest.Is_Invited__c = 0;
+        Test.startTest();
+        oppTest.Is_Invited__c = 1;
         update oppTest;
+        Test.stopTest();
     }
 }

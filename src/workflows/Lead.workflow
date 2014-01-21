@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
+        <fullName>BGM_Email_Alert_For_Lead_Approval</fullName>
+        <description>BGM Email Alert For Lead Approval</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>BGM_Senior_Manager</recipient>
+            <type>role</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Seller_On_boarding_New_Lead_Requires_Approval</template>
+    </alerts>
+    <alerts>
+        <fullName>CCC_Email_Alert_For_Lead_Approval</fullName>
+        <description>CCC_Email Alert For Lead Approval</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>CCC_Senior_Manager</recipient>
+            <type>role</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Seller_On_boarding_New_Lead_Requires_Approval</template>
+    </alerts>
+    <alerts>
         <fullName>Email_Alert_For_Lead_Approval</fullName>
         <description>Email Alert For Lead Approval</description>
         <protected>false</protected>
@@ -13,7 +35,6 @@
     </alerts>
     <alerts>
         <fullName>Lead_Parked_and_tomorrow_is_last_day_to_revisit</fullName>
-        <ccEmails>murali.dharnala@in.pwc.com</ccEmails>
         <description>Lead Parked and tomorrow is last day to revisit</description>
         <protected>false</protected>
         <recipients>
@@ -52,6 +73,17 @@
         </recipients>
         <senderType>CurrentUser</senderType>
         <template>unfiled$public/Seller_On_boarding_Lead_Approved_By_Approver</template>
+    </alerts>
+    <alerts>
+        <fullName>Softlines_Email_Alert_For_Lead_Approval</fullName>
+        <description>Softlines_Email Alert For Lead Approval</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Softlines_Senior_Manager</recipient>
+            <type>role</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Seller_On_boarding_New_Lead_Requires_Approval</template>
     </alerts>
     <fieldUpdates>
         <fullName>ChangRecordTypeToEvalAction</fullName>
@@ -171,6 +203,46 @@
         <protected>false</protected>
     </fieldUpdates>
     <rules>
+        <fullName>BGM Lead Submitted For Approval</fullName>
+        <actions>
+            <name>Email_Alert_For_Lead_Approval</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.Approval_State__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.SuperCategory__c</field>
+            <operation>equals</operation>
+            <value>BGM</value>
+        </criteriaItems>
+        <description>BGM Lead Submitted For Approval</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CCC Lead Submitted For Approval</fullName>
+        <actions>
+            <name>CCC_Email_Alert_For_Lead_Approval</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.Approval_State__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.SuperCategory__c</field>
+            <operation>equals</operation>
+            <value>CCC</value>
+        </criteriaItems>
+        <description>CCC Lead Submitted For Approval</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
         <fullName>ChangeRecordTypeToEval</fullName>
         <actions>
             <name>ChangRecordTypeToEvalAction</name>
@@ -262,7 +334,7 @@
             <name>Email_Alert_For_Lead_Approval</name>
             <type>Alert</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <criteriaItems>
             <field>Lead.Approval_State__c</field>
             <operation>equals</operation>
@@ -294,6 +366,26 @@
             <timeLength>-1</timeLength>
             <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
         </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Softline Lead Submitted For Approval</fullName>
+        <actions>
+            <name>Softlines_Email_Alert_For_Lead_Approval</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.Approval_State__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.SuperCategory__c</field>
+            <operation>equals</operation>
+            <value>Softlines</value>
+        </criteriaItems>
+        <description>Softline Lead Submitted For Approval</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <tasks>
         <fullName>Lead_is_Parked</fullName>

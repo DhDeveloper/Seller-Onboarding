@@ -88,6 +88,8 @@
     </fields>
     <listViews>
         <fullName>ActiveUsers</fullName>
+        <columns>CORE.USERS.EMAIL</columns>
+        <columns>LAST_UPDATE</columns>
         <columns>FULL_NAME</columns>
         <columns>CORE.USERS.ALIAS</columns>
         <columns>CORE.USERS.USERNAME</columns>
@@ -120,6 +122,7 @@
     </listViews>
     <listViews>
         <fullName>AllUsers</fullName>
+        <columns>CORE.USERS.EMAIL</columns>
         <columns>FULL_NAME</columns>
         <columns>CORE.USERS.ALIAS</columns>
         <columns>CORE.USERS.USERNAME</columns>

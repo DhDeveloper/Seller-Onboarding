@@ -108,6 +108,18 @@
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <label>Seller TAT Swimline</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Seller_TAT_Breach_ID__c</columns>
+        <columns>TAT_Swimline_ID__c</columns>
+        <columns>Swimline_Start_Date__c</columns>
+        <columns>Swimline_End_Date__c</columns>
+        <columns>Comments__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>{0}</displayFormat>
         <label>ID</label>

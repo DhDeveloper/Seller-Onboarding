@@ -191,7 +191,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Pickup_Pincode_del__c</field>
+            <field>Pickup_Pincode__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -231,7 +231,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Pickup_Pincode__c</field>
+            <field>Pickup_Area_Pincode__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -495,11 +495,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>LastModifiedBy</field>
-            <table>Opportunity.Seller_TAT_Breach__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Seller_ID__c</field>
             <table>Opportunity.Seller_TAT_Breach__r</table>
         </columns>
         <columns>

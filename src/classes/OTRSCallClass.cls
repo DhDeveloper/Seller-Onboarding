@@ -1,0 +1,20 @@
+global class OTRSCallClass {
+	@future(callout=true)
+  	public static void callOTRSTest() {
+	 	
+	 	Httprequest request = new HttpRequest();
+        request.setMethod('POST');
+        request.setEndpoint('https://172.17.78.32/otrs/index.pl');
+
+        String XML = '<SessionCreate><UserLogin>admin</UserLogin> <Password>admin</Password></SessionCreate>';
+        request.setHeader('Content-Type', 'text/xml');
+        request.setBody(XML);
+        
+        Http http = new Http();
+        HttpResponse response = http.send(request);
+        
+        
+        String resp = response.getBody();  
+        System.debug('======================================================>>>>>>>>>>>>>>>>>>>>>Response: '+resp);
+  	}
+}

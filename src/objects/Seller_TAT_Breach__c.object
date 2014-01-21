@@ -102,10 +102,23 @@
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
-        <fullName>Seller_ID__c</fullName>
+        <fullName>Seller_ID_new__c</fullName>
         <externalId>false</externalId>
+        <formula>Opportunity__r.Seller_Id__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Seller ID</label>
-        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Stage__c</fullName>
+        <externalId>false</externalId>
+        <formula>TAT_Stage_Profile_ID__r.TAT_Stage_ID__r.TAT_Stage__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Stage</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -155,7 +168,8 @@
         <columns>NAME</columns>
         <columns>TAT_Stage_Profile_ID__c</columns>
         <columns>Opportunity__c</columns>
-        <columns>Seller_ID__c</columns>
+        <columns>Stage__c</columns>
+        <columns>Seller_ID_new__c</columns>
         <columns>Ideal_Closure_Date__c</columns>
         <columns>Actual_Closure_Date__c</columns>
         <columns>Next_Breach_Date__c</columns>

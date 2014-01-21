@@ -49,7 +49,7 @@
         <description>Sellers with short TAT profiles</description>
         <isActive>true</isActive>
         <values>
-            <fullName>Candidate For Onboarding</fullName>
+            <fullName>Candidate</fullName>
             <default>false</default>
         </values>
         <values>
@@ -65,10 +65,6 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Not Enough SKUs</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Pending Seller Approval</fullName>
             <default>false</default>
         </values>
@@ -77,15 +73,19 @@
             <default>false</default>
         </values>
         <values>
+            <fullName>Pending min Listings</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending min SKU creation</fullName>
+            <default>false</default>
+        </values>
+        <values>
             <fullName>Ready to Invite</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Registered</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Yet to Upload</fullName>
+            <fullName>Ready to Onboard</fullName>
             <default>false</default>
         </values>
     </businessProcesses>
@@ -241,6 +241,18 @@
             </picklistValues>
             <picklistValues>
                 <fullName>BD advised to pause</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Brand Not Approved</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Catalogue Not Ready - Image Issues</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Aligned to SSF</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -640,17 +652,23 @@
     </fields>
     <fields>
         <fullName>Expected_TAT__c</fullName>
-        <defaultValue>25</defaultValue>
         <externalId>false</externalId>
         <label>Expected TAT</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
+        <picklist>
+            <picklistValues>
+                <fullName>13</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>18</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
+        <type>Picklist</type>
     </fields>
     <fields>
         <fullName>Fit_with_Flipkart_s_catalogue__c</fullName>
@@ -803,6 +821,18 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Hub_Code_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Pickup_Area_Pincode__r.Hub_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Hub Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Hub_Name__c</fullName>
@@ -1042,7 +1072,7 @@
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
-        <fullName>Pickup_Pincode__c</fullName>
+        <fullName>Pickup_Area_Pincode__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Pickup Pincode</label>
@@ -1056,9 +1086,9 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>Pickup_Pincode_del__c</fullName>
+        <fullName>Pickup_Pincode__c</fullName>
         <externalId>false</externalId>
-        <label>Pickup Pincode</label>
+        <label>PickupPincode_old</label>
         <length>6</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -1355,7 +1385,15 @@ Recommended format
         <fullName>StageName</fullName>
         <picklist>
             <picklistValues>
-                <fullName>Candidate For Onboarding</fullName>
+                <fullName>Candidate</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>0</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ready to Onboard</fullName>
                 <closed>false</closed>
                 <default>false</default>
                 <forecastCategory>Pipeline</forecastCategory>
@@ -1379,29 +1417,19 @@ Recommended format
                 <won>false</won>
             </picklistValues>
             <picklistValues>
-                <fullName>Registered</fullName>
+                <fullName>Pending min SKU creation</fullName>
                 <closed>false</closed>
                 <default>false</default>
-                <forecastCategory>Pipeline</forecastCategory>
-                <probability>10</probability>
-                <won>false</won>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Yet to Upload</fullName>
-                <closed>false</closed>
-                <default>false</default>
-                <description>Seller has not uploaded any file so far.</description>
                 <forecastCategory>Pipeline</forecastCategory>
                 <probability>20</probability>
                 <won>false</won>
             </picklistValues>
             <picklistValues>
-                <fullName>Not Enough SKUs</fullName>
+                <fullName>Pending min Listings</fullName>
                 <closed>false</closed>
                 <default>false</default>
-                <description>Sufficient number of Products are not QC Pass, or directly created yet.</description>
                 <forecastCategory>Pipeline</forecastCategory>
-                <probability>30</probability>
+                <probability>20</probability>
                 <won>false</won>
             </picklistValues>
             <picklistValues>
@@ -1480,7 +1508,7 @@ Recommended format
     </fields>
     <fields>
         <fullName>TAT_Profile__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
+        <deleteConstraint>Restrict</deleteConstraint>
         <externalId>false</externalId>
         <label>TAT Profile</label>
         <referenceTo>TAT_Profile__c</referenceTo>
@@ -1598,6 +1626,10 @@ Recommended format
                 <default>false</default>
             </picklistValues>
             <picklistValues>
+                <fullName>Reschedule</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
                 <fullName>Completed</fullName>
                 <default>false</default>
             </picklistValues>
@@ -1607,6 +1639,16 @@ Recommended format
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Training2_End_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Training2 End Date/Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
     </fields>
     <fields>
         <fullName>Training2_Policy_Payments__c</fullName>
@@ -1622,6 +1664,10 @@ Recommended format
                 <default>false</default>
             </picklistValues>
             <picklistValues>
+                <fullName>Reschedule</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
                 <fullName>Completed</fullName>
                 <default>false</default>
             </picklistValues>
@@ -1631,6 +1677,26 @@ Recommended format
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Training2_Start_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Training2 Start Date/Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Training3_End_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Training3 End Date/Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
     </fields>
     <fields>
         <fullName>Training3_OM_Returns_Disputes__c</fullName>
@@ -1646,6 +1712,10 @@ Recommended format
                 <default>false</default>
             </picklistValues>
             <picklistValues>
+                <fullName>Reschedule</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
                 <fullName>Completed</fullName>
                 <default>false</default>
             </picklistValues>
@@ -1657,9 +1727,19 @@ Recommended format
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>Training3_Start_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Training3 Start Date/Time</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
         <fullName>Training_End_Date_Time__c</fullName>
         <externalId>false</externalId>
-        <label>Training End Date/Time</label>
+        <label>Training1 End Date/Time</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -1669,7 +1749,7 @@ Recommended format
     <fields>
         <fullName>Training_Start_Date_Time__c</fullName>
         <externalId>false</externalId>
-        <label>Training Start Date/Time</label>
+        <label>Training1 Start Date/Time</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -1696,7 +1776,7 @@ Recommended format
         <fullName>AllOpportunties</fullName>
         <columns>OPPORTUNITY.NAME</columns>
         <columns>CORE.USERS.FIRST_NAME</columns>
-        <columns>Pickup_Pincode_del__c</columns>
+        <columns>Pickup_Pincode__c</columns>
         <columns>Seller_Id__c</columns>
         <columns>Seller_Business_Name__c</columns>
         <columns>Seller_Registration_Email__c</columns>
@@ -1927,11 +2007,23 @@ Recommended format
         <picklistValues>
             <picklist>BD_Comments__c</picklist>
             <values>
+                <fullName>Brand Not Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Catalogue Not Ready - Image Issues</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Manpower shortage</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>No response from seller</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Aligned to SSF</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2243,6 +2335,17 @@ Recommended format
             </values>
             <values>
                 <fullName>Retailer</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Expected_TAT__c</picklist>
+            <values>
+                <fullName>13</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -2644,11 +2747,23 @@ Recommended format
                 <default>false</default>
             </values>
             <values>
+                <fullName>Brand Not Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Catalogue Not Ready - Image Issues</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Manpower shortage</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>No response from seller</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Aligned to SSF</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2964,6 +3079,17 @@ Recommended format
             </values>
         </picklistValues>
         <picklistValues>
+            <picklist>Expected_TAT__c</picklist>
+            <values>
+                <fullName>13</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>18</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Fit_with_Flipkart_s_catalogue__c</picklist>
             <values>
                 <fullName>All of his Verticals are open in Flipkart</fullName>
@@ -3249,6 +3375,10 @@ Recommended format
                 <default>true</default>
             </values>
             <values>
+                <fullName>Reschedule</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Scheduled</fullName>
                 <default>false</default>
             </values>
@@ -3264,6 +3394,10 @@ Recommended format
                 <default>false</default>
             </values>
             <values>
+                <fullName>Reschedule</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Scheduled</fullName>
                 <default>false</default>
             </values>
@@ -3276,6 +3410,10 @@ Recommended format
             </values>
             <values>
                 <fullName>Not Done</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reschedule</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3323,6 +3461,17 @@ Recommended format
         <searchResultsAdditionalFields>OPPORTUNITY.STAGE_NAME</searchResultsAdditionalFields>
     </searchLayouts>
     <validationRules>
+        <fullName>AfterInvitedStageCannotChangeTAT</fullName>
+        <active>true</active>
+        <description>After Invited Stage Cannot change TAT</description>
+        <errorConditionFormula>AND(NOT( ISPICKVAL(StageName, &apos;Candidate&apos;) ),
+    NOT( ISPICKVAL(StageName, &apos;Ready to Onboard&apos;) ),
+    NOT( ISPICKVAL(StageName, &apos;Ready to Invite&apos;) ),
+     ISCHANGED( Expected_TAT__c ) )</errorConditionFormula>
+        <errorDisplayField>Expected_TAT__c</errorDisplayField>
+        <errorMessage>Expected TAT cannot be changed after &apos;Ready to Invite&apos; Stage</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>DelayInDaysCannotBeNone</fullName>
         <active>true</active>
         <description>On Delay Reasons selection, Delay In Days field cannot be &apos;None&apos;</description>
@@ -3345,19 +3494,71 @@ Recommended format
         <errorMessage>On Delay in Days selection, Delay Reasons cannot be &apos;--None--&apos;</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>DontAllowBDsToChangeStageName</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+   ISCHANGED(StageName ), 
+   NOT(ISPICKVAL( StageName , &quot;Ready to Onboard&quot;)), 
+   $Profile.Name  = &quot;BD AM&quot;
+   )</errorConditionFormula>
+        <errorDisplayField>StageName</errorDisplayField>
+        <errorMessage>Tchh tchh, only Seller Support can modify this field. BD can update only from Candidate to Ready-to-Onboard.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>DontAllowSSAMssToChangeStageToReadyToOnb</fullName>
+        <active>true</active>
+        <description>allow only BD OM to change stage to Ready to Onboard</description>
+        <errorConditionFormula>AND(
+   ISCHANGED(StageName ), 
+   ISPICKVAL( StageName , &quot;Ready to Onboard&quot;), 
+   $Profile.Name  != &quot;BD On-boarding Manager&quot;
+   )</errorConditionFormula>
+        <errorDisplayField>StageName</errorDisplayField>
+        <errorMessage>Tchh tchh, only BD OM should change an opportunity to Ready to Onboard</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>ShouldNotConvertToLiveWithoutTrainings</fullName>
         <active>true</active>
         <errorConditionFormula>AND(
-ISCHANGED(StageName ),
-ISPICKVAL(StageName , &quot;Live&quot;),
-
-OR (
- NOT(ISPICKVAL(Training1__c, &quot;Completed&quot;)),
- NOT(ISPICKVAL(Training2_Policy_Payments__c , &quot;Completed&quot;)),
- NOT(ISPICKVAL(Training3_OM_Returns_Disputes__c , &quot;Completed&quot;))
-)
+ ISCHANGED(StageName ),
+ ISPICKVAL(StageName , &quot;Live&quot;),
+ NOT(ISPICKVAL(Training1__c, &quot;Completed&quot;))
 )</errorConditionFormula>
-        <errorMessage>Can&apos;t turn seller live without trainings are not complete.</errorMessage>
+        <errorDisplayField>StageName</errorDisplayField>
+        <errorMessage>Cannot make a seller Live without completing Training1.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TrainingT1ValidationRule</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND( 
+ISCHANGED(StageName ), 
+ISPICKVAL(StageName , &quot;Pending min Listings&quot;), 
+NOT(ISPICKVAL(Training1__c, &quot;Completed&quot;))
+)</errorConditionFormula>
+        <errorDisplayField>Training1__c</errorDisplayField>
+        <errorMessage>Cannot move to next stage without completing Training1 (Listings)</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TrainingT2ValidationRule</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND( 
+ISCHANGED(StageName ), 
+ISPICKVAL(StageName , &quot;Go Live Checklist&quot;), 
+NOT(ISPICKVAL(Training2_Policy_Payments__c, &quot;Completed&quot;))
+)</errorConditionFormula>
+        <errorDisplayField>Training2_Policy_Payments__c</errorDisplayField>
+        <errorMessage>Cannot move to next stage without completing Training2 (Policy + Payments)</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TrainingT3ValidationRule</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND( 
+ISCHANGED(StageName ), 
+ISPICKVAL(StageName , &quot;Live&quot;), 
+NOT(ISPICKVAL(Training3_OM_Returns_Disputes__c, &quot;Completed&quot;))
+)</errorConditionFormula>
+        <errorDisplayField>Training3_OM_Returns_Disputes__c</errorDisplayField>
+        <errorMessage>Cannot move to next stage without completing Training3 (OM Returns Disputes)</errorMessage>
     </validationRules>
     <webLinks>
         <fullName>Bulk_Invite</fullName>
