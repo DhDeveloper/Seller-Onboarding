@@ -719,6 +719,16 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>Go_Live_Checklist_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Go Live Checklist Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
         <fullName>Go_Live_SKUs__c</fullName>
         <description>Expected SKUs this seller will have 1 month from go live</description>
         <externalId>false</externalId>
@@ -872,6 +882,29 @@
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
+        <fullName>Invited_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Invited Start Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Invited_to_Live_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Invited to Live Time</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>IsCommissionsExplained__c</fullName>
         <defaultValue>false</defaultValue>
         <description>Is he clear about his commissions for the categores he is selling</description>
@@ -992,6 +1025,16 @@
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>Live_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Live Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
         <fullName>Min_Go_Live_SKUs__c</fullName>
         <defaultValue>30</defaultValue>
         <externalId>false</externalId>
@@ -1072,6 +1115,46 @@
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
+        <fullName>Pending_Seller_Approval_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Pending Seller Approval Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Pending_Stock_Update_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Pending Stock Update Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Pending_min_Listings_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Pending min Listings Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Pending_min_SKU_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Pending min SKU Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
         <fullName>Pickup_Area_Pincode__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
@@ -1117,6 +1200,26 @@
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Ready_to_Invite_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Ready to Invite Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Ready_to_Onboard_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Ready to Onboard Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
     </fields>
     <fields>
         <fullName>Redirect_State__c</fullName>
@@ -3586,6 +3689,7 @@ try{
        }
        var oppSObject = new sforce.SObject(&quot;Opportunity&quot;);
        oppSObject.id = oppRecords[i];
+       oppSObject.Is_Invited__c = 0;
  
        // make the field change
        oppSObject.StageName = &quot;Invited&quot;;

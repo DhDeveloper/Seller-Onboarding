@@ -18,4 +18,8 @@
     <tab>Seller_TAT_Breach__c</tab>
     <tab>TAT_Swimline__c</tab>
     <tab>Seller_TAT_Swimline__c</tab>
+    <tab>standard-Case</tab>
+    <tab>Flipkart_Applications_Definition__c</tab>
+    <tab>Application_End_Point_URL__c</tab>
+    <tab>Brand_Details__c</tab>
 </CustomApplication>

@@ -1,8 +1,8 @@
 <apex:page controller="TestController">
 <apex:form >
-<apex:commandButton value="Call It" action="{!callFuture}"/>
+<apex:commandButton value="OTRS Login" action="{!callFuture}"/>
 </apex:form>
   <apex:outputPanel layout="block" id="results">
-        <apex:outputText value="Check Console" />
+        <apex:outputText value="Please Check the console" />
     </apex:outputPanel>
 </apex:page>

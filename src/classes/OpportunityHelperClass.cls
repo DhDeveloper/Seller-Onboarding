@@ -51,23 +51,23 @@ public class OpportunityHelperClass {
                 updateSellerList.get(i).Estimated_Closure_Date__c = updateSellerList.get(i).Actual_Closure_Date__c;
                 
                 if(i != 0){
-                    System.debug('IF Time Taken ');
-                	System.debug('updateSellerList.get(i-1).Actual_Closure_Date__c: '+updateSellerList.get(i-1).Actual_Closure_Date__c);
-                	System.debug('updateSellerList.get(i).Actual_Closure_Date__c: '+updateSellerList.get(i).Actual_Closure_Date__c);
                     updateSellerList.get(i).Time_Taken_per_Stage__c = UtilityClass.daysBetweenExcludingSundaysHolidays(	updateSellerList.get(i-1).Actual_Closure_Date__c, 
                     																									updateSellerList.get(i).Actual_Closure_Date__c, 
                     																									holidaysList);
-                	System.debug('updateSellerList.get(i).Time_Taken_per_Stage__c: '+updateSellerList.get(i).Time_Taken_per_Stage__c);
-                	System.debug('IF End');
                 }else{
-                	System.debug('Else Time Taken ');
-                	System.debug('(opp.CreatedDate).date(): '+(opp.CreatedDate).date());
-                	System.debug('updateSellerList.get(i).Actual_Closure_Date__c: '+updateSellerList.get(i).Actual_Closure_Date__c);
-                    updateSellerList.get(i).Time_Taken_per_Stage__c = UtilityClass.daysBetweenExcludingSundaysHolidays(	(opp.CreatedDate).date(), 
+                    // tempDate used to calculate Time taken to cross Invited Stage in data upload scenario
+                    // for remaining scenarios it is consider Opportunity Last Modified Date -- Not exact calculation
+                    Date tempDate;
+                    
+                    if(opp.Invited_Start_Date__c != null){
+                    	tempDate = opp.Invited_Start_Date__c;
+                    }else{
+                    	tempDate = (opp.LastModifiedDate).date();
+                    }
+                    
+                    updateSellerList.get(i).Time_Taken_per_Stage__c = UtilityClass.daysBetweenExcludingSundaysHolidays(	tempDate, 
                     																									updateSellerList.get(i).Actual_Closure_Date__c, 
                     																									holidaysList);
-					System.debug('updateSellerList.get(i).Time_Taken_per_Stage__c: '+updateSellerList.get(i).Time_Taken_per_Stage__c);
-					System.debug('Else End');                    																									
                 }
             }
         }else{
@@ -77,9 +77,7 @@ public class OpportunityHelperClass {
                                                                                                                Integer.valueOf(updateSellerList.get(i).TAT_Stage_Profile_ID__r.TAT_Profile_Spec__c),
                                                                                                                holidaysList);
                 }else{
-                    updateSellerList.get(i).Next_Breach_Date__c = nextBreachDateTemp;/*UtilityClass.addDaysExcludingSundaysHolidays(nextBreachDateTemp,
-                                                                                                               Integer.valueOf(updateSellerList.get(i).TAT_Stage_Profile_ID__r.TAT_Profile_Spec__c),
-                                                                                                               holidaysList);*/
+                    updateSellerList.get(i).Next_Breach_Date__c = nextBreachDateTemp;
                 }
                 updateSellerList.get(i).Estimated_Closure_Date__c = UtilityClass.addDaysExcludingSundaysHolidays(updateSellerList.get(i-1).Estimated_Closure_Date__c,
                                                                                                                  Integer.valueOf(updateSellerList.get(i).TAT_Stage_Profile_ID__r.TAT_Profile_Spec__c),

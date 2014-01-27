@@ -1,0 +1,52 @@
+<apex:page Controller="MultipleBrandDetailsClass" sidebar="false">
+    <apex:form >
+        <apex:outputText value="{!leadId}"></apex:outputText>
+        <apex:pageBlock title="Brand Details Block" mode="edit">
+            <apex:messages /> 
+            
+            <apex:pageBlockTable value="{!brandWrapperList}" var="brand">
+                <apex:column headerValue="Brand Details Name">
+                    <apex:inputField value="{!brand.brandDetails.Name}"/>
+                 </apex:column>
+                 <apex:column headerValue="Brand Name">
+                    <apex:inputField value="{!brand.brandDetails.Brand_Name__c}"/>
+                 </apex:column>
+                 <apex:column headerValue="Brand Age">
+                    <apex:inputField value="{!brand.brandDetails.Brand_Age__c}"/>
+                 </apex:column>
+                 <apex:column headerValue="Brand Banner">
+                    <apex:inputField value="{!brand.brandDetails.Brand_Banner__c}"/>
+                 </apex:column>
+                 <apex:column headerValue="Brand Description">
+                    <apex:inputField value="{!brand.brandDetails.Brand_Description__c}"/>
+                 </apex:column>                 
+                 <apex:column headerValue="Brand Logo">
+                    <apex:inputField value="{!brand.brandDetails.Brand_Logo__c}"/>
+                 </apex:column>
+                  <apex:column headerValue="Does have EAN/UPC?">
+                    <apex:inputField value="{!brand.brandDetails.Does_have_EAN_UPC__c}"/>
+                 </apex:column>
+                 <apex:column headerValue="Sample verification done?">     
+                    <apex:inputField value="{!brand.brandDetails.Sample_verification_done__c}"/>
+                 </apex:column>
+                 
+
+                 <apex:repeat var="bgm" value="{!$ObjectType.Brand_Details__c.FieldSets.BGM_Fields}">
+                    <apex:column headerValue="{!bgm.label}" rendered="{!superCategory=='BGM'}">
+                        <apex:inputField value="{!brand.brandDetails[bgm]}" />
+                    </apex:column>
+                </apex:repeat>
+                
+                <apex:repeat var="softline" value="{!$ObjectType.Brand_Details__c.FieldSets.Softline_Fields}">
+                    <apex:column headerValue="{!softline.label}" rendered="{!superCategory=='Softlines'}" >
+                        <apex:inputField value="{!brand.brandDetails[softline]}" />
+                    </apex:column>
+                </apex:repeat>
+                 
+          </apex:pageBlockTable> 
+          
+          <apex:commandButton value="Add Brand" action="{!Add}"/>
+          <apex:commandButton value="Save All" action="{!saveBrandList}"/>         
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

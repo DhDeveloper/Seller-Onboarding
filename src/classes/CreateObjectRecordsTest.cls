@@ -41,9 +41,9 @@ public class CreateObjectRecordsTest{
     	System.debug(UtilityClass.isSunday(date.parse('03/01/2014')));
     }
     
-    static testMethod void SampleTest(){
+    /*static testMethod void SampleTest(){
     	 Test.startTest();
     	OTRSCallClass.callOTRSTest();
     	 Test.stopTest();
-    }
+    }*/
 }

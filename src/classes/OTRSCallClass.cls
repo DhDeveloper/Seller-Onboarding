@@ -4,9 +4,11 @@ global class OTRSCallClass {
 	 	
 	 	Httprequest request = new HttpRequest();
         request.setMethod('POST');
-        request.setEndpoint('https://172.17.78.32/otrs/index.pl');
+        request.setEndpoint('http://172.17.78.32/otrs/index.pl');
+        String header = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tic="http://www.otrs.org/TicketConnector/"><soapenv:Header/><soapenv:Body>';
+        String footer = '  </soapenv:Body></soapenv:Envelope>';
 
-        String XML = '<SessionCreate><UserLogin>admin</UserLogin> <Password>admin</Password></SessionCreate>';
+        String XML = header+'<SessionCreate><UserLogin>admin</UserLogin> <Password>admin</Password></SessionCreate>'+footer;
         request.setHeader('Content-Type', 'text/xml');
         request.setBody(XML);
         

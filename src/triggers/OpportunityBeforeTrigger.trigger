@@ -15,6 +15,7 @@ trigger OpportunityBeforeTrigger on Opportunity (before insert, before update) {
     String      s1                          = '<html><body><table border="1"><th>Name</th><th>Seller Registration Email</th><th>Owner Email</th>';
     String      s2                          = '</table></body></html>';
     String      data						= '';
+    List<Holiday> holidaysList = [Select h.ActivityDate From Holiday h];
     
     /* On update of Opportunity record, Delay Reasons wise days count
        captured to populate with new values
@@ -61,19 +62,37 @@ trigger OpportunityBeforeTrigger on Opportunity (before insert, before update) {
             for(Opportunity opp: Trigger.new){
                 Opportunity oldOpp = oldMap.get(opp.Id);
                 
+                //Existing Opportunities data capture======
+                if(oldOpp.StageName == Constants.OPP_STAGE_CANDIDATE && opp.StageName == Constants.OPP_STAGE_READY_TO_ONBOARD ){
+                	opp.Ready_to_Onboard_Date__c = (opp.LastModifiedDate).date();
+                }else if(oldOpp.StageName == Constants.OPP_STAGE_READY_TO_ONBOARD && opp.StageName == Constants.OPP_STAGE_READY_TO_INVITE ){
+                	opp.Ready_to_Invite_Date__c = (opp.LastModifiedDate).date();
+                }else if(oldOpp.StageName == Constants.OPP_STAGE_READY_TO_INVITE && opp.StageName == Constants.OPP_STAGE_INVITED ){
+                	opp.Invited_Start_Date__c = (opp.LastModifiedDate).date();
+                }else if(oldOpp.StageName == Constants.OPP_STAGE_INVITED && opp.StageName == Constants.OPP_STAGE_MIN_SKU_CREATION ){
+                	opp.Pending_min_SKU_Date__c = (opp.LastModifiedDate).date();
+                }else if(oldOpp.StageName == Constants.OPP_STAGE_MIN_SKU_CREATION && opp.StageName == Constants.OPP_STAGE_MIN_LISTINGS ){
+                	opp.Pending_min_Listings_Date__c = (opp.LastModifiedDate).date();
+                }else if(oldOpp.StageName == Constants.OPP_STAGE_MIN_LISTINGS && opp.StageName == Constants.OPP_STAGE_SELLER_APPROVAL ){
+                	opp.Pending_Seller_Approval_Date__c = (opp.LastModifiedDate).date();
+                }else if(oldOpp.StageName == Constants.OPP_STAGE_SELLER_APPROVAL && opp.StageName == Constants.OPP_STAGE_STOCK_UPDATE ){
+                	opp.Pending_Stock_Update_Date__c = (opp.LastModifiedDate).date();
+                }else if(oldOpp.StageName == Constants.OPP_STAGE_STOCK_UPDATE && opp.StageName == Constants.OPP_STAGE_GO_LIVE_CHECKLIST ){
+                	opp.Go_Live_Checklist_Date__c = (opp.LastModifiedDate).date();
+                }else if(oldOpp.StageName == Constants.OPP_STAGE_GO_LIVE_CHECKLIST && opp.StageName == Constants.OPP_STAGE_LIVE ){
+                	opp.Live_Date__c = (opp.LastModifiedDate).date();
+                }
+                
+               /* if(opp.Live_Date__c != null){
+                	opp.Invited_to_Live_Time__c = UtilityClass.daysBetweenExcludingSundaysHolidays(	opp.Invited_Start_Date__c, 
+                    																				opp.Live_Date__c, holidaysList);
+                }*/
+                //================================End
                 /* Training T1 Validation rules. 
                 */
                 if( opp.Training1__c == Constants.TRAINING_NOT_DONE ||
                     opp.Training1__c == Constants.TRAINING_SCHEDULED ||
                     opp.Training1__c == Constants.TRAINING_RESCHEDULE){
-                /*  if((    opp.Training2_Policy_Payments__c != null 
-                            && !(opp.Training2_Policy_Payments__c == Constants.TRAINING_NOT_DONE )
-                        )|| 
-                        (   opp.Training3_OM_Returns_Disputes__c != null
-                            && !(opp.Training3_OM_Returns_Disputes__c == Constants.TRAINING_NOT_DONE ))){
-                        opp.Training1__c.addError('Without completing Training1 (Listings) cannot start Training2 (Policy + Payments) and Training3 (OM Returns Disputes)');
-                    }*/
-                    
                     if(opp.Training1__c == Constants.TRAINING_NOT_DONE){
                         if(opp.Training_Start_Date_Time__c != null || opp.Training_End_Date_Time__c != null){
                             opp.Training_Start_Date_Time__c.addError('Without Scheduled/Reschedule, training timings should be empty');                     
@@ -204,6 +223,8 @@ trigger OpportunityBeforeTrigger on Opportunity (before insert, before update) {
         
             //Assign new address string
             mail.setToAddresses(toAddresses);
+            //Return Address
+            mail.setReplyTo(Constants.RETURN_EMAIL_ID);
             //sender name
             mail.setSenderDisplayName('Seller Onboarding System');
             //Subject Specification

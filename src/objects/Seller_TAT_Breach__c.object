@@ -129,7 +129,7 @@
         <fullName>TAT_Breach_in_Days__c</fullName>
         <externalId>false</externalId>
         <label>TAT Breach in Days</label>
-        <precision>2</precision>
+        <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
@@ -154,7 +154,7 @@
         <fullName>Time_Taken_per_Stage__c</fullName>
         <externalId>false</externalId>
         <label>Time Taken per Stage</label>
-        <precision>2</precision>
+        <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
         <trackHistory>false</trackHistory>
