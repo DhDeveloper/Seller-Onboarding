@@ -66,12 +66,28 @@ private class updateHubOnInsertTriggerTest {
     	Account testAccount = new Account(Name = 'Test Account');        
         insert testAccount;
         
+        PincodeHubMapping__c pin111 = new PincodeHubMapping__c(Name = '111', Hub_Name__c = 'Test Hub');
+        insert pin111;
+        
+        PincodeHubMapping__c pin222 = new PincodeHubMapping__c(Name = '222', Hub_Name__c = 'Test Hub');
+        insert pin222;
+        
     	List<Opportunity> oppList = new List<Opportunity>();
-    	oppList.add(new Opportunity(  Name = 'Test1',AccountId = testAccount.Id,StageName = 'Candidate',CloseDate = date.parse('01/10/2014'), Pickup_Pincode__c='111'));
-    	oppList.add(new Opportunity(  Name = 'Test2',AccountId = testAccount.Id,StageName = 'Candidate',CloseDate = date.parse('01/10/2014'), Pickup_Pincode__c='111'));
-    	oppList.add(new Opportunity(  Name = 'Test3',AccountId = testAccount.Id,StageName = 'Candidate',CloseDate = date.parse('01/10/2014'), Pickup_Pincode__c='222'));
-    	oppList.add(new Opportunity(  Name = 'Test4',AccountId = testAccount.Id,StageName = 'Candidate',CloseDate = date.parse('01/10/2014'), Pickup_Pincode__c='111'));
-    	oppList.add(new Opportunity(  Name = 'Test5',AccountId = testAccount.Id,StageName = 'Candidate',CloseDate = date.parse('01/10/2014'), Pickup_Pincode__c='111'));
+    	oppList.add(new Opportunity(  Name = 'Test1',AccountId = testAccount.Id,StageName = 'Candidate',CloseDate = date.parse('01/10/2014'), Pickup_Pincode__c='111',
+                                                        Seller_Registration_Email__c = 'test@testmail.com',
+                                                        Pickup_Area_Pincode__c = pin111.Id ));
+    	oppList.add(new Opportunity(  Name = 'Test2',AccountId = testAccount.Id,StageName = 'Candidate',CloseDate = date.parse('01/10/2014'), Pickup_Pincode__c='111',
+                                                        Seller_Registration_Email__c = 'test@testmail.com',
+                                                        Pickup_Area_Pincode__c = pin111.Id ));
+    	oppList.add(new Opportunity(  Name = 'Test3',AccountId = testAccount.Id,StageName = 'Candidate',CloseDate = date.parse('01/10/2014'), Pickup_Pincode__c='222',
+                                                        Seller_Registration_Email__c = 'test@testmail.com',
+                                                        Pickup_Area_Pincode__c = pin222.Id ));
+    	oppList.add(new Opportunity(  Name = 'Test4',AccountId = testAccount.Id,StageName = 'Candidate',CloseDate = date.parse('01/10/2014'), Pickup_Pincode__c='111',
+                                                        Seller_Registration_Email__c = 'test@testmail.com',
+                                                        Pickup_Area_Pincode__c = pin111.Id ));
+    	oppList.add(new Opportunity(  Name = 'Test5',AccountId = testAccount.Id,StageName = 'Candidate',CloseDate = date.parse('01/10/2014'), Pickup_Pincode__c='111',
+                                                        Seller_Registration_Email__c = 'test@testmail.com',
+                                                        Pickup_Area_Pincode__c = pin111.Id ));
     	insert oppList;
     	
     	PincodeHubMapping__c pin1 = new PincodeHubMapping__c();

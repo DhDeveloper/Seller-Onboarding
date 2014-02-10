@@ -46,14 +46,26 @@ public class OpportunityHelperClass {
     																						Opportunity opp,
     																						List<Seller_TAT_Breach__c> updateSellerList,  
     																						List<Holiday> holidaysList){
+    	List<Seller_TAT_Swimline__c> sellerTATSwimlineList = null;
+    	
     	if(updateSellerList.get(i).Actual_Closure_Date__c != null){
-        	if(updateSellerList.get(i).Actual_Closure_Date__c != updateSellerList.get(i).Ideal_Closure_Date__c){
+    		sellerTATSwimlineList = updateSellerList.get(i).Seller_TAT_Swimline__r;
+			Integer swimlineDays = 0;
+			
+			if(sellerTATSwimlineList.size() > 0){
+				for(Seller_TAT_Swimline__c swimline : sellerTATSwimlineList){
+					if(swimline.Swimline_End_Date__c != null){
+						swimlineDays += UtilityClass.daysBetweenExcludingSundaysHolidays(swimline.Swimline_Start_Date__c,swimline.Swimline_End_Date__c,holidaysList)+1;
+					}
+				}
+			}
+        	//if(updateSellerList.get(i).Actual_Closure_Date__c != updateSellerList.get(i).Ideal_Closure_Date__c){
                 updateSellerList.get(i).Estimated_Closure_Date__c = updateSellerList.get(i).Actual_Closure_Date__c;
                 
                 if(i != 0){
                     updateSellerList.get(i).Time_Taken_per_Stage__c = UtilityClass.daysBetweenExcludingSundaysHolidays(	updateSellerList.get(i-1).Actual_Closure_Date__c, 
                     																									updateSellerList.get(i).Actual_Closure_Date__c, 
-                    																									holidaysList);
+                    																									holidaysList) + 1 - swimlineDays;
                 }else{
                     // tempDate used to calculate Time taken to cross Invited Stage in data upload scenario
                     // for remaining scenarios it is consider Opportunity Last Modified Date -- Not exact calculation
@@ -67,9 +79,9 @@ public class OpportunityHelperClass {
                     
                     updateSellerList.get(i).Time_Taken_per_Stage__c = UtilityClass.daysBetweenExcludingSundaysHolidays(	tempDate, 
                     																									updateSellerList.get(i).Actual_Closure_Date__c, 
-                    																									holidaysList);
+                    																									holidaysList) + 1 - swimlineDays;
                 }
-            }
+            //}
         }else{
             if(i != 0){
                 if(nextBreachDateTemp == null){

@@ -18,7 +18,9 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>Edit</actionName>
-        <type>Default</type>
+        <content>BrandDetailsEditPage</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>Follow</actionName>
@@ -59,11 +61,46 @@
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
+        <displayedFields>
+            <field>Vertical_Groups_Selling_BGM__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
         <label>BGM Fields</label>
     </fieldSets>
     <fieldSets>
         <fullName>CCC_Fields</fullName>
         <description>CCC specific fields</description>
+        <displayedFields>
+            <field>Subcategories_Selling_in__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Brand_warranty_available__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Brand_warranty_Tenure__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Type_of_Warranty__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Number_of_service_centers_across_India__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Service_Centers_Details__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
         <label>CCC Fields</label>
     </fieldSets>
     <fieldSets>
@@ -85,11 +122,6 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>Vertical_Groups_Selling_in__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </displayedFields>
-        <displayedFields>
             <field>Brand_warranty_available__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
@@ -101,6 +133,11 @@
         </displayedFields>
         <displayedFields>
             <field>Type_of_Warranty__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Vertical_Groups_Selling_in__c</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -283,6 +320,17 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Number_of_service_centers_across_India__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of service centers across India</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Sample_verification_done__c</fullName>
         <description>Sample verification done</description>
         <externalId>false</externalId>
@@ -294,6 +342,28 @@
             </picklistValues>
             <picklistValues>
                 <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Service_Centers_Details__c</fullName>
+        <externalId>false</externalId>
+        <label>Service Centers Details</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Metro</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Across Tier 2 and 3 cities</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Applicable</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -325,17 +395,120 @@
         <label>Subcategories Selling in</label>
         <picklist>
             <picklistValues>
-                <fullName>Item 1</fullName>
+                <fullName>Camera</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Item 2</fullName>
+                <fullName>CameraAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AudioAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AudioMP3Player</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>HomeAudio</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MP3Player</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MP3PlayerIpodAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TVVideoSmall</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GamingAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GamingConsole</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ApplianceSmall</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SolarLight</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>HealthCare</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PersonalCare</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mobile</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MobileAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TabletsAndTabletAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ComputerAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ComputerComponent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LaptopAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NetworkingAndCable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Software</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ComputerPeripheral</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Laptop</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ComputerStorage</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
         <trackTrending>false</trackTrending>
-        <type>Picklist</type>
+        <type>MultiselectPicklist</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Super_Category__c</fullName>
+        <externalId>false</externalId>
+        <label>Super Category</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Type_of_Warranty__c</fullName>
@@ -343,11 +516,11 @@
         <label>Type of Warranty</label>
         <picklist>
             <picklistValues>
-                <fullName>Item 1</fullName>
+                <fullName>Brand Warranty</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Item 2</fullName>
+                <fullName>Seller Warranty</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -361,17 +534,46 @@
         <label>Vertical Groups Selling in</label>
         <picklist>
             <picklistValues>
-                <fullName>Item 1</fullName>
+                <fullName>Babycare</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Item 2</fullName>
+                <fullName>Books</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Media - (Movies, Music &amp; Games)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Health &amp; Beauty - Perfumes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Health &amp; Beauty - Non Perfumes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Office Supplies</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Softwares</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Toys</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sports &amp; Fitness</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
         <trackTrending>false</trackTrending>
-        <type>Picklist</type>
+        <type>MultiselectPicklist</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Vertical_Groups_Selling_in__c</fullName>
@@ -379,17 +581,54 @@
         <label>Vertical Groups Selling in</label>
         <picklist>
             <picklistValues>
-                <fullName>Item 1</fullName>
+                <fullName>Men&apos;s Clothing</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Item 2</fullName>
+                <fullName>Women&apos;s Clothing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Kid&apos;s Clothing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fashion Accessories</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fashion Jewellery</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Men&apos;s Footwear</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Women&apos;s Footwear</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Kid&apos;s Footwear</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Home-Furnishing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Watches</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sunglasses</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
         <trackTrending>false</trackTrending>
-        <type>Picklist</type>
+        <type>MultiselectPicklist</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Verticals_Selling_CCC__c</fullName>
@@ -397,17 +636,110 @@
         <label>Verticals Selling in</label>
         <picklist>
             <picklistValues>
-                <fullName>Item 1</fullName>
+                <fullName>Camera</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Item 2</fullName>
+                <fullName>CameraAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AudioAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AudioMP3Player</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>HomeAudio</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MP3Player</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MP3PlayerIpodAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TVVideoSmall</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GamingAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GamingConsole</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ApplianceSmall</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SolarLight</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>HealthCare</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PersonalCare</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mobile</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MobileAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>TabletsAndTabletAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ComputerAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ComputerComponent</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LaptopAccessory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>NetworkingAndCable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Software</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ComputerPeripheral</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Laptop</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ComputerStorage</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
         <trackTrending>false</trackTrending>
-        <type>Picklist</type>
+        <type>MultiselectPicklist</type>
+        <visibleLines>3</visibleLines>
     </fields>
     <label>Brand Details</label>
     <listViews>
@@ -435,6 +767,6 @@
         <openType>noSidebar</openType>
         <protected>false</protected>
         <requireRowSelection>true</requireRowSelection>
-        <url>/apex/BrandDetailsPage?leadId={!Lead.Id}&amp;supCat={!Lead.SuperCategory__c}</url>
+        <url>/apex/MultipleBrandDetailsPage?leadId={!Lead.Id}&amp;supCat={!Lead.SuperCategory__c}&amp;leadName={!Lead.Name}</url>
     </webLinks>
 </CustomObject>

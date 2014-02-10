@@ -80,9 +80,7 @@
         </actions>
         <active>true</active>
         <description>Change record type of Opportunity to InOnboarding when stage changes appropriately</description>
-        <formula>NOT(OR((ISPICKVAL(StageName, &apos;Candidate&apos;)), 
-   (ISPICKVAL(StageName, &apos;Ready to Onboard&apos;)) 
-))</formula>
+        <formula>NOT(OR((ISPICKVAL(StageName, &apos;Candidate&apos;)),     (ISPICKVAL(StageName, &apos;Ready to Onboard&apos;))  ))</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>

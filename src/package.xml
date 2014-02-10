@@ -106,6 +106,10 @@
         <name>OpportunityOwnerSharingRule</name>
     </types>
     <types>
+        <members>Opportunity</members>
+        <name>OpportunitySharingRules</name>
+    </types>
+    <types>
         <members>*</members>
         <name>Profile</name>
     </types>

@@ -90,7 +90,14 @@ trigger OpportunityBeforeTrigger on Opportunity (before insert, before update) {
                 //================================End
                 /* Training T1 Validation rules. 
                 */
-                if( opp.Training1__c == Constants.TRAINING_NOT_DONE ||
+                if( (opp.Training1__c == Constants.TRAINING_SCHEDULED) && 
+                    (   (oldOpp.Training_Start_Date_Time__c != null && oldOpp.Training_Start_Date_Time__c != opp.Training_Start_Date_Time__c) || 
+                        (oldOpp.Training_End_Date_Time__c != null && oldOpp.Training_End_Date_Time__c != opp.Training_End_Date_Time__c)
+                        )){
+                    opp.Training1__c.addError('Training1 (Listings) should be in Reschedule to Change Training Start Date/Time or Training End Date/Time');
+                }
+                
+               /* if( opp.Training1__c == Constants.TRAINING_NOT_DONE ||
                     opp.Training1__c == Constants.TRAINING_SCHEDULED ||
                     opp.Training1__c == Constants.TRAINING_RESCHEDULE){
                     if(opp.Training1__c == Constants.TRAINING_NOT_DONE){
@@ -111,11 +118,17 @@ trigger OpportunityBeforeTrigger on Opportunity (before insert, before update) {
                             opp.Training1__c.addError('Training1 (Listings) should be in Reschedule to Change Training Start Date/Time or Training End Date/Time');
                         }
                     }
-                }// End of Training1 -- Not Done/Scheduled/Reschedule
+                }*/// End of Training1 -- Not Done/Scheduled/Reschedule
                 
                 //Training T2 & T3 Validation rules. 
                 //if(opp.Training1__c == Constants.TRAINING_COMPLETED){
-                    if(opp.Training2_Policy_Payments__c == null || opp.Training2_Policy_Payments__c == Constants.TRAINING_NOT_DONE){
+                if( (opp.Training2_Policy_Payments__c == Constants.TRAINING_SCHEDULED) && 
+                    (   (oldOpp.Training2_Start_Date_Time__c != null && oldOpp.Training2_Start_Date_Time__c != opp.Training2_Start_Date_Time__c) || 
+                        (oldOpp.Training2_End_Date_Time__c != null && oldOpp.Training2_End_Date_Time__c != opp.Training2_End_Date_Time__c)
+                        )){
+                    opp.Training2_Policy_Payments__c.addError('Training2 (Policy + Payments) should be in Reschedule to Change Training Start Date/Time or Training End Date/Time');
+                }
+                  /*  if(opp.Training2_Policy_Payments__c == null || opp.Training2_Policy_Payments__c == Constants.TRAINING_NOT_DONE){
                         if(opp.Training2_Start_Date_Time__c != null || opp.Training2_End_Date_Time__c != null){
                             opp.Training2_Start_Date_Time__c.addError('Without Scheduled/Reschedule, training timings should be empty');                        
                         }
@@ -132,7 +145,7 @@ trigger OpportunityBeforeTrigger on Opportunity (before insert, before update) {
                                 )){
                             opp.Training2_Policy_Payments__c.addError('Training2 (Policy + Payments) should be in Reschedule to Change Training Start Date/Time or Training End Date/Time');
                         }
-                    }
+                    }*/
                     
                     // T3 Validation Rules
                  /*   if(opp.Training3_OM_Returns_Disputes__c == null || 

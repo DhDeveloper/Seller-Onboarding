@@ -41,13 +41,23 @@ public class UtilityClassTest{
         //TAT_Profile__c tatProfile = new TAT_Profile__c(TAT_Profile__c = '13 Days');
         //insert tatProfile;
         
+        PincodeHubMapping__c pin = new PincodeHubMapping__c(Name = '1020301', Hub_Name__c = 'Test Hub');
+        insert pin;
+        
+        System.debug('Pin Id:'+ pin.Id);
+        
         Opportunity testOpportunity = new Opportunity(  Name = 'Test Opportunity',
                                                         AccountId = testAccount.Id,
                                                         StageName = Constants.OPP_STAGE_CANDIDATE,
-                                                        CloseDate = date.parse('01/10/2014')//,
+                                                        CloseDate = date.parse('01/10/2014'),
+                                                        Seller_Registration_Email__c = 'test@testmail.com',
+                                                        Pickup_Area_Pincode__c = pin.Id 
                                                         //TAT_Profile__c = tatProfile.Id
                                                       );
         insert testOpportunity;
+        
+        System.debug('PickupPincode:'+testOpportunity.Pickup_Area_Pincode__c);
+        
         System.runAs(userWithBDOMProfile()) {
 	        testOpportunity.StageName = Constants.OPP_STAGE_READY_TO_ONBOARD;
 	        update testOpportunity;

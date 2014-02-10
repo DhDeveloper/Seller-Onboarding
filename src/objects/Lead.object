@@ -1646,6 +1646,16 @@ If not, do not select.</description>
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>Subcategories_Values__c</fullName>
+        <externalId>false</externalId>
+        <label>Subcategories Values</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
         <fullName>SuperCategory__c</fullName>
         <externalId>false</externalId>
         <label>SuperCategory</label>

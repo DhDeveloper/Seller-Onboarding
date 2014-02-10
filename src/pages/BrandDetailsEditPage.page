@@ -1,0 +1,35 @@
+<apex:page standardController="Brand_Details__c" tabStyle="Brand_Details__c" sidebar="false">
+    <apex:form >
+        <apex:pageBlock title="Brand Details" mode="edit">
+            <apex:pageBlockSection columns="3" >
+                <apex:inputField value="{!Brand_Details__c.Name}"/>
+                <apex:inputField value="{!Brand_Details__c.Brand_Name__c}"/>
+                <apex:inputField value="{!Brand_Details__c.Brand_Age__c}"/>
+                <apex:inputField value="{!Brand_Details__c.Brand_Banner__c}"/>
+                <apex:inputField value="{!Brand_Details__c.Brand_Description__c}"/>
+                <apex:inputField value="{!Brand_Details__c.Brand_Logo__c}"/>
+                <apex:inputField value="{!Brand_Details__c.Does_have_EAN_UPC__c}"/>
+                <apex:inputField value="{!Brand_Details__c.Sample_verification_done__c}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="3" rendered="{!Brand_Details__c.Super_Category__c=='Softlines'}">
+                <apex:repeat var="softline" value="{!$ObjectType.Brand_Details__c.FieldSets.Softline_Fields}">
+                    <apex:inputField value="{!Brand_Details__c[softline]}" />
+                </apex:repeat>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="3" rendered="{!Brand_Details__c.Super_Category__c=='BGM'}">
+                <apex:repeat var="bgm" value="{!$ObjectType.Brand_Details__c.FieldSets.BGM_Fields}">
+                    <apex:inputField value="{!Brand_Details__c[bgm]}" />                    
+                </apex:repeat>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection columns="3" rendered="{!Brand_Details__c.Super_Category__c=='CCC'}">
+                <apex:repeat var="ccc" value="{!$ObjectType.Brand_Details__c.FieldSets.CCC_Fields}">
+                    <apex:inputField value="{!Brand_Details__c[ccc]}" />                    
+                </apex:repeat>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+              <apex:commandButton value="Save" action="{!save}"/>         
+              <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
+          </apex:pageBlockButtons>
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

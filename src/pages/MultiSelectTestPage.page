@@ -1,0 +1,46 @@
+<apex:page standardController="Lead" extensions="MultiSelectController" >
+    <script>
+        function clickAdd(){Refresh();}
+        function clickRemove(){Remove();}
+        function clickChildAdd(){AddChild();}
+        function clickChildRemove(){RemoveChild();}
+    </script>
+    <apex:form id="form1">
+    	<apex:commandButton value="Save" action="{!saveBrandDetails}"/> 
+        <apex:outputPanel id="panel1">
+            <apex:actionFunction action="{!actionUpdatePicklistVals}" name="Refresh" rerender="panel1"/>
+            <apex:actionFunction action="{!actionRemovePicklistVals}" name="Remove" rerender="panel1"/>
+            <apex:actionFunction action="{!addChildPicklistVals}" name="AddChild" rerender="panel1"/>
+            <apex:actionFunction action="{!RemoveChildPicklistVals}" name="RemoveChild" rerender="panel1"/>
+
+			<Table>
+				<TR><TD colspan="2"><b>Subcategory:</b></TD></TR>
+				<TR><TD><b> Available</b></TD><TD></TD><TD><b> Chosen</b></TD></TR>            
+				<TR><TD>
+					<apex:selectList value="{!parentPicklistVal}" multiselect="true" size="5" style="width:250px;hight:500px">
+                		<apex:selectOptions value="{!parentPicklistOptions}" />                
+            		</apex:selectList>
+					</TD><TD><br></br><a href="#" title="Add"><img src="/s.gif" alt="Add"  class="picklistArrowRight" onclick="clickAdd()" style="cursor:pointer;" title="Add"/></a>
+					<br></br><br></br><a href="#" title="Remove"><img src="/s.gif" alt="Remove"  class="picklistArrowLeft" onclick="clickRemove()" style="cursor:pointer;" title="Remove"/></a>
+					</TD><TD>
+					<apex:selectList value="{!selectedparentPicklistVal}" multiselect="true" size="5" style="width:250px;hight:500px">
+                		<apex:selectOptions value="{!SelectedParentPicklistOptions}" />
+            		</apex:selectList>
+				</TD></TR><TR></TR><TR></TR><TR></TR>
+				<TR><TD colspan="2"><b>Vertical:</b></TD></TR>
+				<TR><TD><b> Available</b></TD><TD></TD><TD><b> Chosen</b></TD></TR>            
+				<TR><TD>
+					<apex:selectList value="{!childPicklistVal}" multiselect="true" size="5" style="width:250px">
+                		<apex:selectOptions value="{!ChildPicklistOptions}" />                
+            		</apex:selectList>
+					</TD><TD><br></br><a href="#" title="Add"><img src="/s.gif" alt="Add"  class="picklistArrowRight" onclick="clickChildAdd()" style="cursor:pointer;" title="Add"/></a>
+					<br></br><br></br><a href="#" title="Remove"><img src="/s.gif" alt="Remove"  class="picklistArrowLeft" onclick="clickChildRemove()" style="cursor:pointer;" title="Remove"/></a>
+					</TD><TD>
+					<apex:selectList value="{!selectedchildPicklistVal}" multiselect="true" size="5" style="width:250px">
+                		<apex:selectOptions value="{!SelectedChildPicklistOptions}" />
+            		</apex:selectList>
+				</TD></TR>   
+			</Table>
+		</apex:outputPanel>
+	</apex:form>     
+</apex:page>

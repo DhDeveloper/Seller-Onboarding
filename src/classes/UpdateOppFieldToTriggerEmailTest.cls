@@ -13,6 +13,9 @@ class UpdateOppFieldToTriggerEmailTest {
     static void testOppFieldUpdate() {
         System.debug('In testOppFieldUpdate test method');
         Opportunity oppTest = UtilityClassTest.createOpportunityTestRecord();
+        oppTest.StageName = Constants.OPP_STAGE_READY_TO_INVITE;
+        update oppTest;
+        
         oppTest.StageName = 'Invited';
         update oppTest;
         
@@ -34,6 +37,8 @@ class UpdateOppFieldToTriggerEmailTest {
         String sch = '0 0 10 ? * MON-FRI'; 
         Test.startTest();
 		Opportunity oppTest = UtilityClassTest.createOpportunityTestRecord();
+		oppTest.StageName = Constants.OPP_STAGE_READY_TO_INVITE;
+        update oppTest;
         oppTest.StageName = 'Invited';
         update oppTest;
         
@@ -51,6 +56,8 @@ class UpdateOppFieldToTriggerEmailTest {
         String sch = '0 0 16 ? * MON-FRI'; 
         Test.startTest();
 		Opportunity oppTest = UtilityClassTest.createOpportunityTestRecord();
+		oppTest.StageName = Constants.OPP_STAGE_READY_TO_INVITE;
+        update oppTest;
         oppTest.StageName = 'Invited';
         update oppTest;
         

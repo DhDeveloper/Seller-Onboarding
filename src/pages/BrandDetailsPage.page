@@ -1,7 +1,8 @@
 <apex:page Controller="MultipleBrandDetailsClass" sidebar="false">
     <apex:form >
+        <b><apex:outputLabel value="Lead Name"></apex:outputLabel></b>
         <apex:outputText value="{!leadId}"></apex:outputText>
-        <apex:pageBlock title="Brand Details Block" mode="edit">
+        <apex:pageBlock title="Brand Details" mode="edit">
             <apex:messages /> 
             
             <apex:pageBlockTable value="{!brandWrapperList}" var="brand">

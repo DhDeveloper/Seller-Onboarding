@@ -661,7 +661,7 @@
             </picklistValues>
             <picklistValues>
                 <fullName>18</fullName>
-                <default>false</default>
+                <default>true</default>
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
@@ -1840,6 +1840,32 @@ Recommended format
         <type>DateTime</type>
     </fields>
     <fields>
+        <fullName>Training_1_Ameyo_ID_Call_ref_ID__c</fullName>
+        <description>Training 1 - Ameyo ID / Call refence ID</description>
+        <externalId>false</externalId>
+        <label>Training 1 - Ameyo ID / Call ref ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Training_2_Ameyo_ID_Call_ref_ID__c</fullName>
+        <description>Training 2 - Ameyo ID / Call reference ID</description>
+        <externalId>false</externalId>
+        <label>Training 2 - Ameyo ID / Call ref ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Training_End_Date_Time__c</fullName>
         <externalId>false</externalId>
         <label>Training1 End Date/Time</label>
@@ -2449,7 +2475,7 @@ Recommended format
             </values>
             <values>
                 <fullName>18</fullName>
-                <default>false</default>
+                <default>true</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -3189,7 +3215,7 @@ Recommended format
             </values>
             <values>
                 <fullName>18</fullName>
-                <default>false</default>
+                <default>true</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -3631,6 +3657,30 @@ Recommended format
         <errorMessage>Cannot make a seller Live without completing Training1.</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>TrainingT1ScheduleTimingsValidationRule</fullName>
+        <active>true</active>
+        <description>If Training T1 is Scheduled/Reschedule then Training1 Start Date/Time  and Training1 End Date/Time should not be empty</description>
+        <errorConditionFormula>AND( OR(ISPICKVAL(Training1__c, &quot;Scheduled&quot;),
+        ISPICKVAL(Training1__c, &quot;Reschedule&quot;)), 
+     OR(ISBLANK( Training_Start_Date_Time__c ), 
+        ISBLANK( Training_End_Date_Time__c )) 
+    )</errorConditionFormula>
+        <errorDisplayField>Training_Start_Date_Time__c</errorDisplayField>
+        <errorMessage>On Training1 (Listings) Scheduled/Reschedule, Training1 Start Date/Time and Training1 End Date/Time cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TrainingT1TimingsValidationRule</fullName>
+        <active>true</active>
+        <description>If Training T1 is &apos;Not Done&apos; then Training Start Date/Time and Training End Date/Time should be empty</description>
+        <errorConditionFormula>AND(ISPICKVAL(Training1__c, &quot;Not Done&quot;),
+     OR( NOT(ISBLANK( Training_Start_Date_Time__c )),
+          NOT(ISBLANK( Training_End_Date_Time__c ))  
+        )
+     )</errorConditionFormula>
+        <errorDisplayField>Training_Start_Date_Time__c</errorDisplayField>
+        <errorMessage>Training1 Start Date/Time and Training1 End Date/Time should be empty if Training1 (Listings)  &apos;Not Done&apos;</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>TrainingT1ValidationRule</fullName>
         <active>true</active>
         <errorConditionFormula>AND( 
@@ -3640,6 +3690,30 @@ NOT(ISPICKVAL(Training1__c, &quot;Completed&quot;))
 )</errorConditionFormula>
         <errorDisplayField>Training1__c</errorDisplayField>
         <errorMessage>Cannot move to next stage without completing Training1 (Listings)</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TrainingT2ScheduleTimingsValidationRule</fullName>
+        <active>true</active>
+        <description>If Training T2 is Scheduled/Reschedule then Training2 Start Date/Time  and Training2 End Date/Time should not be empty</description>
+        <errorConditionFormula>AND( OR(ISPICKVAL(Training2_Policy_Payments__c, &quot;Scheduled&quot;),
+        ISPICKVAL(Training2_Policy_Payments__c, &quot;Reschedule&quot;)), 
+     OR(ISBLANK( Training2_Start_Date_Time__c ), 
+        ISBLANK( Training2_End_Date_Time__c )) 
+    )</errorConditionFormula>
+        <errorDisplayField>Training2_Start_Date_Time__c</errorDisplayField>
+        <errorMessage>On Training2 (Policy + Payments) Scheduled/Reschedule, Training2 Start Date/Time and Training2 End Date/Time cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>TrainingT2TimingsValidationRule</fullName>
+        <active>true</active>
+        <description>If Training T2 is &apos;Not Done&apos; then Training Start Date/Time and Training End Date/Time should be empty</description>
+        <errorConditionFormula>AND(ISPICKVAL(Training2_Policy_Payments__c, &quot;Not Done&quot;),
+     OR( NOT(ISBLANK( Training2_Start_Date_Time__c)),
+          NOT(ISBLANK( Training2_End_Date_Time__c))  
+        )
+     )</errorConditionFormula>
+        <errorDisplayField>Training2_Start_Date_Time__c</errorDisplayField>
+        <errorMessage>Training2 Start Date/Time and Training2 End Date/Time should be empty if Training2 (Policy + Payments)  &apos;Not Done&apos;</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>TrainingT2ValidationRule</fullName>

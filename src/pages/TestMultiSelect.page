@@ -1,0 +1,14 @@
+<apex:page Controller="someController">
+    <apex:form >
+        <apex:outputPanel id="panel1">
+            <apex:selectList value="{!parentPicklistVal}" multiselect="true" size="3">
+                <apex:selectOptions value="{!parentPicklistOptions}" />
+                <apex:actionSupport event="onchange" action="{!actionUpdatePicklistVals}" rerender="panel1" />
+            </apex:selectList>
+            <apex:selectList value="{!childMultiPicklistVal}" multiselect="true" size="3">
+                <apex:selectOptions value="{!childMultiPicklistOptions}" />
+                <apex:actionSupport event="onchange" action="{!actionUpdatePicklistVals}" rerender="panel1" />
+            </apex:selectList>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

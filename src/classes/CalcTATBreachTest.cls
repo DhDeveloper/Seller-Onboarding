@@ -15,17 +15,17 @@ public class CalcTATBreachTest{
                                       Time_Taken_per_Stage__c, TAT_Breach_in_Days__c
                                   FROM   Seller_TAT_Breach__c
                                   WHERE  Opportunity__c = :opp.Id];
-    Integer i = 0;
+    	Integer i = 0;
         for(Seller_TAT_Breach__c stb : sellerTATBreachList){
-      System.debug('Id: '+stb.Id+'\n Opportunity Id: '+stb.Opportunity__c+'\n Ideal Closure Date: '+stb.Ideal_Closure_Date__c);
-      System.debug('Actual Closure Date: '+stb.Actual_Closure_Date__c+'\n Next Breach Date: '+stb.Next_Breach_Date__c);
-      System.debug('Estimated Closure Date: '+stb.Estimated_Closure_Date__c);
-      System.debug('Time Taken per Stage: '+stb.Time_Taken_per_Stage__c+'\n TAT Breach in Days: '+stb.TAT_Breach_in_Days__c);
-            if(i == 0){
-                stb.Actual_Closure_Date__c = Date.today()+15;
-                i++;
-            }
-    }
+	      System.debug('Id: '+stb.Id+'\n Opportunity Id: '+stb.Opportunity__c+'\n Ideal Closure Date: '+stb.Ideal_Closure_Date__c);
+	      System.debug('Actual Closure Date: '+stb.Actual_Closure_Date__c+'\n Next Breach Date: '+stb.Next_Breach_Date__c);
+	      System.debug('Estimated Closure Date: '+stb.Estimated_Closure_Date__c);
+	      System.debug('Time Taken per Stage: '+stb.Time_Taken_per_Stage__c+'\n TAT Breach in Days: '+stb.TAT_Breach_in_Days__c);
+          if(i == 0){
+	        stb.Actual_Closure_Date__c = Date.today()+15;
+	        i++;
+          }
+	    }
         update sellerTATBreachList;
     }
 }

@@ -1,0 +1,6 @@
+<apex:page Controller="SellerBatchUpdateController">
+<apex:form >
+    <apex:commandButton action="{!updateBatch}" value="Seller Records Update"/>
+    Check in setup Jobs --> Apex Jobs 
+</apex:form>
+</apex:page>

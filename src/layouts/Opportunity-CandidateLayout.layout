@@ -23,6 +23,14 @@
                 <behavior>Edit</behavior>
                 <field>Invited_to_Live_Time__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Training_1_Ameyo_ID_Call_ref_ID__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Training_2_Ameyo_ID_Call_ref_ID__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

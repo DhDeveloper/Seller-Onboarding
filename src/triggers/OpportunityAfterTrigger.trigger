@@ -107,13 +107,6 @@ trigger OpportunityAfterTrigger on Opportunity (after insert, after update) {
                 updateSeller.add(opp);
             }
             
-            //==============================
-            
-            if(oldOpp.Pending_Stock_Update_Date__c != opp.Pending_Stock_Update_Date__c){
-                tempUpdateOppList2.add(opp);
-            }
-            //================================
-            
             /* Collecting all Opportunity records to insert training schedules in calendar
             */
             if( (opp.Training1__c != oldOpp.Training1__c && opp.Training1__c == Constants.TRAINING_SCHEDULED) || 
@@ -192,43 +185,51 @@ trigger OpportunityAfterTrigger on Opportunity (after insert, after update) {
             Seller_TAT_Breach Object records if Actual_Closure_Date differs from Ideal_Closure_Date
         */
         if(updateSeller.size() > 0){
-            List<Seller_TAT_Breach__c> updateSellerList;
+            //List<Seller_TAT_Breach__c> updateSellerList;
             List<Seller_TAT_Breach__c> finalUpdateSellerList = new List<Seller_TAT_Breach__c> ();
             
-            List<Opportunity> updateSList = [SELECT Id,(SELECT  Id,Opportunity__c,Ideal_Closure_Date__c,
-                                                                    Actual_Closure_Date__c,Next_Breach_Date__c,
-                                                                    Estimated_Closure_Date__c,TAT_Stage_Profile_ID__r.TAT_Profile_Spec__c,
-                                                                    TAT_Stage_Profile_ID__r.TAT_Stage_ID__r.TAT_Stage__c
-                                                            FROM    Opportunity.Seller_TAT_Breach__r order by Name) FROM Opportunity
-                                                            WHERE   Id in :updateSeller];
+            List<Opportunity> updateSList = [SELECT Id FROM Opportunity WHERE   Id in :updateSeller];
             
+            List<Seller_TAT_Breach__c> updateSellerList = [SELECT	Id,Opportunity__c,Ideal_Closure_Date__c,
+									                                    Actual_Closure_Date__c,Next_Breach_Date__c,
+									                                    Estimated_Closure_Date__c,TAT_Stage_Profile_ID__r.TAT_Profile_Spec__c,
+									                                    TAT_Stage_Profile_ID__r.TAT_Stage_ID__r.TAT_Stage__c,
+									                                    (SELECT Id, Swimline_Start_Date__c, Swimline_End_Date__c 
+									                                     FROM 	Seller_TAT_Breach__c.Seller_TAT_Swimline__r)
+									                      		FROM    Seller_TAT_Breach__c 
+									                      		WHERE  	Opportunity__c IN :updateSList ORDER BY Name];
             
             for(Opportunity opp: Trigger.new){
                 Opportunity oldOpp = oldMap.get(opp.Id);
                 for(Opportunity tempOpp: updateSList){
                 	if(tempOpp.Id == opp.Id){
-            			updateSellerList = tempOpp.Seller_TAT_Breach__r;
+            			//updateSellerList = tempOpp.Seller_TAT_Breach__r;
                 		
                 		for(Integer i=0; i<updateSellerList.size() ;i++){
-                			Date nextBreachDateTemp = null;  
-                    
-		                    
-		                    // Updates Actual Closure Date based on Stage Change of Opportunity record                    
-		                    if(opp.Id == updateSellerList.get(i).Opportunity__c && 
-		                       oldOpp.StageName ==  updateSellerList.get(i).TAT_Stage_Profile_ID__r.TAT_Stage_ID__r.TAT_Stage__c){
-	                       		updateSellerList.get(i).Actual_Closure_Date__c = (opp.LastModifiedDate).date();
-		                    }
-		                    
-		                    // Updates Next_Breach_Date,Estimated_Closure_Date on all Opportunity related 
-		                    // Seller_TAT_Breach Object records if Actual_Closure_Date differs from Ideal_Closure_Date 
-		                    if(i!=0 && updateSellerList.get(i-1).Actual_Closure_Date__c != null){
-		                        if(updateSellerList.get(i-1).Actual_Closure_Date__c != updateSellerList.get(i-1).Ideal_Closure_Date__c){
-		                            nextBreachDateTemp = UtilityClass.addDaysExcludingSundaysHolidays(updateSellerList.get(i-1).Actual_Closure_Date__c ,
-		                                                                                              Integer.valueOf(updateSellerList.get(i).TAT_Stage_Profile_ID__r.TAT_Profile_Spec__c)+1,
-		                                                                                              holidaysList);
-		                        }
-		                    } 
-		                    updateSellerList = OpportunityHelperClass.recalculateNextBreachAndEstimatedClosureDates(i, nextBreachDateTemp, opp, updateSellerList, holidaysList);			
+                			if(opp.Id == updateSellerList.get(i).Opportunity__c){
+	                			Date nextBreachDateTemp = null;  
+			                    
+			                    // Updates Actual Closure Date based on Stage Change of Opportunity record                    
+			                    if(oldOpp.StageName ==  updateSellerList.get(i).TAT_Stage_Profile_ID__r.TAT_Stage_ID__r.TAT_Stage__c){
+		                       		updateSellerList.get(i).Actual_Closure_Date__c = (opp.LastModifiedDate).date();
+			                    }
+			                    
+			                    //To update Live record
+			                    if(oldOpp.StageName == Constants.OPP_STAGE_GO_LIVE_CHECKLIST && opp.StageName ==  updateSellerList.get(i).TAT_Stage_Profile_ID__r.TAT_Stage_ID__r.TAT_Stage__c){
+			                    	updateSellerList.get(i).Actual_Closure_Date__c = (opp.LastModifiedDate).date();
+			                    }
+			                    
+			                    // Updates Next_Breach_Date,Estimated_Closure_Date on all Opportunity related 
+			                    // Seller_TAT_Breach Object records if Actual_Closure_Date differs from Ideal_Closure_Date 
+			                    if(i!=0 && updateSellerList.get(i-1).Actual_Closure_Date__c != null){
+			                        if(updateSellerList.get(i-1).Actual_Closure_Date__c != updateSellerList.get(i-1).Ideal_Closure_Date__c){
+			                            nextBreachDateTemp = UtilityClass.addDaysExcludingSundaysHolidays(updateSellerList.get(i-1).Actual_Closure_Date__c ,
+			                                                                                              Integer.valueOf(updateSellerList.get(i).TAT_Stage_Profile_ID__r.TAT_Profile_Spec__c)+1,
+			                                                                                              holidaysList);
+			                        }
+			                    } 
+			                    updateSellerList = OpportunityHelperClass.recalculateNextBreachAndEstimatedClosureDates(i, nextBreachDateTemp, opp, updateSellerList, holidaysList);
+                			}			
                 		}
                 		finalUpdateSellerList.addAll(updateSellerList);
                 	}
@@ -236,64 +237,6 @@ trigger OpportunityAfterTrigger on Opportunity (after insert, after update) {
             }
             update finalUpdateSellerList;
         }
-        
-        //==========================================Temporary code to update existing Opps==========================================================
-      /*  if(tempUpdateOppList2.size() > 0){
-            List<Seller_TAT_Breach__c> updateSellerList;
-            List<Seller_TAT_Breach__c> finalUpdateSellerList = new List<Seller_TAT_Breach__c> ();
-            
-            List<Opportunity> updateSList = [SELECT Id,(SELECT  Id,Opportunity__c,Ideal_Closure_Date__c,
-                                                                    Actual_Closure_Date__c,Next_Breach_Date__c,
-                                                                    Estimated_Closure_Date__c,TAT_Stage_Profile_ID__r.TAT_Profile_Spec__c,
-                                                                    TAT_Stage_Profile_ID__r.TAT_Stage_ID__r.TAT_Stage__c
-                                                            FROM    Opportunity.Seller_TAT_Breach__r order by Name) FROM Opportunity
-                                                            WHERE   Id in :tempUpdateOppList2];
-            
-            
-            for(Opportunity opp: Trigger.new){
-                Opportunity oldOpp = oldMap.get(opp.Id);
-                for(Opportunity tempOpp: updateSList){
-                	if(tempOpp.Id == opp.Id){
-            			updateSellerList = tempOpp.Seller_TAT_Breach__r;
-                		
-                		for(Integer i=0; i<updateSellerList.size() ;i++){
-                			Date nextBreachDateTemp = null; 
-                			
-                			String stageNameTAT = updateSellerList.get(i).TAT_Stage_Profile_ID__r.TAT_Stage_ID__r.TAT_Stage__c; 
-                    		
-                    		//Existing Data Considerations while uploading through data loader
-	                       	if(stageNameTAT == Constants.OPP_STAGE_INVITED && opp.Pending_min_SKU_Date__c != null ){
-	                       		updateSellerList.get(i).Actual_Closure_Date__c = opp.Pending_min_SKU_Date__c;
-	                       	}else if(stageNameTAT == Constants.OPP_STAGE_MIN_SKU_CREATION && opp.Pending_min_Listings_Date__c != null ){
-	                       		updateSellerList.get(i).Actual_Closure_Date__c = opp.Pending_min_Listings_Date__c;
-	                       	}else if(stageNameTAT == Constants.OPP_STAGE_MIN_LISTINGS && opp.Pending_Seller_Approval_Date__c != null ){
-	                       		updateSellerList.get(i).Actual_Closure_Date__c = opp.Pending_Seller_Approval_Date__c;
-	                       	}else if(stageNameTAT == Constants.OPP_STAGE_SELLER_APPROVAL && opp.Pending_Stock_Update_Date__c != null ){
-	                       		updateSellerList.get(i).Actual_Closure_Date__c = opp.Pending_Stock_Update_Date__c;
-	                       	}else if(stageNameTAT == Constants.OPP_STAGE_STOCK_UPDATE && opp.Go_Live_Checklist_Date__c != null ){
-	                       		updateSellerList.get(i).Actual_Closure_Date__c = opp.Go_Live_Checklist_Date__c;
-	                       	}else if ((stageNameTAT == Constants.OPP_STAGE_LIVE || stageNameTAT == Constants.OPP_STAGE_GO_LIVE_CHECKLIST ) && opp.Live_Date__c != null){
-	                       		updateSellerList.get(i).Actual_Closure_Date__c = opp.Live_Date__c;
-	                       	}
-		                    
-		                    // Updates Next_Breach_Date,Estimated_Closure_Date on all Opportunity related 
-		                    // Seller_TAT_Breach Object records if Actual_Closure_Date differs from Ideal_Closure_Date 
-		                    if(i!=0 && updateSellerList.get(i-1).Actual_Closure_Date__c != null){
-		                        if(updateSellerList.get(i-1).Actual_Closure_Date__c != updateSellerList.get(i-1).Ideal_Closure_Date__c){
-		                            nextBreachDateTemp = UtilityClass.addDaysExcludingSundaysHolidays(updateSellerList.get(i-1).Actual_Closure_Date__c ,
-		                                                                                              Integer.valueOf(updateSellerList.get(i).TAT_Stage_Profile_ID__r.TAT_Profile_Spec__c)+1,
-		                                                                                              holidaysList);
-		                        }
-		                    } 
-		                    updateSellerList = OpportunityHelperClass.recalculateNextBreachAndEstimatedClosureDates(i, nextBreachDateTemp, opp, updateSellerList, holidaysList);			
-                		}
-                		finalUpdateSellerList.addAll(updateSellerList);
-                	}
-                }
-            }
-            update finalUpdateSellerList;
-        }*/
-        //=======================================================================================================================
         
         /* Inserting training schedules in calendar for respective Opportunity records
         */

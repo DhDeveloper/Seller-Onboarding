@@ -1,0 +1,45 @@
+<apex:page Controller="MultipleBrandDetailsClass" sidebar="false">
+    <apex:form >
+        <div  style="display: none;">
+            <apex:outputText value="{!leadId}"></apex:outputText>
+        </div>
+        <apex:messages style="color:red;font-weight:bold"/> 
+        <apex:pageBlock title="Lead: {!leadName} - Brand Details">
+            <apex:repeat value="{!brandWrapperList}" var="brand">
+                <apex:pageBlock title="Brand" mode="edit">
+                    <apex:pageBlockSection columns="3" >
+                        <apex:inputField value="{!brand.brandDetails.Name}"/>
+                        <apex:inputField value="{!brand.brandDetails.Brand_Name__c}"/>
+                        <apex:inputField value="{!brand.brandDetails.Brand_Age__c}"/>
+                        <apex:inputField value="{!brand.brandDetails.Brand_Banner__c}"/>
+                        <apex:inputField value="{!brand.brandDetails.Brand_Description__c}"/>
+                        <apex:inputField value="{!brand.brandDetails.Brand_Logo__c}"/>
+                        <apex:inputField value="{!brand.brandDetails.Does_have_EAN_UPC__c}"/>
+                        <apex:inputField value="{!brand.brandDetails.Sample_verification_done__c}"/>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection columns="3" rendered="{!superCategory=='Softlines'}">
+                        <apex:repeat var="softline" value="{!$ObjectType.Brand_Details__c.FieldSets.Softline_Fields}">
+                            <apex:inputField value="{!brand.brandDetails[softline]}" />
+                        </apex:repeat>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection columns="3" rendered="{!superCategory=='BGM'}">
+                        <apex:repeat var="bgm" value="{!$ObjectType.Brand_Details__c.FieldSets.BGM_Fields}">
+                            <apex:inputField value="{!brand.brandDetails[bgm]}" />                    
+                        </apex:repeat>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection columns="3" rendered="{!superCategory=='CCC'}">
+                        <apex:repeat var="ccc" value="{!$ObjectType.Brand_Details__c.FieldSets.CCC_Fields}">
+                            <apex:inputField value="{!brand.brandDetails[ccc]}" />                    
+                        </apex:repeat>
+                    </apex:pageBlockSection>
+                </apex:pageBlock>
+          </apex:repeat> 
+          
+          <apex:pageBlockButtons >
+              <apex:commandButton value="Add Brand" action="{!Add}"/>
+              <apex:commandButton value="Save All" action="{!saveBrandList}"/>         
+              <apex:commandButton value="Cancel" action="{!cancelButton}" immediate="true"/>
+          </apex:pageBlockButtons>
+        </apex:pageBlock>          
+    </apex:form>
+</apex:page>

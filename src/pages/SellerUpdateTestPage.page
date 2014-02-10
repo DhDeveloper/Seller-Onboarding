@@ -1,0 +1,5 @@
+<apex:page Controller="SellerBatchTest2">
+<apex:form >
+    <apex:commandButton action="{!callMe}" value="Click Me"/>
+</apex:form>
+</apex:page>

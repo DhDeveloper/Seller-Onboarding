@@ -23,8 +23,8 @@ public class Constants {
     public static final String TAT_25                               = '25';
     
     
-    public static final String SMS_GROUP_EMAIL_ID                   = 'prasanthn@flipkart.com,murali.dharnala@in.pwc.com';//'sms-dev-ops@flipkart.com';//
-    public static final String RETURN_EMAIL_ID                   	= 'murali.dharnala@in.pwc.com';//'selleronboarding@flipkart.com';//
+    public static final String SMS_GROUP_EMAIL_ID                   = 'sms-dev-ops@flipkart.com';//'murali.dharnala@in.pwc.com';//prasanthn@flipkart.com,
+    public static final String RETURN_EMAIL_ID                   	= 'selleronboarding@flipkart.com';//'murali.dharnala@in.pwc.com';//
     
     public static final String BD_ACTION_DROP                       = 'Drop';
     public static final String BD_ACTION_PAUSE                      = 'Continue';
@@ -45,6 +45,7 @@ public class Constants {
     public static final Integer TAT_SWIMLINE_TRAINING_T2            = 5;
     public static final Integer TAT_SWIMLINE_TRAINING_T3            = 6;
     
+    /*
     //OTRS Constants
     public static final String SOAP_HEADER							= '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tic="http://www.otrs.org/TicketConnector/"><soapenv:Header/><soapenv:Body>';
     public static final String SOAP_FOOTER							= '</soapenv:Body></soapenv:Envelope>';
@@ -94,6 +95,6 @@ public class Constants {
 
 	public static final String outputXML = '<soap:Envelope soap:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'+
    '<soap:Body><TicketCreateResponse xmlns="http://www.otrs.org/TicketConnector/"><ArticleID>25</ArticleID><TicketID>125</TicketID><TicketNumber>2014012001000012</TicketNumber>'+
-      '</TicketCreateResponse></soap:Body></soap:Envelope>';    																							
+      '</TicketCreateResponse></soap:Body></soap:Envelope>';    		*/																					
     
 }
