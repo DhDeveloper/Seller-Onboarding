@@ -29,6 +29,15 @@
         <protected>false</protected>
     </fieldUpdates>
     <fieldUpdates>
+        <fullName>Uncheck_SS_Pause_Seller_on_Revisit_On_Da</fullName>
+        <field>SS_Pause_Seller__c</field>
+        <literalValue>0</literalValue>
+        <name>Uncheck SS-Pause Seller on Revisit On Da</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
         <fullName>UpdateRecordTypeToOnboarding</fullName>
         <field>RecordTypeId</field>
         <lookupValue>InOnboarding</lookupValue>
@@ -36,6 +45,15 @@
         <name>UpdateRecordTypeToOnboarding</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>LookupValue</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>ss_check</fullName>
+        <field>SS_Pause_Seller__c</field>
+        <literalValue>0</literalValue>
+        <name>ss check</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
         <protected>false</protected>
     </fieldUpdates>
     <rules>
@@ -129,6 +147,27 @@
                 <name>Uncheck_SS_Drop</name>
                 <type>FieldUpdate</type>
             </actions>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Uncheck SS-Pause Seller on Revisit On Date</fullName>
+        <active>true</active>
+        <booleanFilter>1</booleanFilter>
+        <criteriaItems>
+            <field>Opportunity.SS_Pause_Seller__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>Uncheck SS-Pause Seller on Revisit On Date</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Uncheck_SS_Pause_Seller_on_Revisit_On_Da</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Opportunity.SS_Revisit_Date__c</offsetFromField>
             <timeLength>0</timeLength>
             <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
         </workflowTimeTriggers>

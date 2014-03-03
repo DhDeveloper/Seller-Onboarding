@@ -51,8 +51,8 @@
     <description>Brand Details</description>
     <enableActivities>false</enableActivities>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
-    <enableReports>false</enableReports>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
     <fieldSets>
         <fullName>BGM_Fields</fullName>
         <description>BGM Specific fields</description>
@@ -158,6 +158,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
@@ -170,6 +171,7 @@
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -189,6 +191,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
@@ -199,6 +202,7 @@
         <inlineHelpText>Brand Banner</inlineHelpText>
         <label>Brand Banner</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Url</type>
     </fields>
@@ -210,6 +214,7 @@
         <label>Brand Description</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -221,6 +226,7 @@
         <inlineHelpText>Brand Logo</inlineHelpText>
         <label>Brand Logo</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Url</type>
     </fields>
@@ -232,6 +238,7 @@
         <label>Brand Name</label>
         <length>255</length>
         <required>true</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -243,6 +250,7 @@
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -262,6 +270,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
@@ -280,6 +289,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
@@ -304,6 +314,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
@@ -316,6 +327,7 @@
         <relationshipLabel>Brand Details</relationshipLabel>
         <relationshipName>Brand_Details</relationshipName>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -326,6 +338,7 @@
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -346,6 +359,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
@@ -368,6 +382,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
@@ -386,6 +401,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
@@ -496,6 +512,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <visibleLines>3</visibleLines>
@@ -506,6 +523,7 @@
         <label>Super Category</label>
         <length>50</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -525,6 +543,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
@@ -571,6 +590,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <visibleLines>3</visibleLines>
@@ -626,6 +646,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <visibleLines>3</visibleLines>
@@ -737,6 +758,7 @@
             </picklistValues>
             <sorted>false</sorted>
         </picklist>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <visibleLines>3</visibleLines>
@@ -749,6 +771,7 @@
     </listViews>
     <nameField>
         <label>Brand Details Name</label>
+        <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>
     <pluralLabel>Brand Details</pluralLabel>

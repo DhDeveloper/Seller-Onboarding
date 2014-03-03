@@ -13,7 +13,9 @@ public class UtilityClassTest{
         //Test Account creation
         Lead leadTest = new Lead(   Company='Test Lead',
                                     FirstName='John',
-                                    LastName='June'
+                                    LastName='June',
+                                    Temp_Region__c = 'Goa',
+                                    Temp_Pickup_Pincode__c = 100
                                 );        
         insert leadTest;
         return leadTest;
@@ -37,9 +39,12 @@ public class UtilityClassTest{
     **/
     @isTest(SeeAllData=true)
     public static Opportunity createOpportunityTestRecord(){
+		Profile profileSSAM = [SELECT Id FROM Profile WHERE Name='SS AM']; 
+        UserRole userRole = [SELECT Id FROM UserRole WHERE Name='SS Agent'];
+        
+        User userSSAM = [SELECT Id FROM User WHERE UserRoleId = :userRole.Id AND ProfileId = :profileSSAM.Id AND IsActive = true  LIMIT 1];
+        
         Account testAccount = createAccountTestRecord();
-        //TAT_Profile__c tatProfile = new TAT_Profile__c(TAT_Profile__c = '13 Days');
-        //insert tatProfile;
         
         PincodeHubMapping__c pin = new PincodeHubMapping__c(Name = '1020301', Hub_Name__c = 'Test Hub');
         insert pin;
@@ -51,8 +56,8 @@ public class UtilityClassTest{
                                                         StageName = Constants.OPP_STAGE_CANDIDATE,
                                                         CloseDate = date.parse('01/10/2014'),
                                                         Seller_Registration_Email__c = 'test@testmail.com',
-                                                        Pickup_Area_Pincode__c = pin.Id 
-                                                        //TAT_Profile__c = tatProfile.Id
+                                                        Pickup_Area_Pincode__c = pin.Id,
+                                                        SS_Owner__c = userSSAM.Id
                                                       );
         insert testOpportunity;
         

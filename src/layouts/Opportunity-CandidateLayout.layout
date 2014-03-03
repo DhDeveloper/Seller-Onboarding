@@ -31,6 +31,10 @@
                 <behavior>Edit</behavior>
                 <field>Training_2_Ameyo_ID_Call_ref_ID__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Alternative_Contact_Number__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -98,7 +102,7 @@
         <label>Flipkart Capability Checks</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Pickup_Area_Pincode__c</field>
             </layoutItems>
             <layoutItems>

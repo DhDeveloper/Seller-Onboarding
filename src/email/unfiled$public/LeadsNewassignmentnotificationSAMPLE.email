@@ -1,6 +1,6 @@
 *** NEW LEAD ASSIGNMENT NOTIFICATION ***  
 
-The following lead has been assigned to you.  
+The following lead has been assigned to {!Lead.Lead_Owner_Name__c}.  
 Company:  {!Lead.Company} 
 Lead Name:  {!Lead.Name}  
 

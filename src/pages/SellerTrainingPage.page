@@ -1,0 +1,137 @@
+<apex:page standardController="Opportunity" extensions="SellerTrainingController" docType="html-5.0">
+    <apex:form >
+        <apex:pagemessages ></apex:pagemessages>
+        <apex:pageBlock >
+            <apex:pageBlock title="Training1 (Listings)" id="pgblock1">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td class="labelCol">
+                                <label for="trainingDate1">
+                                    Training1 Start Date
+                                </label>
+                            </td>
+                            <td class="dataCol">
+                                <apex:inputField value="{!opportunity.Training_T1_Date_VF__c}"/>
+                            </td>
+                            
+                            <td class="labelCol">
+                                <label for="startHoursList">
+                                    Start Time
+                                </label>
+                            </td>
+                            <td class="dataCol">
+                                <apex:selectList value="{!startHoursList}" id="startHoursList" size="1" multiselect="false">
+                                    <apex:selectOptions id="startHours" value="{!startHours}"/>
+                                    <apex:actionSupport event="onchange" action="{!populateEndHours}" reRender="endHoursList,cancelCheck"/>
+                                </apex:selectList>
+                                <apex:selectList value="{!startMinsList}" id="startMinsList" size="1" multiselect="false">
+                                    <apex:selectOptions id="startMins" value="{!startMins}"/>
+                                    <apex:actionSupport event="onchange" action="{!populateEndMins}" reRender="endMinsList,cancelCheck"/>
+                                </apex:selectList>
+                            </td>
+                            <td class="labelCol">&nbsp;</td>
+                            <td class="dataCol">&nbsp;</td>
+                            <td class="labelCol">
+                                <label for="endHoursList">
+                                    End Time
+                                </label>
+                            </td>
+                            <td class="dataCol">
+                                <apex:selectList value="{!endHoursList}" id="endHoursList" size="1" multiselect="false">
+                                    <apex:selectOptions id="endHours" value="{!endHours}"/>
+                                </apex:selectList>
+                                <apex:selectList value="{!endMinsList}" id="endMinsList" size="1" multiselect="false">
+                                    <apex:selectOptions id="endMins" value="{!endMins}"/>
+                                </apex:selectList>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="labelCol">
+                                <label for="cancelCheck">Cancel Training1</label>
+                            </td>
+                            <td class="dataCol">                            
+                                <apex:inputCheckbox id="cancelCheck" value="{!cancelTraining}"/> 
+                            </td>
+                            <td class="labelCol">
+                                <label for="completedCheck">Training1 Completed</label>
+                            </td>
+                            <td class="dataCol">
+                                <apex:inputCheckbox id="completedCheck" value="{!completedTraining}"/> 
+                            </td>
+                        </tr>
+                    </tbody>
+                 </table>
+            </apex:pageBlock>
+            <apex:pageBlock title="Training2 (Policy + Payments)">
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td class="labelCol">
+                                <label for="trainingDate2">Training2 Start Date</label>
+                            </td>
+                            <td class="dataCol">
+                                <apex:inputField value="{!opportunity.Training_T2_Date_VF__c}"/>
+                            </td>
+                            
+                            <td class="labelCol">
+                                <label for="startHoursList">Start Time</label>
+                            </td>
+                            <td class="dataCol">
+                                <apex:selectList value="{!startHoursT2List}" id="startHoursT2List" size="1" multiselect="false">
+                                    <apex:selectOptions id="startHours" value="{!startHours}"/>
+                                    <apex:actionSupport event="onchange" action="{!populateEndHours}" reRender="endHoursT2List,cancelCheck2"/>
+                                </apex:selectList>
+                                <apex:selectList value="{!startMinsT2List}" id="startMinsT2List" size="1" multiselect="false">
+                                    <apex:selectOptions id="startMins" value="{!startMins}"/>
+                                    <apex:actionSupport event="onchange" action="{!populateEndMins}" reRender="endMinsT2List,cancelCheck2"/>
+                                </apex:selectList>
+                            </td>
+                            <td class="labelCol">&nbsp;</td>
+                            <td class="dataCol">&nbsp;</td>
+                            <td class="labelCol">
+                                <label for="endHoursList">End Time</label>
+                            </td>
+                            <td class="dataCol">
+                                <apex:selectList value="{!endHoursT2List}" id="endHoursT2List" size="1" multiselect="false">
+                                    <apex:selectOptions id="endHours" value="{!endHours}"/>
+                                </apex:selectList>
+                                <apex:selectList value="{!endMinsT2List}" id="endMinsT2List" size="1" multiselect="false">
+                                    <apex:selectOptions id="endMins" value="{!endMins}"/>
+                                </apex:selectList>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="labelCol">
+                                <label for="cancelCheck2">Cancel Training2</label>
+                            </td>
+                            <td class="dataCol">                            
+                                <apex:inputCheckbox id="cancelCheck2" value="{!cancelTraining2}"/> 
+                            </td>
+                            <td class="labelCol">
+                                <label for="completedCheck2">Training2 Completed</label>
+                            </td>
+                            <td class="dataCol">
+                                <apex:inputCheckbox id="completedCheck2" value="{!completedTraining2}"/> 
+                            </td>
+                        </tr>
+                    </tbody>        
+                </table>
+            </apex:pageBlock>
+            <apex:pageBlockButtons >
+                <apex:commandButton id="saveButton" value="Save" action="{!saveTraining}" oncomplete="window.top.location = '/{!Opportunity.id}';"/>
+                <apex:commandButton id="cancelButton" value="Cancel" onclick="window.top.location = '/{!Opportunity.id}';"/>
+            </apex:pageBlockButtons>            
+        </apex:pageblock>
+    </apex:form>
+    <script type="text/javascript">
+        function setFocusOnLoad() { 
+            document.getElementById('{!$Component.pgblock1}').focus();
+        } 
+        onload=setFocusOnLoad;
+        
+        function validateCheck(){
+        	alert(document.getElementById('startHoursT2List').value);
+        }
+    </script>
+</apex:page>

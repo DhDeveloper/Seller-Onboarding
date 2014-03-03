@@ -14,7 +14,7 @@ global class BatchProcessingExistingTATDataClass implements Database.Batchable<s
     	List<Seller_TAT_Breach__c> finalUpdateSellerList = new List<Seller_TAT_Breach__c> ();
     	
     	for(sObject s : scope){
-    		Date todayDate = Date.today();
+    		Date todayDate = Date.today() - 1;
 	    	Date estimatedClosureDate = null;
 	    	Date nextBreachDate = null;
 	    	Integer tatBreachInDays = 0;

@@ -1,30 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <customButtons>Submit_for_Approval</customButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
     <headers>PublicTagging</headers>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Brand Details Page</label>
-        <layoutColumns>
-            <layoutItems>
-                <height>300</height>
-                <page>MultiSelectTestPage</page>
-                <showLabel>false</showLabel>
-                <showScrollbars>true</showScrollbars>
-                <width>100%</width>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Subcategories_Values__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <style>OneColumn</style>
-    </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
@@ -42,6 +23,14 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Region__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Temp_Region__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Lead_Owner_Name__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -102,8 +91,12 @@
         <label>Pick up Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Edit</behavior>
                 <field>Pickup_Pincode__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Temp_Pickup_Pincode__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

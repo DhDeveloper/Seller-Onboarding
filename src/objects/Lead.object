@@ -1077,6 +1077,17 @@ If not, do not select.</description>
         <type>Picklist</type>
     </fields>
     <fields>
+        <fullName>Lead_Owner_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Owner:User.FirstName&amp; &quot; &quot; &amp;Owner:User.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Lead Owner Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Markets_where_you_sell__c</fullName>
         <externalId>false</externalId>
         <label>Markets where you sell</label>
@@ -1309,7 +1320,7 @@ If not, do not select.</description>
         <relationshipName>Leads</relationshipName>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Lookup</type>
     </fields>
     <fields>
@@ -1701,6 +1712,29 @@ If not, do not select.</description>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>TAT Profile</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Temp_Pickup_Pincode__c</fullName>
+        <externalId>false</externalId>
+        <label>Temp Pickup Pincode</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Temp_Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Temp Region</label>
+        <length>200</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
@@ -3940,6 +3974,13 @@ ISBLANK(TEXT( Reason_for_Dropping__c))
         <errorMessage>Company is mandatory</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>EitherPickupCodeOrTempPickupShouldExist</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND( RecordType.Name = &apos;Evaluation&apos;, Pickup_Pincode__c =&quot;&quot;,  ISBLANK( Temp_Pickup_Pincode__c ) )</errorConditionFormula>
+        <errorDisplayField>Pickup_Pincode__c</errorDisplayField>
+        <errorMessage>You must enter a value in either Pickup Pincode or Temp Pickup Pincode</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>Last_name_before_converting</fullName>
         <active>true</active>
         <errorConditionFormula>AND(
@@ -3989,6 +4030,13 @@ LEN(Approver_Comments__c) = 0)</errorConditionFormula>
    Pickup_Pincode__c = &quot;&quot;
 )</errorConditionFormula>
         <errorMessage>Pick up Pincode is mandatory</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Region_or_TempRegion_should_exist</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND( RecordType.Name = &apos;Generation&apos;, ISPICKVAL(Region__c, &apos;&apos;), Temp_Region__c=&quot;&quot; )</errorConditionFormula>
+        <errorDisplayField>Region__c</errorDisplayField>
+        <errorMessage>You must enter a value in either Region or Temp Region</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Seller_reg_email_before_converting</fullName>

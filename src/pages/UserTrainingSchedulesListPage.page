@@ -1,0 +1,13 @@
+<apex:page StandardController="Opportunity" extensions="TrainingSchedulesListController" tabStyle="Opportunity">
+    <apex:form >
+        <apex:pageBlock title="My Schedule">
+            <apex:messages />
+            <apex:pageblockTable value="{!thisWeekEvents}" var="ev">
+                <apex:column value="{!ev.whatId}"/>
+                <apex:column value="{!ev.Subject}"/>
+                <apex:column value="{!ev.StartDateTime}"/> 
+                <apex:column value="{!ev.EndDateTime}"/>  
+            </apex:pageblockTable>                
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

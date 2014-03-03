@@ -2,7 +2,7 @@
   * This Apex Trigger executes after inserting and after updating Opportunity records
   * The following actions occur
   * 1) On Opportunity after insert, 
-  *     Insert set of records into Seller_TAT_Breach Object based on TAT_Profile[as per now 15/25 Days]
+  *     Insert set of records into Seller_TAT_Breach Object based on TAT_Profile[as per now 13/18 Days]
   * 2) On Opportunity after update,
   *     a] Updates Seller_Id on all Opportunity related Seller_TAT_Breach Object records
   *     b] Updates Actual_Closure_Date on Opportunity Stage related Seller_TAT_Breach Object record
@@ -10,6 +10,12 @@
   *        if Actual_Closure_Date differs from Ideal_Closure_Date
 **/
 trigger OpportunityAfterTrigger on Opportunity (after insert, after update) {
+	/*try{
+		System.debug(1/0);
+	}catch(Exception e){
+		//ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR,'Error Message'));
+		ExceptionLogClass.createErrorRecord('Opportunity', 'OpportunityAfterTrigger', 'First Block', e.getMessage() , e.getTypeName() , e.getStackTraceString());
+	}*/
     List<Opportunity> insertOppList = new List<Opportunity>();
     List<Opportunity> insertTrainingList = new List<Opportunity>();
     List<Opportunity> updateTrainingList = new List<Opportunity>();
@@ -18,7 +24,6 @@ trigger OpportunityAfterTrigger on Opportunity (after insert, after update) {
                                                              TAT_Stage_ID__r.Name,TAT_Stage_ID__r.TAT_Stage__c,
                                                              TAT_Profile_ID__r.Name
                                                       FROM TAT_Stage_Profile__c  where active__c = TRUE];
-                                                      //WHERE TAT_Profile_ID__r.TAT_Profile__c ='15 Days'];
     List<Holiday> holidaysList = [Select h.ActivityDate From Holiday h];
     Map<Id, Opportunity> oldMap = Trigger.oldMap;
     List<Opportunity> updateSeller = new List<Opportunity>();
@@ -117,8 +122,12 @@ trigger OpportunityAfterTrigger on Opportunity (after insert, after update) {
             
             /* Collecting all Opportunity records to update training schedules in calendar
             */
-            if( (opp.Training1__c == Constants.TRAINING_RESCHEDULE && oldOpp.Training_End_Date_Time__c != opp.Training_End_Date_Time__c)|| 
-                (opp.Training2_Policy_Payments__c == Constants.TRAINING_RESCHEDULE && oldOpp.Training2_End_Date_Time__c != opp.Training2_End_Date_Time__c) ||
+            if( (	opp.Training1__c == Constants.TRAINING_RESCHEDULE && 
+            		(oldOpp.Training_Start_Date_Time__c != opp.Training_Start_Date_Time__c || oldOpp.Training_End_Date_Time__c != opp.Training_End_Date_Time__c)
+            	)|| 
+                (	opp.Training2_Policy_Payments__c == Constants.TRAINING_RESCHEDULE && 
+                	(oldOpp.Training2_Start_Date_Time__c != opp.Training2_Start_Date_Time__c || oldOpp.Training2_End_Date_Time__c != opp.Training2_End_Date_Time__c)
+                ) ||
                 (opp.Training3_OM_Returns_Disputes__c == Constants.TRAINING_RESCHEDULE && oldOpp.Training3_End_Date_Time__c != opp.Training3_End_Date_Time__c)){
                 updateTrainingList.add(opp);
             }
@@ -184,12 +193,8 @@ trigger OpportunityAfterTrigger on Opportunity (after insert, after update) {
             Updates Next_Breach_Date,Estimated_Closure_Date on all Opportunity related 
             Seller_TAT_Breach Object records if Actual_Closure_Date differs from Ideal_Closure_Date
         */
-        if(updateSeller.size() > 0){
-            //List<Seller_TAT_Breach__c> updateSellerList;
-            List<Seller_TAT_Breach__c> finalUpdateSellerList = new List<Seller_TAT_Breach__c> ();
-            
-            List<Opportunity> updateSList = [SELECT Id FROM Opportunity WHERE   Id in :updateSeller];
-            
+        if(updateSeller.size() > 0){            
+            List<Opportunity> updateSList = [SELECT Id FROM Opportunity WHERE   Id in :updateSeller];            
             List<Seller_TAT_Breach__c> updateSellerList = [SELECT	Id,Opportunity__c,Ideal_Closure_Date__c,
 									                                    Actual_Closure_Date__c,Next_Breach_Date__c,
 									                                    Estimated_Closure_Date__c,TAT_Stage_Profile_ID__r.TAT_Profile_Spec__c,
@@ -203,7 +208,6 @@ trigger OpportunityAfterTrigger on Opportunity (after insert, after update) {
                 Opportunity oldOpp = oldMap.get(opp.Id);
                 for(Opportunity tempOpp: updateSList){
                 	if(tempOpp.Id == opp.Id){
-            			//updateSellerList = tempOpp.Seller_TAT_Breach__r;
                 		
                 		for(Integer i=0; i<updateSellerList.size() ;i++){
                 			if(opp.Id == updateSellerList.get(i).Opportunity__c){
@@ -214,7 +218,7 @@ trigger OpportunityAfterTrigger on Opportunity (after insert, after update) {
 		                       		updateSellerList.get(i).Actual_Closure_Date__c = (opp.LastModifiedDate).date();
 			                    }
 			                    
-			                    //To update Live record
+			                    //To update TAT Live record
 			                    if(oldOpp.StageName == Constants.OPP_STAGE_GO_LIVE_CHECKLIST && opp.StageName ==  updateSellerList.get(i).TAT_Stage_Profile_ID__r.TAT_Stage_ID__r.TAT_Stage__c){
 			                    	updateSellerList.get(i).Actual_Closure_Date__c = (opp.LastModifiedDate).date();
 			                    }
@@ -231,11 +235,10 @@ trigger OpportunityAfterTrigger on Opportunity (after insert, after update) {
 			                    updateSellerList = OpportunityHelperClass.recalculateNextBreachAndEstimatedClosureDates(i, nextBreachDateTemp, opp, updateSellerList, holidaysList);
                 			}			
                 		}
-                		finalUpdateSellerList.addAll(updateSellerList);
                 	}
                 }
             }
-            update finalUpdateSellerList;
+            update updateSellerList;
         }
         
         /* Inserting training schedules in calendar for respective Opportunity records
@@ -244,26 +247,41 @@ trigger OpportunityAfterTrigger on Opportunity (after insert, after update) {
             List<Event> insertEventList = new List<Event>();
             
             for(Opportunity opp : insertTrainingList){
+            	Opportunity oldOpp = oldMap.get(opp.Id);
+            	
                 if( opp.Training1__c == Constants.TRAINING_SCHEDULED || 
                     opp.Training2_Policy_Payments__c == Constants.TRAINING_SCHEDULED ||
                     opp.Training3_OM_Returns_Disputes__c == Constants.TRAINING_SCHEDULED ){
-                    Event event = new Event();
-                    event.WhatId = opp.Id;
                                         
-                    if(opp.Training1__c == Constants.TRAINING_SCHEDULED){
+                    if(opp.Training1__c != oldOpp.Training1__c && opp.Training1__c == Constants.TRAINING_SCHEDULED){
+                    	Event event = new Event();
+                    	event.WhatId = opp.Id;
                         event.Subject = Constants.TRAINING_T1;  
                         event.StartDateTime = opp.Training_Start_Date_Time__c;
                         event.EndDateTime = opp.Training_End_Date_Time__c;
-                    }else if(opp.Training2_Policy_Payments__c == Constants.TRAINING_SCHEDULED){
+                        event.IsReminderSet = true;
+                        event.ReminderDateTime = opp.Training_Start_Date_Time__c.addMinutes(-15);
+                        event.OwnerId = opp.SS_Owner__c;
+                        insertEventList.add(event);
+                    }
+                    
+                    if(opp.Training2_Policy_Payments__c != oldOpp.Training2_Policy_Payments__c && opp.Training2_Policy_Payments__c == Constants.TRAINING_SCHEDULED){
+                    	Event event = new Event();
+                    	event.WhatId = opp.Id;
                         event.Subject = Constants.TRAINING_T2;  
                         event.StartDateTime = opp.Training2_Start_Date_Time__c;
                         event.EndDateTime = opp.Training2_End_Date_Time__c;
-                    }/*else if(opp.Training3_OM_Returns_Disputes__c == Constants.TRAINING_SCHEDULED){
+                        event.IsReminderSet = true;
+                        event.ReminderDateTime = opp.Training_Start_Date_Time__c.addMinutes(-15);
+                        event.OwnerId = opp.SS_Owner__c;
+                        insertEventList.add(event);
+                    }//Below code commented because currently Training T3 is not considered
+                    /*else if(opp.Training3_OM_Returns_Disputes__c == Constants.TRAINING_SCHEDULED){
                         event.Subject = Constants.TRAINING_T3;  
                         event.StartDateTime = opp.Training3_Start_Date_Time__c;
                         event.EndDateTime = opp.Training3_End_Date_Time__c;
                     }*/
-                    insertEventList.add(event);
+                    //insertEventList.add(event);
                 }
             }
             
@@ -280,14 +298,20 @@ trigger OpportunityAfterTrigger on Opportunity (after insert, after update) {
                                             WHERE   WhatId IN :updateTrainingList ];
             
             for(Opportunity opp: updateTrainingList){
+            	Opportunity oldOpp = oldMap.get(opp.Id);
                 for(Event event : updateEventList){
-                    if(opp.Training1__c == Constants.TRAINING_RESCHEDULE){
+                    if(event.Subject == Constants.TRAINING_T1 && opp.Training1__c == Constants.TRAINING_RESCHEDULE && 
+                    	(oldOpp.Training_Start_Date_Time__c != opp.Training_Start_Date_Time__c || oldOpp.Training_End_Date_Time__c != opp.Training_End_Date_Time__c)){
                         event.StartDateTime = opp.Training_Start_Date_Time__c;
                         event.EndDateTime = opp.Training_End_Date_Time__c;                      
-                    }else if(opp.Training2_Policy_Payments__c == Constants.TRAINING_RESCHEDULE){
+                    } 
+                    
+                    if(event.Subject == Constants.TRAINING_T2 && opp.Training2_Policy_Payments__c == Constants.TRAINING_RESCHEDULE && 
+                    		(oldOpp.Training2_Start_Date_Time__c != opp.Training2_Start_Date_Time__c || oldOpp.Training2_End_Date_Time__c != opp.Training2_End_Date_Time__c)){
                         event.StartDateTime = opp.Training2_Start_Date_Time__c;
                         event.EndDateTime = opp.Training2_End_Date_Time__c;
-                    }/*else if(opp.Training3_OM_Returns_Disputes__c == Constants.TRAINING_RESCHEDULE){
+                    }//Below code commented because currently Training T3 is not considered
+                    /*else if(opp.Training3_OM_Returns_Disputes__c == Constants.TRAINING_RESCHEDULE){
                         event.StartDateTime = opp.Training3_Start_Date_Time__c;
                         event.EndDateTime = opp.Training3_End_Date_Time__c;
                     }*/

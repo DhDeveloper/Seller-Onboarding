@@ -28,6 +28,8 @@
             <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
             <componentType>Table</componentType>
             <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
             <header>Top 5 Open Deals</header>
             <indicatorHighColor>#00FF00</indicatorHighColor>
             <indicatorLowColor>#FF0000</indicatorLowColor>
@@ -41,6 +43,8 @@
             <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
             <componentType>Table</componentType>
             <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
             <header>Sales Leaderboard</header>
             <indicatorHighColor>#54C254</indicatorHighColor>
             <indicatorLowColor>#C25454</indicatorLowColor>
@@ -53,6 +57,8 @@
             <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
             <componentType>Table</componentType>
             <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
             <header>Key Accounts</header>
             <indicatorHighColor>#00FF00</indicatorHighColor>
             <indicatorLowColor>#FF0000</indicatorLowColor>

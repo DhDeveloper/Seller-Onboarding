@@ -34,6 +34,16 @@
         <template>unfiled$public/Seller_On_boarding_New_Lead_Requires_Approval</template>
     </alerts>
     <alerts>
+        <fullName>Lead_Assignment</fullName>
+        <description>Lead Assignment</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/LeadsNewassignmentnotificationSAMPLE</template>
+    </alerts>
+    <alerts>
         <fullName>Lead_Parked_and_tomorrow_is_last_day_to_revisit</fullName>
         <description>Lead Parked and tomorrow is last day to revisit</description>
         <protected>false</protected>
@@ -220,6 +230,25 @@
             <value>BGM</value>
         </criteriaItems>
         <description>BGM Lead Submitted For Approval</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CCC Lead Assignment to User</fullName>
+        <actions>
+            <name>Lead_Assignment</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Lead.OwnerId</field>
+            <operation>notEqual</operation>
+            <value>BGM UnAssigned,CCC UnAssigned,Softlines UnAssigned</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Lead.SuperCategory__c</field>
+            <operation>equals</operation>
+            <value>CCC</value>
+        </criteriaItems>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>

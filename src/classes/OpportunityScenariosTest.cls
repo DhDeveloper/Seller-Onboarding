@@ -88,7 +88,7 @@ private class OpportunityScenariosTest {
         opp.StageName = Constants.OPP_STAGE_READY_TO_INVITE;
     	update opp;
     	
-    	opp.StageName = 'Invited';
+    	opp.StageName = Constants.OPP_STAGE_INVITED;
     	update opp;
     	
         opp.BD_Action__c = Constants.BD_ACTION_DROP ;
@@ -130,7 +130,7 @@ private class OpportunityScenariosTest {
         opp.StageName = Constants.OPP_STAGE_READY_TO_INVITE;
     	update opp;
     	
-    	opp.StageName = 'Invited';
+    	opp.StageName = Constants.OPP_STAGE_INVITED;
     	update opp;
     	
         opp.BD_Action__c = Constants.BD_ACTION_PAUSE;
@@ -173,7 +173,7 @@ private class OpportunityScenariosTest {
         opp.StageName = Constants.OPP_STAGE_READY_TO_INVITE;
     	update opp;
     	
-    	opp.StageName = 'Invited';
+    	opp.StageName = Constants.OPP_STAGE_INVITED;
     	update opp;
     	
         opp.Delay_Reasons__c = Constants.DELAY_REASON_SELLER_NOT_REACHABLE;

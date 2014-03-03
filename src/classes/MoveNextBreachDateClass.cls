@@ -7,8 +7,9 @@ global class MoveNextBreachDateClass implements Schedulable{
 						                      	FROM 	Opportunity
                                         		WHERE   Id in (	SELECT 	Opportunity__c 
                                         						FROM    Seller_TAT_Breach__c 
-                                                            	WHERE 	Estimated_Closure_Date__c = YESTERDAY 
-                                                            	AND 	Actual_Closure_Date__c = null)];
+                                                            	WHERE 	Estimated_Closure_Date__c < TODAY 
+                                                            	AND 	Actual_Closure_Date__c = null)
+                                                 AND stageName not in('Live')];
     	
     	List<Seller_TAT_Breach__c> sellerTATBreachList = [SELECT	Id,Opportunity__c,Ideal_Closure_Date__c,
 								                                    Actual_Closure_Date__c,Next_Breach_Date__c,
@@ -20,6 +21,7 @@ global class MoveNextBreachDateClass implements Schedulable{
 								                      		WHERE  	Opportunity__c IN :oppSellerTATList ORDER BY Name];
     	
     	for(Opportunity opp : oppSellerTATList){
+    		Date todayDate = Date.today();
     		Date yesterdayDate = Date.today() - 1;
 	    	Date estimatedClosureDate = null;
 	    	Date nextBreachDate = null;
@@ -45,7 +47,7 @@ global class MoveNextBreachDateClass implements Schedulable{
 		                                                                                                       Integer.valueOf(sellerTATBreachList.get(i).TAT_Stage_Profile_ID__r.TAT_Profile_Spec__c),
 		                                                                                                       holidaysList);
 					}else{
-						if(i == 0 && sellerTATBreachList.get(i).Actual_Closure_Date__c == null && sellerTATBreachList.get(i).Estimated_Closure_Date__c == yesterdayDate ){
+						if(i == 0 && sellerTATBreachList.get(i).Actual_Closure_Date__c == null && sellerTATBreachList.get(i).Estimated_Closure_Date__c < todayDate ){
 							
 							sellerTATBreachList.get(i).Estimated_Closure_Date__c = UtilityClass.addDaysExcludingSundaysHolidays(yesterdayDate, 1, holidaysList);
 							sellerTATBreachList.get(i).Next_Breach_Date__c = UtilityClass.addDaysExcludingSundaysHolidays(sellerTATBreachList.get(i).Estimated_Closure_Date__c, 1, holidaysList);
@@ -63,7 +65,7 @@ global class MoveNextBreachDateClass implements Schedulable{
 							estimatedClosureDate = sellerTATBreachList.get(i).Estimated_Closure_Date__c;
 						}
 						if(	i != 0 && sellerTATBreachList.get(i-1).Actual_Closure_Date__c != null && sellerTATBreachList.get(i).Actual_Closure_Date__c == null
-						 	&& sellerTATBreachList.get(i).Estimated_Closure_Date__c == yesterdayDate ){
+						 	&& sellerTATBreachList.get(i).Estimated_Closure_Date__c < todayDate){
 						 	
 						 	sellerTATBreachList.get(i).Estimated_Closure_Date__c = UtilityClass.addDaysExcludingSundaysHolidays(yesterdayDate, 1, holidaysList);
 							sellerTATBreachList.get(i).Next_Breach_Date__c = UtilityClass.addDaysExcludingSundaysHolidays(sellerTATBreachList.get(i).Estimated_Closure_Date__c, 1, holidaysList);
@@ -83,8 +85,8 @@ global class MoveNextBreachDateClass implements Schedulable{
 					}
     			}
     		}
-			finalUpdateSellerList.addAll(sellerTATBreachList);
+			//finalUpdateSellerList.addAll(sellerTATBreachList);
     	}
-    	update finalUpdateSellerList;
+    	update sellerTATBreachList;
     }
 }

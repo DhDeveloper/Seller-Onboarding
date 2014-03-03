@@ -6,6 +6,20 @@ public class Constants {
     public static final String DELAY_REASON_SELLER_NEED_MORE_TIME   = 'Seller Need More Time';
     public static final String DELAY_REASON_OTHER                   = 'Other';
     
+    public static final String DELAY_REASON_BANK_VERIFICATION       = 'Bank Verification';
+    public static final String DELAY_REASON_BD_WANTS_MORE_TIME      = 'BD wants to give more time';
+    public static final String DELAY_REASON_EKL_LIMITATION          = 'EKL Limitation';
+    public static final String DELAY_REASON_IMAGE_ISSUE             = 'Image Issue';
+    public static final String DELAY_REASON_KYC_VERIFICATION        = 'KYC Verification';
+    public static final String DELAY_REASON_RESCHEDULING_AGAIN      = 'Rescheduling again and again';
+    public static final String DELAY_REASON_RESOURCE_PROBLEM        = 'Resource problem at seller end';
+    public static final String DELAY_REASON_SELLER_NOT_HAPPY        = 'Seller not happy with policies';
+    public static final String DELAY_REASON_SELLER_OOO              = 'Seller OOO';
+    public static final String DELAY_REASON_TECH_ISSUE              = 'Tech issue';
+    public static final String DELAY_REASON_WAITING_BRAND_APPROVAL  = 'Waiting on Brand Approval';
+    public static final String DELAY_REASON_QC_FAILURE  			= 'QC failure';
+    
+    
     public static final String OPP_STAGE_CANDIDATE                  = 'Candidate';
     public static final String OPP_STAGE_READY_TO_ONBOARD           = 'Ready to Onboard';
     public static final String OPP_STAGE_READY_TO_INVITE            = 'Ready to Invite';
@@ -37,6 +51,7 @@ public class Constants {
     public static final String TRAINING_SCHEDULED                   = 'Scheduled';
     public static final String TRAINING_RESCHEDULE                  = 'Reschedule';
     public static final String TRAINING_COMPLETED                   = 'Completed';
+    public static final String TRAINING_CANCELLED                   = 'Cancelled';
     
     public static final Integer TAT_SWIMLINE_IN_PROGRESS            = 1;
     public static final Integer TAT_SWIMLINE_DROPPED                = 2;

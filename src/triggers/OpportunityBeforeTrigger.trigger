@@ -16,6 +16,7 @@ trigger OpportunityBeforeTrigger on Opportunity (before insert, before update) {
     String      s2                          = '</table></body></html>';
     String      data						= '';
     List<Holiday> holidaysList = [Select h.ActivityDate From Holiday h];
+    Map<Id, Opportunity> oldMap = Trigger.oldMap;
     
     /* On update of Opportunity record, Delay Reasons wise days count
        captured to populate with new values
@@ -28,6 +29,65 @@ trigger OpportunityBeforeTrigger on Opportunity (before insert, before update) {
                                             Integer.valueOf(oldOpp.Seller_Need_More_Time__c):0;
             oldOthersCount             = (oldOpp.Others__c != null) ?
                                             Integer.valueOf(oldOpp.Others__c):0;
+        }
+        
+        for(Opportunity opp : Trigger.new){
+			Opportunity oldOpp = oldMap.get(opp.Id);
+        	
+            if(	opp.Delay_Reasons__c != null && opp.Attempts_Or_Delay_Days__c != null && 
+            	(oldOpp.Delay_Reasons__c != opp.Delay_Reasons__c || oldOpp.Attempts_Or_Delay_Days__c != opp.Attempts_Or_Delay_Days__c)){
+                oppDelayDays = (opp.Attempts_Or_Delay_Days__c != null && opp.Attempts_Or_Delay_Days__c != '')?
+                                        Integer.valueOf(opp.Attempts_Or_Delay_Days__c) : 0;
+
+                if(opp.Delay_Reasons__c == Constants.DELAY_REASON_SELLER_NOT_REACHABLE){
+                    opp.Seller_Not_Reachable__c = oldSellerNotReachableCount + oppDelayDays;
+                }else if(opp.Delay_Reasons__c == Constants.DELAY_REASON_SELLER_NEED_MORE_TIME){
+                    opp.Seller_Need_More_Time__c = oldSellerNeedMoreTimeCount + oppDelayDays;
+                }else if(opp.Delay_Reasons__c == Constants.DELAY_REASON_OTHER){
+                    opp.Others__c = oldOthersCount + oppDelayDays;
+                }
+                else if(opp.Delay_Reasons__c == Constants.DELAY_REASON_BANK_VERIFICATION){
+                    opp.Bank_Verification_Delay__c = (oldOpp.Bank_Verification_Delay__c != null ?
+                                            			Integer.valueOf(oldOpp.Bank_Verification_Delay__c):0) + oppDelayDays;
+                }else if(opp.Delay_Reasons__c == Constants.DELAY_REASON_BD_WANTS_MORE_TIME){
+                    opp.BD_wants_to_give_more_time_Delay__c = (oldOpp.BD_wants_to_give_more_time_Delay__c != null ?
+                                            			Integer.valueOf(oldOpp.BD_wants_to_give_more_time_Delay__c):0) + oppDelayDays;
+                }else if(opp.Delay_Reasons__c == Constants.DELAY_REASON_EKL_LIMITATION){
+                    opp.EKL_Limitation_Delay__c = (oldOpp.EKL_Limitation_Delay__c != null ?
+                                            			Integer.valueOf(oldOpp.EKL_Limitation_Delay__c):0) + oppDelayDays;
+                }else if(opp.Delay_Reasons__c == Constants.DELAY_REASON_IMAGE_ISSUE){
+                    opp.Image_Issue_Delay__c = (oldOpp.Image_Issue_Delay__c != null ?
+                                            			Integer.valueOf(oldOpp.Image_Issue_Delay__c):0) + oppDelayDays;
+                }else if(opp.Delay_Reasons__c == Constants.DELAY_REASON_KYC_VERIFICATION){
+                    opp.KYC_Verification_Delay__c = (oldOpp.KYC_Verification_Delay__c != null ?
+                                            			Integer.valueOf(oldOpp.KYC_Verification_Delay__c):0) + oppDelayDays;
+                }else if(opp.Delay_Reasons__c == Constants.DELAY_REASON_RESCHEDULING_AGAIN){
+                    opp.Rescheduling_again_and_again_Delay__c = (oldOpp.Rescheduling_again_and_again_Delay__c != null ?
+                                            			Integer.valueOf(oldOpp.Rescheduling_again_and_again_Delay__c):0) + oppDelayDays;
+                }else if(opp.Delay_Reasons__c == Constants.DELAY_REASON_RESOURCE_PROBLEM){
+                    opp.Resource_problem_at_seller_end_Delay__c = (oldOpp.Resource_problem_at_seller_end_Delay__c != null ?
+                                            			Integer.valueOf(oldOpp.Resource_problem_at_seller_end_Delay__c):0) + oppDelayDays;
+                }else if(opp.Delay_Reasons__c == Constants.DELAY_REASON_SELLER_NOT_HAPPY){
+                    opp.Seller_not_happy_with_policies_Delay__c = (oldOpp.Seller_not_happy_with_policies_Delay__c != null ?
+                                            			Integer.valueOf(oldOpp.Seller_not_happy_with_policies_Delay__c):0) + oppDelayDays;
+                }else if(opp.Delay_Reasons__c == Constants.DELAY_REASON_SELLER_OOO){
+                    opp.Seller_OOO_Delay__c = (oldOpp.Seller_OOO_Delay__c != null ?
+                                            			Integer.valueOf(oldOpp.Seller_OOO_Delay__c):0) + oppDelayDays;
+                }else if(opp.Delay_Reasons__c == Constants.DELAY_REASON_TECH_ISSUE){
+                    opp.Tech_issue_Delay__c = (oldOpp.Tech_issue_Delay__c != null ?
+                                            			Integer.valueOf(oldOpp.Tech_issue_Delay__c):0) + oppDelayDays;
+                }else if(opp.Delay_Reasons__c == Constants.DELAY_REASON_WAITING_BRAND_APPROVAL){
+                    opp.Waiting_on_Brand_Approval_Delay__c = (oldOpp.Waiting_on_Brand_Approval_Delay__c != null ?
+                                            			Integer.valueOf(oldOpp.Waiting_on_Brand_Approval_Delay__c):0) + oppDelayDays;
+                }else if(opp.Delay_Reasons__c == Constants.DELAY_REASON_QC_FAILURE){
+                    opp.QC_failure_Delay__c = (oldOpp.QC_failure_Delay__c != null ?
+                                            			Integer.valueOf(oldOpp.QC_failure_Delay__c):0) + oppDelayDays;
+                }
+            }/*else{
+                opp.Seller_Not_Reachable__c    = 0;
+                opp.Seller_Need_More_Time__c   = 0;
+                opp.Others__c                  = 0;
+            }*/        	
         }
     }
     
@@ -58,7 +118,6 @@ trigger OpportunityBeforeTrigger on Opportunity (before insert, before update) {
         }
         
         if(Trigger.isUpdate){
-            Map<Id, Opportunity> oldMap = Trigger.oldMap;
             for(Opportunity opp: Trigger.new){
                 Opportunity oldOpp = oldMap.get(opp.Id);
                 
@@ -94,79 +153,18 @@ trigger OpportunityBeforeTrigger on Opportunity (before insert, before update) {
                     (   (oldOpp.Training_Start_Date_Time__c != null && oldOpp.Training_Start_Date_Time__c != opp.Training_Start_Date_Time__c) || 
                         (oldOpp.Training_End_Date_Time__c != null && oldOpp.Training_End_Date_Time__c != opp.Training_End_Date_Time__c)
                         )){
-                    opp.Training1__c.addError('Training1 (Listings) should be in Reschedule to Change Training Start Date/Time or Training End Date/Time');
-                }
-                
-               /* if( opp.Training1__c == Constants.TRAINING_NOT_DONE ||
-                    opp.Training1__c == Constants.TRAINING_SCHEDULED ||
-                    opp.Training1__c == Constants.TRAINING_RESCHEDULE){
-                    if(opp.Training1__c == Constants.TRAINING_NOT_DONE){
-                        if(opp.Training_Start_Date_Time__c != null || opp.Training_End_Date_Time__c != null){
-                            opp.Training_Start_Date_Time__c.addError('Without Scheduled/Reschedule, training timings should be empty');                     
-                        }
-                    }
-                    
-                    if( opp.Training1__c == Constants.TRAINING_SCHEDULED ||
-                        opp.Training1__c == Constants.TRAINING_RESCHEDULE){
-                        if(opp.Training_Start_Date_Time__c == null || opp.Training_End_Date_Time__c == null){
-                                opp.Training_Start_Date_Time__c.addError('On Scheduled/Reschedule, Training Start Date/Time and Training End Date/Time cannot be empty');                       
-                        }
-                        if( (opp.Training1__c == Constants.TRAINING_SCHEDULED) && 
-                            (   (oldOpp.Training_Start_Date_Time__c != null && oldOpp.Training_Start_Date_Time__c != opp.Training_Start_Date_Time__c) || 
-                                (oldOpp.Training_End_Date_Time__c != null && oldOpp.Training_End_Date_Time__c != opp.Training_End_Date_Time__c)
-                                )){
-                            opp.Training1__c.addError('Training1 (Listings) should be in Reschedule to Change Training Start Date/Time or Training End Date/Time');
-                        }
-                    }
-                }*/// End of Training1 -- Not Done/Scheduled/Reschedule
+                    opp.Training1__c = Constants.TRAINING_RESCHEDULE;
+                    //opp.Training1__c.addError('Training1 (Listings) should be in Reschedule to Change Training Start Date/Time or Training End Date/Time');
+                }// End of Training1 -- Not Done/Scheduled/Reschedule
                 
                 //Training T2 & T3 Validation rules. 
-                //if(opp.Training1__c == Constants.TRAINING_COMPLETED){
                 if( (opp.Training2_Policy_Payments__c == Constants.TRAINING_SCHEDULED) && 
                     (   (oldOpp.Training2_Start_Date_Time__c != null && oldOpp.Training2_Start_Date_Time__c != opp.Training2_Start_Date_Time__c) || 
                         (oldOpp.Training2_End_Date_Time__c != null && oldOpp.Training2_End_Date_Time__c != opp.Training2_End_Date_Time__c)
                         )){
-                    opp.Training2_Policy_Payments__c.addError('Training2 (Policy + Payments) should be in Reschedule to Change Training Start Date/Time or Training End Date/Time');
-                }
-                  /*  if(opp.Training2_Policy_Payments__c == null || opp.Training2_Policy_Payments__c == Constants.TRAINING_NOT_DONE){
-                        if(opp.Training2_Start_Date_Time__c != null || opp.Training2_End_Date_Time__c != null){
-                            opp.Training2_Start_Date_Time__c.addError('Without Scheduled/Reschedule, training timings should be empty');                        
-                        }
-                    }
-                    
-                    if( opp.Training2_Policy_Payments__c == Constants.TRAINING_SCHEDULED ||
-                        opp.Training2_Policy_Payments__c == Constants.TRAINING_RESCHEDULE){
-                        if(opp.Training2_Start_Date_Time__c == null || opp.Training2_End_Date_Time__c == null){
-                                opp.Training2_Start_Date_Time__c.addError('On Scheduled/Reschedule, Training Start Date/Time and Training End Date/Time cannot be empty');                      
-                        }
-                        if( (opp.Training2_Policy_Payments__c == Constants.TRAINING_SCHEDULED) && 
-                            (   (oldOpp.Training2_Start_Date_Time__c != null && oldOpp.Training2_Start_Date_Time__c != opp.Training2_Start_Date_Time__c) || 
-                                (oldOpp.Training2_End_Date_Time__c != null && oldOpp.Training2_End_Date_Time__c != opp.Training2_End_Date_Time__c)
-                                )){
-                            opp.Training2_Policy_Payments__c.addError('Training2 (Policy + Payments) should be in Reschedule to Change Training Start Date/Time or Training End Date/Time');
-                        }
-                    }*/
-                    
-                    // T3 Validation Rules
-                 /*   if(opp.Training3_OM_Returns_Disputes__c == null || 
-                       opp.Training3_OM_Returns_Disputes__c == Constants.TRAINING_NOT_DONE){
-                        if(opp.Training3_Start_Date_Time__c != null || opp.Training3_End_Date_Time__c != null){
-                            opp.Training3_Start_Date_Time__c.addError('Without Scheduled/Reschedule, training timings should be empty');                        
-                        }
-                    }
-                    if( opp.Training3_OM_Returns_Disputes__c == Constants.TRAINING_SCHEDULED ||
-                        opp.Training3_OM_Returns_Disputes__c == Constants.TRAINING_RESCHEDULE){
-                        if(opp.Training3_Start_Date_Time__c == null || opp.Training3_End_Date_Time__c == null){
-                                opp.Training3_Start_Date_Time__c.addError('On Scheduled/Reschedule, Training Start Date/Time and Training End Date/Time cannot be empty');                      
-                        }
-                        if( (opp.Training3_OM_Returns_Disputes__c == Constants.TRAINING_SCHEDULED) && 
-                            (   (oldOpp.Training3_Start_Date_Time__c != null && oldOpp.Training3_Start_Date_Time__c != opp.Training2_Start_Date_Time__c) || 
-                                (oldOpp.Training3_End_Date_Time__c != null && oldOpp.Training3_End_Date_Time__c != opp.Training2_End_Date_Time__c)
-                                )){
-                            opp.Training3_OM_Returns_Disputes__c.addError('Training3 (OM Returns Disputes) should be in Reschedule to Change Training Start Date/Time or Training End Date/Time');
-                        }
-                     }*/
-                //}// End of Training T2 & T3 Validation rules. 
+                    opp.Training2_Policy_Payments__c = Constants.TRAINING_RESCHEDULE;
+                    //opp.Training2_Policy_Payments__c.addError('Training2 (Policy + Payments) should be in Reschedule to Change Training Start Date/Time or Training End Date/Time');
+                } 
             }
         }
         
@@ -176,24 +174,6 @@ trigger OpportunityBeforeTrigger on Opportunity (before insert, before update) {
            populated on Delay Summary Section of Opportunity
         */
         for(Opportunity opp: Trigger.new){
-            if(opp.Delay_Reasons__c != null && opp.Attempts_Or_Delay_Days__c != null){
-                oppDelayDays = (opp.Attempts_Or_Delay_Days__c != null && opp.Attempts_Or_Delay_Days__c != '')?
-                                        Integer.valueOf(opp.Attempts_Or_Delay_Days__c) : 0;
-
-                if(opp.Delay_Reasons__c == Constants.DELAY_REASON_SELLER_NOT_REACHABLE){
-                    opp.Seller_Not_Reachable__c = oldSellerNotReachableCount + oppDelayDays;
-                }
-                else if(opp.Delay_Reasons__c == Constants.DELAY_REASON_SELLER_NEED_MORE_TIME){
-                    opp.Seller_Need_More_Time__c = oldSellerNeedMoreTimeCount + oppDelayDays;
-                }
-                else if(opp.Delay_Reasons__c == Constants.DELAY_REASON_OTHER){
-                    opp.Others__c = oldOthersCount + oppDelayDays;
-                }
-            }else{
-                opp.Seller_Not_Reachable__c    = 0;
-                opp.Seller_Need_More_Time__c   = 0;
-                opp.Others__c                  = 0;
-            }
             
             /* Apex Scheduler update 'Is Invited' field to 1
                at 10:00 and 16:00 on weekdays. Checking updated

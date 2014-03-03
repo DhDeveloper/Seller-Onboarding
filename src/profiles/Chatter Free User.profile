@@ -54,6 +54,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>ExceptionLogClass</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>ExistingOpportunityTATBuilderClass</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -150,6 +154,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>SMSAPI</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SMSAPIClass</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>SellerBatchTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -182,6 +194,14 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>SellerTrainingController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>SellerTrainingControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>TATHelperTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -190,15 +210,19 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>TrainingSchedulesListController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>TrainingSchedulesListControllerTest</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>UpdateOppFieldToTriggerEmailClass</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>UpdateOppFieldToTriggerEmailTest</apexClass>
-        <enabled>false</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>UtilityClass</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -589,6 +613,36 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Exceptions__c.Class_Or_Trigger_Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Exceptions__c.Error_Message__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Exceptions__c.Exception_Type__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Exceptions__c.Method_Or_Block_Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Exceptions__c.Object__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Exceptions__c.Stack_Trace__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Flipkart_Applications_Definition__c.Application_Name__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -839,6 +893,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Lead.Lead_Owner_Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Lead.Markets_where_you_sell__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -989,6 +1048,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Lead.Temp_Pickup_Pincode__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Lead.Temp_Region__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Lead.Time_to_fulfill_order__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1038,6 +1107,11 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Alternative_Contact_Number__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.Amount</field>
         <readable>true</readable>
@@ -1055,6 +1129,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.BD_Comments__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.BD_wants_to_give_more_time_Delay__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Bank_Verification_Delay__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1105,6 +1189,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.Distributor_Type__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.EKL_Limitation_Delay__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1169,6 +1258,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Opportunity.Image_Issue_Delay__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Opportunity.Imaging_Support__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1200,6 +1294,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.Is_Invited__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.KYC_Verification_Delay__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1294,6 +1393,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Opportunity.QC_failure_Delay__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Opportunity.Ready_to_Invite_Date__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1310,6 +1414,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.Region__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Rescheduling_again_and_again_Delay__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Resource_problem_at_seller_end_Delay__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1349,6 +1463,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Opportunity.SS_Revisit_Date__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Opportunity.SS_Screening__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1369,6 +1488,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Opportunity.Seller_Name__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Opportunity.Seller_Need_More_Time__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -1379,12 +1503,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Opportunity.Seller_OOO_Delay__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Opportunity.Seller_Primary_Email__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.Seller_Registration_Email__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Seller_not_happy_with_policies_Delay__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -1406,6 +1540,11 @@
         <editable>true</editable>
         <field>Opportunity.TAT_Profile__c</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Tech_issue_Delay__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
@@ -1503,9 +1642,24 @@
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Training_T1_Date_VF__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Training_T2_Date_VF__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Opportunity.Type</field>
         <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Waiting_on_Brand_Approval_Delay__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
@@ -1816,11 +1970,19 @@
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
+        <apexPage>SellerTrainingPage</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>SellerUpdateTestPage</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>TestMultiSelect</apexPage>
+        <enabled>false</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>UserTrainingSchedulesListPage</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
     <recordTypeVisibilities>
@@ -1879,5 +2041,9 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>PasswordNeverExpires</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ViewHelpLink</name>
     </userPermissions>
 </Profile>

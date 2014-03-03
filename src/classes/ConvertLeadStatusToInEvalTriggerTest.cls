@@ -13,7 +13,9 @@ public class ConvertLeadStatusToInEvalTriggerTest{
         
         
       test.startTest();   
-        Lead l = new Lead(LastName='Foo', Status='Open', Company='foo', 
+        Lead l = new Lead(LastName='Foo', Status='Open', Company='foo',
+                                    Temp_Region__c = 'Goa',
+                                    Temp_Pickup_Pincode__c = 100, 
                           OwnerId=g1.Id);
       insert l;
                 System.assertEquals('Open', l.Status);

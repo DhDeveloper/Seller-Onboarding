@@ -10,6 +10,8 @@
             <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
             <componentType>Table</componentType>
             <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
             <header>SS AM Utilization</header>
             <indicatorHighColor>#54C254</indicatorHighColor>
             <indicatorLowColor>#C25454</indicatorLowColor>

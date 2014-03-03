@@ -22,4 +22,6 @@
     <tab>Flipkart_Applications_Definition__c</tab>
     <tab>Application_End_Point_URL__c</tab>
     <tab>Brand_Details__c</tab>
+    <tab>standard-Console</tab>
+    <tab>Exceptions__c</tab>
 </CustomApplication>

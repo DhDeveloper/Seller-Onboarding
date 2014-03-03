@@ -1,3 +1,5 @@
-<apex:page standardController="Opportunity">
-Do not create Opportunities directly. Create a Lead and convert it.
+<apex:page standardController="Opportunity">    
+    <apex:pageBlock title="Warning">
+      <apex:pageMessage severity="warning" strength="3" summary="Do not create Opportunities directly. Create a Lead and convert it."/>
+    </apex:pageBlock>
 </apex:page>

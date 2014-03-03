@@ -9,6 +9,8 @@ public class OpportunityTrainingT1Test{
         opp.StageName = Constants.OPP_STAGE_INVITED;
     	update opp;
         
+        System.debug('======$$$$$++++'+opp.SS_Owner__c);
+        
         try{
             opp.Training1__c = Constants.TRAINING_NOT_DONE;
             opp.Training_Start_Date_Time__c = Date.today();

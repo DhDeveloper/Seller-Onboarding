@@ -1,23 +1,6 @@
 /**
  * This class contains unit tests for validating the behavior of Apex classes
  * and triggers.
- *
- * Unit tests are class methods that verify whether a particular piece
- * of code is working properly. Unit test methods take no arguments,
- * commit no data to the database, and are flagged with the testMethod
- * keyword in the method definition.
- *
- * All test methods in an organization are executed whenever Apex code is deployed
- * to a production organization to confirm correctness, ensure code
- * coverage, and prevent regressions. All Apex classes are
- * required to have at least 75% code coverage in order to be deployed
- * to a production organization. In addition, all triggers must have some code coverage.
- * 
- * The @isTest class annotation indicates this class only contains test
- * methods. Classes defined with the @isTest annotation do not count against
- * the organization size limit for all Apex scripts.
- *
- * See the Apex Language Reference for more information about Testing and Code Coverage.
  */
 @isTest
 private class updateHubOnInsertTriggerTest {
@@ -37,13 +20,13 @@ private class updateHubOnInsertTriggerTest {
         pin.Hub_Name__c = 'Test Hub';
         insert pin;
         
-    	leadTest.add(new Lead(Company='Test1',FirstName='Test1',LastName='Test1', PickupPincode__c='111',Pickup_Pincode__c = pin.Id));
-    	leadTest.add(new Lead(Company='Test2',FirstName='Test2',LastName='Test2', PickupPincode__c='111',Pickup_Pincode__c = pin.Id));
-    	leadTest.add(new Lead(Company='Test3',FirstName='Test3',LastName='Test3', PickupPincode__c='222',Pickup_Pincode__c = pin.Id));
-    	leadTest.add(new Lead(Company='Test4',FirstName='Test4',LastName='Test4', PickupPincode__c='111',Pickup_Pincode__c = pin.Id));
+    	leadTest.add(new Lead(Company='Test1',FirstName='Test1',LastName='Test1', Temp_Region__c = 'Goa', PickupPincode__c='111',Pickup_Pincode__c = pin.Id));
+    	leadTest.add(new Lead(Company='Test2',FirstName='Test2',LastName='Test2', Temp_Region__c = 'Goa', PickupPincode__c='111',Pickup_Pincode__c = pin.Id));
+    	leadTest.add(new Lead(Company='Test3',FirstName='Test3',LastName='Test3', Temp_Region__c = 'Goa', PickupPincode__c='222',Pickup_Pincode__c = pin.Id));
+    	leadTest.add(new Lead(Company='Test4',FirstName='Test4',LastName='Test4', Temp_Region__c = 'Goa', PickupPincode__c='111',Pickup_Pincode__c = pin.Id));
     	insert leadTest;
     	
-    	Lead l = new Lead(Company='Test5',FirstName='Test5',LastName='Test5', PickupPincode__c='111', Status= 'Open',Pickup_Pincode__c = pin.Id);
+    	Lead l = new Lead(Company='Test5',FirstName='Test5',LastName='Test5', Temp_Region__c = 'Goa', PickupPincode__c='111', Status= 'Open',Pickup_Pincode__c = pin.Id);
     	l.Seller_Registration_Email__c = 'AAA@test.com';
     	l.SuperCategory__c = 'BGM'; 
 		l.VAT_Status__c = 'Not Needed'; 

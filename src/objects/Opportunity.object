@@ -139,6 +139,16 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>Alternative_Contact_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Alternative Contact Number</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
         <fullName>Attempts_Or_Delay_Days__c</fullName>
         <externalId>false</externalId>
         <label>Attempts / Delay in Days</label>
@@ -190,7 +200,7 @@
             <sorted>false</sorted>
         </picklist>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
     </fields>
@@ -262,6 +272,32 @@
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>BD_wants_to_give_more_time_Delay__c</fullName>
+        <externalId>false</externalId>
+        <label>BD wants to give more time</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bank_Verification_Delay__c</fullName>
+        <externalId>false</externalId>
+        <label>Bank Verification</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Brand_List__c</fullName>
@@ -571,7 +607,39 @@
         <label>Delay Reasons</label>
         <picklist>
             <picklistValues>
-                <fullName>Seller Not Reachable</fullName>
+                <fullName>Bank Verification</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>BD wants to give more time</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EKL Limitation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Image Issue</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>KYC Verification</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>QC failure</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rescheduling again and again</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Resource problem at seller end</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
@@ -579,7 +647,23 @@
                 <default>false</default>
             </picklistValues>
             <picklistValues>
-                <fullName>Other</fullName>
+                <fullName>Seller not happy with policies</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Seller Not Reachable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Seller OOO</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tech issue</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Waiting on Brand Approval</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -649,6 +733,19 @@
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>EKL_Limitation_Delay__c</fullName>
+        <externalId>false</externalId>
+        <label>EKL Limitation</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Expected_TAT__c</fullName>
@@ -857,6 +954,19 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Image_Issue_Delay__c</fullName>
+        <externalId>false</externalId>
+        <label>Image Issue</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Imaging_Support__c</fullName>
         <externalId>false</externalId>
         <label>Imaging Support</label>
@@ -934,6 +1044,19 @@
         <externalId>false</externalId>
         <label>Is Invited</label>
         <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>KYC_Verification_Delay__c</fullName>
+        <externalId>false</externalId>
+        <label>KYC Verification</label>
+        <precision>3</precision>
         <required>false</required>
         <scale>0</scale>
         <trackFeedHistory>false</trackFeedHistory>
@@ -1156,15 +1279,15 @@
     </fields>
     <fields>
         <fullName>Pickup_Area_Pincode__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
+        <deleteConstraint>Restrict</deleteConstraint>
         <externalId>false</externalId>
         <label>Pickup Pincode</label>
         <referenceTo>PincodeHubMapping__c</referenceTo>
         <relationshipLabel>Opportunities</relationshipLabel>
         <relationshipName>Opportunities</relationshipName>
-        <required>false</required>
+        <required>true</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -1200,6 +1323,19 @@
         <trackTrending>false</trackTrending>
         <type>MultiselectPicklist</type>
         <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>QC_failure_Delay__c</fullName>
+        <externalId>false</externalId>
+        <label>QC failure</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Ready_to_Invite_Date__c</fullName>
@@ -1245,6 +1381,32 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rescheduling_again_and_again_Delay__c</fullName>
+        <externalId>false</externalId>
+        <label>Rescheduling again and again</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Resource_problem_at_seller_end_Delay__c</fullName>
+        <externalId>false</externalId>
+        <label>Resource problem at seller end</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -1365,6 +1527,16 @@ Recommended format
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>SS_Revisit_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Revisit On</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
         <fullName>SS_Screening__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
@@ -1409,6 +1581,18 @@ Recommended format
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Seller_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Seller Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Seller_Need_More_Time__c</fullName>
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
@@ -1438,6 +1622,19 @@ Recommended format
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Seller_OOO_Delay__c</fullName>
+        <externalId>false</externalId>
+        <label>Seller OOO</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Seller_Primary_Email__c</fullName>
         <externalId>false</externalId>
         <label>Seller Primary Email</label>
@@ -1457,6 +1654,19 @@ Recommended format
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Seller_not_happy_with_policies_Delay__c</fullName>
+        <externalId>false</externalId>
+        <label>Seller not happy with policies</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -1624,6 +1834,19 @@ Recommended format
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Tech_issue_Delay__c</fullName>
+        <externalId>false</externalId>
+        <label>Tech issue</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Total_Listings_Uploaded__c</fullName>
         <externalId>false</externalId>
         <label>Total Listings Uploaded</label>
@@ -1736,6 +1959,10 @@ Recommended format
                 <fullName>Completed</fullName>
                 <default>false</default>
             </picklistValues>
+            <picklistValues>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </picklistValues>
             <sorted>false</sorted>
         </picklist>
         <trackFeedHistory>false</trackFeedHistory>
@@ -1772,6 +1999,10 @@ Recommended format
             </picklistValues>
             <picklistValues>
                 <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancelled</fullName>
                 <default>false</default>
             </picklistValues>
             <sorted>false</sorted>
@@ -1886,6 +2117,26 @@ Recommended format
         <type>DateTime</type>
     </fields>
     <fields>
+        <fullName>Training_T1_Date_VF__c</fullName>
+        <externalId>false</externalId>
+        <label>Training T1 Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Training_T2_Date_VF__c</fullName>
+        <externalId>false</externalId>
+        <label>Training T2 Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
         <fullName>Type</fullName>
         <picklist>
             <picklistValues>
@@ -1900,6 +2151,19 @@ Recommended format
         </picklist>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Waiting_on_Brand_Approval_Delay__c</fullName>
+        <externalId>false</externalId>
+        <label>Waiting on Brand Approval</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <listViews>
         <fullName>AllOpportunties</fullName>
@@ -2416,7 +2680,35 @@ Recommended format
         <picklistValues>
             <picklist>Delay_Reasons__c</picklist>
             <values>
+                <fullName>BD wants to give more time</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bank Verification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EKL Limitation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Image Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KYC Verification</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rescheduling again and again</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Resource problem at seller end</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2425,6 +2717,22 @@ Recommended format
             </values>
             <values>
                 <fullName>Seller Not Reachable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller OOO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller not happy with policies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tech issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Waiting on Brand Approval</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -3156,7 +3464,39 @@ Recommended format
         <picklistValues>
             <picklist>Delay_Reasons__c</picklist>
             <values>
+                <fullName>BD wants to give more time</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bank Verification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EKL Limitation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Image Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KYC Verification</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>QC failure</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rescheduling again and again</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Resource problem at seller end</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3165,6 +3505,22 @@ Recommended format
             </values>
             <values>
                 <fullName>Seller Not Reachable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller OOO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Seller not happy with policies</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tech issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Waiting on Brand Approval</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -3496,6 +3852,10 @@ Recommended format
         <picklistValues>
             <picklist>Training1__c</picklist>
             <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Completed</fullName>
                 <default>false</default>
             </values>
@@ -3514,6 +3874,10 @@ Recommended format
         </picklistValues>
         <picklistValues>
             <picklist>Training2_Policy_Payments__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
             <values>
                 <fullName>Completed</fullName>
                 <default>false</default>
@@ -3574,12 +3938,15 @@ Recommended format
         <customTabListAdditionalFields>SS_Drop__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>SS_Pause_Seller__c</customTabListAdditionalFields>
         <listViewButtons>Bulk_Invite</listViewButtons>
+        <listViewButtons>Bulk_Ready_to_Onboard</listViewButtons>
+        <listViewButtons>Bulk_Invite_WS</listViewButtons>
         <lookupDialogsAdditionalFields>OPPORTUNITY.NAME</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>ACCOUNT.NAME</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>ACCOUNT.SITE</lookupDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>OPPORTUNITY.NAME</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>ACCOUNT.NAME</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>ACCOUNT.SITE</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>00NO0000001BqR5</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>00N90000007at2T</lookupPhoneDialogsAdditionalFields>
         <searchResultsAdditionalFields>OPPORTUNITY.NAME</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>OPPORTUNITY.CLOSE_DATE</searchResultsAdditionalFields>
@@ -3646,6 +4013,26 @@ Recommended format
         <errorMessage>Tchh tchh, only BD OM should change an opportunity to Ready to Onboard</errorMessage>
     </validationRules>
     <validationRules>
+        <fullName>RevisitDateShouldExistOnBDActionContinue</fullName>
+        <active>true</active>
+        <description>Revisit Date Should Exist On BD Action Continue</description>
+        <errorConditionFormula>AND(   ISPICKVAL( BD_Action__c , &apos;Continue&apos;) ,
+      ISNULL( Revisit_Date__c ) 
+    )</errorConditionFormula>
+        <errorDisplayField>Revisit_Date__c</errorDisplayField>
+        <errorMessage>If BD Action is Continue, Revisit Date cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SSPauseRevisitOnDate</fullName>
+        <active>true</active>
+        <description>SSPauseRevisitOnDate</description>
+        <errorConditionFormula>AND( SS_Pause_Seller__c = TRUE, 
+ISNULL(SS_Revisit_Date__c) 
+)</errorConditionFormula>
+        <errorDisplayField>SS_Revisit_Date__c</errorDisplayField>
+        <errorMessage>To Pause SS, Revisit On Date cannot be empty</errorMessage>
+    </validationRules>
+    <validationRules>
         <fullName>ShouldNotConvertToLiveWithoutTrainings</fullName>
         <active>true</active>
         <errorConditionFormula>AND(
@@ -3655,6 +4042,22 @@ Recommended format
 )</errorConditionFormula>
         <errorDisplayField>StageName</errorDisplayField>
         <errorMessage>Cannot make a seller Live without completing Training1.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>T1StartTimeShouldBeLessThanT1EndTime</fullName>
+        <active>true</active>
+        <description>Training T1 Start Date/Time should be less than Training T1 End Date/Time</description>
+        <errorConditionFormula>Training_Start_Date_Time__c  &gt;  Training_End_Date_Time__c</errorConditionFormula>
+        <errorDisplayField>Training_Start_Date_Time__c</errorDisplayField>
+        <errorMessage>Training1 Start Date/Time should be less than Training1 End Date/Time</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>T2StartTimeShouldBeLessThanT2EndTime</fullName>
+        <active>true</active>
+        <description>Training T2 Start Date/Time should be less than Training T2 End Date/Time</description>
+        <errorConditionFormula>Training2_Start_Date_Time__c  &gt;   Training2_End_Date_Time__c</errorConditionFormula>
+        <errorDisplayField>Training2_Start_Date_Time__c</errorDisplayField>
+        <errorMessage>Training2 Start Date/Time should be less than Training2 End Date/Time</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>TrainingT1ScheduleTimingsValidationRule</fullName>
@@ -3780,6 +4183,105 @@ try{
        window.location.reload();
      }else{
         alert(&quot;Please select valid records to update&quot;);
+     }
+   }
+}catch(er){
+  alert(&quot;Error: &quot;+er);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Bulk_Invite_WS</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Bulk Invite WS</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/29.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/29.0/apex.js&quot;)}
+try{
+  var oppRecords = {!GETRECORDIDS($ObjectType.Opportunity)};
+  var updateOppRecords = [];
+  var invalidRecordCount = 0;
+
+  if(oppRecords[0] == null) { 
+    alert(&quot;Please select at least one record to update&quot;); 
+  }else{ 
+     var sName = sforce.connection.retrieve(&quot;StageName&quot;, &quot;Opportunity&quot;, [oppRecords]);
+     for (var i=0; i&lt;oppRecords.length; i++) {
+       if(sName[i].StageName == &quot;Invited&quot;){
+         invalidRecordCount++;
+       }
+     }
+     
+     if(invalidRecordCount == 0){
+
+sforce.apex.execute(&quot;SMSAPIClass&quot;,&quot;callFromJS&quot;,{oppIds: oppRecords});
+       //refresh the page
+       window.location.reload();
+     }else{
+        alert(&quot;Please select valid records to update&quot;);
+     }
+   }
+}catch(er){
+  alert(&quot;Error: &quot;+er);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Bulk_Ready_to_Onboard</fullName>
+        <availability>online</availability>
+        <description>Mass Update to Ready to Onboard</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Bulk &apos;Ready to Onboard&apos;</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/29.0/connection.js&quot;)}
+try{
+  var oppRecords = {!GETRECORDIDS($ObjectType.Opportunity)};
+  var updateOppRecords = [];
+  var invalidRecordCount = 0;
+
+  if(oppRecords[0] == null) { 
+    alert(&quot;Please select at least one record to update&quot;); 
+  }else{ 
+     var sName = sforce.connection.retrieve(&quot;StageName&quot;, &quot;Opportunity&quot;, [oppRecords]);
+     for (var i=0; i&lt;oppRecords.length; i++) {
+       if(sName[i].StageName != &quot;Candidate&quot;){
+         invalidRecordCount++;
+       }
+       var oppSObject = new sforce.SObject(&quot;Opportunity&quot;);
+       oppSObject.id = oppRecords[i];
+       oppSObject.StageName = &quot;Ready to Onboard&quot;;
+       
+       updateOppRecords.push(oppSObject);
+     }
+     
+     if(invalidRecordCount &gt; 0){
+        alert(&quot;Please select only &apos;Candidate&apos; Stage Opportunity records to update&quot;);       
+     }else{
+        // save the change
+       var result = sforce.connection.update(updateOppRecords);     
+
+     var resErrors = &apos;&apos;;
+     var resultFailCount = 0;
+
+     for (var i=0; i&lt;result.length; i++) {
+         if(result[i].success == &apos;false&apos;){
+             resultFailCount++;
+             resErrors += result[i].errors.message+&apos;\n&apos;;
+         }
+     }
+
+     if(resultFailCount &gt; 0){
+         alert(&apos;Update Failed due to error(s):\n&apos;+resErrors);
+     }else{
+         alert(result.length+&quot; record(s) updated successfully&quot;);
+         //refresh the page
+         window.location.reload();
+       }
      }
    }
 }catch(er){
